@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_11_143335) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_11_145912) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,20 +18,17 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_11_143335) do
     t.string "name"
     t.date "starting_date"
     t.date "ending_date"
-    t.integer "educator_id"
-    t.integer "relative_id"
-    t.integer "child_id"
     t.boolean "like"
-    t.string "description"
+    t.text "description"
     t.string "activity_pic_id"
-    t.bigint "children_id", null: false
-    t.bigint "educators_id", null: false
-    t.bigint "relatives_id", null: false
+    t.bigint "child_id", null: false
+    t.bigint "educator_id", null: false
+    t.bigint "relative_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["children_id"], name: "index_activities_on_children_id"
-    t.index ["educators_id"], name: "index_activities_on_educators_id"
-    t.index ["relatives_id"], name: "index_activities_on_relatives_id"
+    t.index ["child_id"], name: "index_activities_on_child_id"
+    t.index ["educator_id"], name: "index_activities_on_educator_id"
+    t.index ["relative_id"], name: "index_activities_on_relative_id"
   end
 
   create_table "children", force: :cascade do |t|
@@ -69,7 +66,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_11_143335) do
     t.index ["userable_type", "userable_id"], name: "index_users_on_userable"
   end
 
-  add_foreign_key "activities", "children", column: "children_id"
-  add_foreign_key "activities", "educators", column: "educators_id"
-  add_foreign_key "activities", "relatives", column: "relatives_id"
+  add_foreign_key "activities", "children"
+  add_foreign_key "activities", "educators"
+  add_foreign_key "activities", "relatives"
 end

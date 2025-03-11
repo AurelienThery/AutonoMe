@@ -1,5 +1,5 @@
 class Activity < ApplicationRecord
-  belongs_to :children
-  belongs_to :educators
-  belongs_to :relatives
+  belongs_to :child
+  belongs_to :educator
+  belongs_to :relative
 end
