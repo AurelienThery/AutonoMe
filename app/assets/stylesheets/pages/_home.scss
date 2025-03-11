@@ -1,1 +1,59 @@
 // Specific CSS for your home-page
+
+
+@keyframes fadeInUp {
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: bold;
+  border-right: 2px solid #000;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 3s steps(40, end) forwards, blink 0.8s infinite;
+}
+
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+
+.text-container {
+  font-size: 1,5rem;
+  color: #333;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s forwards;
+}
+
+
+.text-container p {
+  margin-bottom: 1,5em; // on ajoute un espace après chaque paragraphe
+}
+
+@keyframes glitch {
+  0% { text-shadow: 3px 0 red, -3px 0 blue; }
+  50% { text-shadow: -3px 0 red, 3px 0 blue; }
+  100% { text-shadow: 3px 0 red, -3px 0 blue; }
+}
+
+.text-decoration {
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background: black;
+  text-transform: uppercase;
+  position: relative;
+  animation: glitch 0.3s infinite;
+}
