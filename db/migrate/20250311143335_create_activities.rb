@@ -10,6 +10,9 @@ class CreateActivities < ActiveRecord::Migration[7.1]
       t.boolean :like
       t.string :description
       t.string :activity_pic_id
+      t.references :children, null: false, foreign_key: true
+      t.references :educators, null: false, foreign_key: true
+      t.references :relatives, null: false, foreign_key: true
 
       t.timestamps
     end

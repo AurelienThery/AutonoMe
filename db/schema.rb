@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_11_140621) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_11_143335) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,8 +24,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_11_140621) do
     t.boolean "like"
     t.string "description"
     t.string "activity_pic_id"
+    t.bigint "children_id", null: false
+    t.bigint "educators_id", null: false
+    t.bigint "relatives_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["children_id"], name: "index_activities_on_children_id"
+    t.index ["educators_id"], name: "index_activities_on_educators_id"
+    t.index ["relatives_id"], name: "index_activities_on_relatives_id"
   end
 
   create_table "children", force: :cascade do |t|
@@ -63,4 +69,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_11_140621) do
     t.index ["userable_type", "userable_id"], name: "index_users_on_userable"
   end
 
+  add_foreign_key "activities", "children", column: "children_id"
+  add_foreign_key "activities", "educators", column: "educators_id"
+  add_foreign_key "activities", "relatives", column: "relatives_id"
 end
