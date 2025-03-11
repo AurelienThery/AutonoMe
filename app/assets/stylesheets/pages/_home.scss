@@ -42,18 +42,3 @@ h1 {
   margin-bottom: 1,5em; // on ajoute un espace après chaque paragraphe
 }
 
-@keyframes glitch {
-  0% { text-shadow: 3px 0 red, -3px 0 blue; }
-  50% { text-shadow: -3px 0 red, 3px 0 blue; }
-  100% { text-shadow: 3px 0 red, -3px 0 blue; }
-}
-
-.text-decoration {
-  font-size: 1rem;
-  font-weight: bold;
-  color: white;
-  background: black;
-  text-transform: uppercase;
-  position: relative;
-  animation: glitch 0.3s infinite;
-}
