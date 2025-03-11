@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  # homepage correspondant au profil de l'utilisateur etant log-in
+  get '/users/:id', to: 'users#show', as: :monprofil
 end
