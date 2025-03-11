@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_11_115328) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_11_140621) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.string "name"
+    t.date "starting_date"
+    t.date "ending_date"
+    t.integer "educator_id"
+    t.integer "relative_id"
+    t.integer "child_id"
+    t.boolean "like"
+    t.string "description"
+    t.string "activity_pic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "children", force: :cascade do |t|
     t.datetime "created_at", null: false
