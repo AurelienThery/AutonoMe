@@ -4,6 +4,22 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :first_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "first name" }%>
+    <%= f.input :last_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "last name" }%>
+    <%= f.input :address,
+              required: true,
+              autofocus: true,
+              input_html: { autocomplete: "address" }%>
+    <%# <%= f.input :typetable_type,collection: User.user_types.keys,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "choose your type" }%> 
     <%= f.input :email,
                 required: true,
                 autofocus: true,
