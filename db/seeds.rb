@@ -96,7 +96,7 @@ LIST_ACTIVITIES.each_with_index do |activite, index|
     description: LIST_DESCRIPTIONS[index],
     activity_pic_id: "",
     child_id: 1,
-    educator_id: 4,
+    educator_id: (1..3).to_a.sample,
     relative_id: 2
 )
   puts "#{activite.name} créé"

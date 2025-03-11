@@ -9,4 +9,5 @@ private
 
 def set_user
   @user = User.find(params[:id])
+  @activities = Activity.where(child_id: params[:id])
 end
