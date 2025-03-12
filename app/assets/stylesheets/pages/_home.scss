@@ -23,7 +23,6 @@ h1 {
   animation: typing 3s steps(40, end) forwards, blink 0.8s infinite;
 }
 
-
 @keyframes blink {
   50% { border-color: transparent; }
 }
@@ -38,7 +37,16 @@ h1 {
 }
 
 
-.text-container p {
+.text-container p  {
   margin-bottom: 1,5em; // on ajoute un espace après chaque paragraphe
 }
 
+.super-large-icon {
+  font-size: 4rem;
+
+}
+
+
+.text-container-presentation {
+  color:blue
+}
