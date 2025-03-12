@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_12_115509) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_12_133206) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,8 +44,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_12_115509) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
-    t.date "starting_date"
-    t.date "ending_date"
+    t.datetime "starting_date"
+    t.datetime "ending_date"
     t.boolean "like"
     t.text "description"
     t.bigint "child_id", null: false
