@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   get "activities/mes_activites", to: "activities#mes_activites"
   get "activities/:id", to: "activities#show"
   # Defines the root path route ("/")
-  # root "posts#index"
+  # homepage correspondant au profil de l'utilisateur etant log-in
+  get '/users/:id', to: 'users#show'
 end
