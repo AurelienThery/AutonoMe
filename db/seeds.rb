@@ -95,7 +95,7 @@ LIST_ACTIVITIES.each_with_index do |activite, index|
   activite = Activity.new(
     name: LIST_ACTIVITIES[index],
     starting_date: DAY_STARTS_AT + (index * 3600),
-    ending_date: DAY_STARTS_AT + 3600,
+    ending_date: DAY_STARTS_AT + (index * 3600) + 3600,
     like: true,
     description: LIST_DESCRIPTIONS[index],
     # activity_pic_id: "",
