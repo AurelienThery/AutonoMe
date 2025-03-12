@@ -1,6 +1,7 @@
 <h2>Je m'appelle <%= "#{@user.first_name}" %></h1>
 <p>Je suis un <%= "#{@user.userable_type}" %></p>
 <p>J'habite <%= "#{@user.address}" %></p>
+<button><%=link_to "Voir mon agenda", activites_path  %></button>
 <h3>Voici le déroulement de ma journée du
   <%= @activities.first.starting_date.strftime("%A %d %B") %></h2>
 <ul>
@@ -8,6 +9,7 @@
   <li>
   <%= "#{activity.name} à partir de #{activity.starting_date.strftime("%Hh%M")}" %>
   <%="avec #{activity.educator.user.first_name}" %>
+  <%= link_to "Détails", activity_path(activity) %>
   </li>
   <% end %>
 </ul>
