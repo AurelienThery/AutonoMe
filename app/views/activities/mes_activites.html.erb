@@ -2,7 +2,7 @@
 <ul>
   <% @activities.each do |activity| %>
     <li>
-    
+      <%= "#{activity.starting_date.strftime("%Hh%M")} #{activity.name} "%>
     </li>
   <% end %>
 </ul>
