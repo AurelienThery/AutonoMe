@@ -7,6 +7,7 @@
   <% @activities.each do |activity| %>
   <li>
   <%= "#{activity.name} à partir de #{activity.starting_date.strftime("%Hh%M")}" %>
+  <%="avec #{activity.educator.user.first_name}" %>
   </li>
   <% end %>
 </ul>
