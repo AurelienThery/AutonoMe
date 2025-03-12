@@ -5,7 +5,9 @@
   <%= @activities.first.starting_date.strftime("%A %d %B") %></h2>
 <ul>
   <% @activities.each do |activity| %>
-  <li><%= "#{activity.name} à partir de #{activity.starting_date.strftime("%Hh%M")}" %></li>
+  <li>
+  <%= "#{activity.name} à partir de #{activity.starting_date.strftime("%Hh%M")}" %>
+  </li>
   <% end %>
 </ul>
 
