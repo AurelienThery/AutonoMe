@@ -8,6 +8,11 @@
   <li>
   <%= "#{activity.name} à partir de #{activity.starting_date.strftime("%Hh%M")}" %>
   <%="avec #{activity.educator.user.first_name}" %>
+  Jour<%= activity.ending_date.strftime("%A") %>
+  n°<%= activity.ending_date.strftime("%d") %>
+  mois<%= activity.ending_date.strftime("%B") %>
+  heure<%= activity.ending_date.strftime("%H") %>
+  minutes<%= activity.ending_date.strftime("%M") %>
   </li>
   <% end %>
 </ul>
