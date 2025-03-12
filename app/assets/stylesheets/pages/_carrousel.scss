@@ -1,0 +1,33 @@
+/* Configuration pour occuper tout l'écran */
+#carouselExampleCaptions .carousel-inner {
+  height: 50vh; /* Hauteur totale de l'écran */
+}
+
+.carousel-img {
+  height: 50%; /* Image prend toute la hauteur */
+  object-fit: cover; /* Ajustement pour éviter les déformations */
+}
+
+/* Légendes adaptées aux écrans mobiles */
+.carousel-caption {
+  bottom: 20px; /* Position plus basse pour une meilleure lisibilité */
+  font-size: 1rem; /* Taille de police réduite pour les mobiles */
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* Masquer les contrôles de navigation sur mobile si nécessaire */
+@media (max-width: 768px) {
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none;
+  }
+}
+
+// list item group
+.fixed-width-item {
+  width: 70%; /* Largeur fixe (ajustez selon vos besoins) */
+  max-width: 100%; /* Empêche le débordement pour des écrans plus petits */
+  word-wrap: break-word; /* Gère les longs textes */
+}
