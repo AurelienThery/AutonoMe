@@ -8,6 +8,7 @@ end
 private
 
 def set_user
-  @user = User.find(params[:id])
-  @activities = Activity.where(child_id: params[:id])
+  @user = current_user
+  @activities = Activity.where(child_id: @user.userable.id)
+  # @educators = Educator.where(id: @activities.educator_id)
 end
