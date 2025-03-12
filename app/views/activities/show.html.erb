@@ -1,1 +1,3 @@
 <h1><%=@activity.name %></h1>
+<%= cl_image_tag(@activity.activity_pic_id,
+      width: 400, height: 300, crop: :fill) %>
