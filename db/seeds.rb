@@ -87,7 +87,7 @@ User.create(
 puts "Emilie (educatrice) a été créé"
 
 puts "Création des activités d'une journée courte"
-LIST_ACTIVITIES = %w[Tajet_aller Mathematiques Français Histoire Trajet_retour]
+LIST_ACTIVITIES = %w[Trajet_aller Mathematiques Français Histoire Trajet_retour]
 LIST_DESCRIPTIONS = %w[matin cours1 cours2 cours3 soir]
 DAY_STARTS_AT = DateTime.tomorrow.to_time + 8 * 3600
 
@@ -98,7 +98,7 @@ LIST_ACTIVITIES.each_with_index do |activite, index|
     ending_date: DAY_STARTS_AT + 3600,
     like: true,
     description: LIST_DESCRIPTIONS[index],
-    activity_pic_id: "",
+    # activity_pic_id: "",
     child_id: Child.last.id,
     educator_id: Educator.all.sample.id,
     relative_id: Relative.all.sample.id
