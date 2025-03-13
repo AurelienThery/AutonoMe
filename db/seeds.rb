@@ -172,11 +172,11 @@ puts "Jessica (educatrice) a été créé"
 
 puts "Création des activités d'une journée courte"
 
-LIST_ACTIVITIES = %w[Trajet_aller Mathematiques Français Recreation Histoire Cantine Geographie Gymnase Ping_Pong Trajet_retour Devoirs Gaming Salle_de_bain Repas Tv]
+LIST_ACTIVITIES = %w[Trajet_aller Mathematiques Français Recreation Histoire Cantine Geographie Sport Ping_Pong Trajet_retour Devoirs Gaming Salle_de_bain Repas Tv]
 LIST_DESCRIPTIONS = %w[Matin Salle_204 Salle_140 Cour_Collège Salle_129 Réfectoire Salle_224 Sport_GymnaseA Entrainement Soir Devoirs_du_jour Jeux_PC Douche Repas_Famille EmissionTv]
 LIST_PICTURES = %w[college_jiemug cours_maths_jtebnf cours_francais_fdeyk0 récréation_uhj8un cours_histoire_tlsvxi cantine_eek480 classe_géographie_wdumh3 gymnase_kvsgdc pingpong_mpwidx maison_j3nvou devoirs_g6c3qk gaming_xxtqo7 sdb_adclbw repas_dm1z4l salontv_yjuodu]
 LIST_ACTIV_TYPES = %w[journey activity activity breaktime activity breaktime activity activity activity journey activity activity activity activity breaktime]
-LIST_DURATION = %w[0.5 1 1 0.5 1.5 1 1.5 1.5 1 0.5 0.5 1 0.5 0.5 1.5]
+LIST_DURATION = %w[1800 3600 3600 1800 5400 3600 5400 5400 3600 1800 1800 3600 1800 1800 5400]
 
 DAY_STARTS_AT = DateTime.tomorrow.to_time + 8 * 3600
 
@@ -184,7 +184,7 @@ LIST_ACTIVITIES.each_with_index do |activite, index|
   activite = Activity.new(
     name: LIST_ACTIVITIES[index],
     starting_date: DAY_STARTS_AT + (index * 3600),
-    ending_date: DAY_STARTS_AT + (index * 3600) + ((LIST_DURATION[index].to_f * 3600).to_i),
+    ending_date: DAY_STARTS_AT + (index * 3600) + (LIST_DURATION[index].to_i),
     like: true,
     description: LIST_DESCRIPTIONS[index],
     # activity_pic_id: "",

@@ -8,7 +8,7 @@
           <p class= pt-1><%= activity.starting_date.strftime("%H:%M")  %></p>
         </div>
         <div class="card-body <%=activity.activity_type%>"
-              style="height:  <%= (activity.ending_date - activity.starting_date)/40%>px, min-height: fit-content">
+              style="height:  <%= (activity.ending_date - activity.starting_date)/40%>px">
           <%= activity.name %>
         </div>
       </div>
