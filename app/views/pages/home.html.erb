@@ -1,71 +1,61 @@
 <div class="container">
-  <h1 class="fw-bold-text-center">Bienvenue sur AutonoMe ! </h1>
+  <h1 class="pt-5 mb-3 fw-bold " id="typed-text">Bienvenue sur AutonoMe</h1>
+</div>
+<div class="homepage-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path "logo/AutonoMe_logo.png" %>')">
 
-<div class="card bg-dark text-white">
-  <%= image_tag "logo/AutonoMe_logo.png" %>
-  <div class="card-img-overlay">
-    <h3 class="card-title">Une application pour renforcer l’autonomie et l’inclusion sociale</h3>
+  <div class="container">
+    <%= link_to "Essayez AutonoMe", "#", class: "btn btn-gradient" %>
   </div>
 </div>
 
-      <div class="container1 text center">
-        <div class="mx-auto p-4 bg-light border rounded w-50">
-          <span class="super-large-icon">💡</span>
-        </div>
-        </div>
+<div class="homepage-text">
+  <h3 class="text-center fw-bold fs-1">les fonctionnalités d'AutonoMe</h3>
+  <p class="text-center fs-4">Une application pour renforcer l’autonomie et l’inclusion sociale</p>
 
-        <div class="text-container-presentation text center gap-4 fs-1">
-            <div class="gap-4 mx-auto p-4 bg-light border rounded w-50">
-            <p class="text-uppercase">les fonctionnalités de AutonoMe</p>
-          </div>
-        </div>
+  <main class="container">
+    <div class="block">
+      <div class="icon">
+        <i class="fa-regular fa-calendar super-large-icon"></i>
+      </div>
+      <h3 class="fw-bold ">Agenda</h3>
+      <p>Planifiez votre journée et votre semaine avec un agenda.</p>
+    </div>
 
-        <div class="container2 text-center gap-4 fs-1">
-          <div class=" gap-4 mx-auto p-4 bg-light border rounded w-50">
-            <i class="fa-regular fa-calendar super-large-icon"></i>
-            <p>Planifiez votre journée et votre semaine avec un agenda</p>
-          </div>
-        </div>
-
-
-    <div class="container3 text-center gap-4 fs-1">
-      <div class="gap-4 mx-auto p-4 bg-light border rounded w-50">
+    <div class="block">
+      <div class="icon">
         <i class="fa-regular fa-clock super-large-icon"></i>
-        <p>Visualisez le temps qui passe grâce à un time-timer</p>
       </div>
+      <h3 class="fw-bold">Timer</h3>
+      <p>Visualisez le temps qui passe grâce à un time-timer.</p>
     </div>
 
-    <div class="container4 text-center gap-4 fs-1">
-      <div class="gap-4 mx-auto p-4 bg-light border rounded w-50">
-        <i class="fa-solid fa-triangle-exclamation super-large-icon"></i>
-        <p>Demandez de l’aide facilement en cas de besoin</p>
+    <div class="block">
+      <div class="icon">
+         <i class="fa-solid fa-triangle-exclamation super-large-icon"></i>
       </div>
+      <h3 class="fw-bold">Aide</h3>
+      <p>Demandez de l’aide facilement en cas de besoin.</p>
     </div>
 
-    <div class="container5 text-center gap-4 fs-1">
-      <div class="gap-4 mx-auto p-4 bg-light border rounded w-50">
+      <div class="block">
+      <div class="icon">
         <i class="fa-solid fa-location-dot super-large-icon"></i>
-        <p>Demandez de l’aide facilement en cas de besoin</p>
       </div>
-    </div>
-
-
-   <%# <div class="container5">
-      <i class="fa-classic fa-location-dot super-large-icon"></i>
+      <h3 class="fw-bold">Visualisation de trajet</h3>
       <p>Déplacez-vous en autonomie en anticipant les difficultés de chaque trajet</p>
-    </div> %>
+    </div>
+  </main>
 
-
-  <div class="text-container">
-
-  <p>
-  ✔ Planifiez votre journée et votre semaine avec un agenda.
-  ✔ Visualisez le temps qui passe grâce à un time-timer.
-  ✔ Déplacez-vous en autonomie en anticipant les difficultés de chaque trajet.
-  ✔ Demandez de l’aide facilement en cas de besoin.
-  Simplifiez-vous la vie avec AutonoMe et prenez le contrôle de votre quotidien
-  </p>
-
-  </div>
-
+    <div class="homepage-text-design">
+      <h3 class="p-2 fw-bold">Nos Atouts</h3>
+      <div class="container">
+      <p>Nous avons posé les bases de notre application sur un principe d’évaluation de supports d’emploi du temps visuel que l’on retrouve en éducation structurée (inspirée du programme TEACCH) pour donner de la cohérence à notre support :</p>
+      <ul>
+        <li>Ou dois-je aller?</li>
+        <li>Que dois-je faire?</li>
+        <li>Quand l’activité va-t-elle se terminer?</li>
+        <li>Que faire après?</li>
+      </ul>
+    </div>
+    </div>
 </div>

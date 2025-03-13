@@ -1,21 +1,86 @@
 // Specific CSS for your home-page
+/* Styles généraux */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
 
+header {
+  text-align: center;
+  padding: 20px;
+  background-color: #3eb6a9;
+  color: white;
+}
 
-@keyframes fadeInUp {
-  to {
-      opacity: 1;
-      transform: translateY(0);
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Utilisation de la propriété gap pour espacer les blocs */
+  justify-content: center;
+  padding: 20px;
+
+}
+
+/* Style des blocs */
+.block {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  width: calc(33.333% - 40px); /* Trois blocs par ligne */
+}
+
+.icon img {
+  width: 50px;
+}
+
+h3 {
+  margin-top: 10px;
+}
+
+p {
+  color: black;
+}
+
+/* Responsive Design */
+@media (max-width:768px) {
+  .block {
+    width: calc(50% - 20px); /* Deux blocs par ligne sur tablette */
   }
 }
 
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
+@media (max-width:480px) {
+  .block {
+    width: calc(100% - 20px); /* Un bloc par ligne sur mobile */
+  }
 }
 
-h1 {
-  font-size: 30px;
+
+.homepage-banner {
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
   font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding-top: 10rem;
+  padding-bottom: 4rem;
+  height: 400px;
+
+  h1 {
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+  }
+}
+
+#typed-text {
   border-right: 2px solid #000;
   white-space: nowrap;
   overflow: hidden;
@@ -23,30 +88,36 @@ h1 {
   animation: typing 3s steps(40, end) forwards, blink 0.8s infinite;
 }
 
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
 @keyframes blink {
   50% { border-color: transparent; }
 }
 
-
-.text-container {
-  font-size: 1,5rem;
-  color: #333;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1.5s forwards;
-}
-
-
-.text-container p  {
-  margin-bottom: 1,5em; // on ajoute un espace après chaque paragraphe
+.homepage-text-design {
+  background: linear-gradient(45deg, #4bace9, #eca219);
 }
 
 .super-large-icon {
   font-size: 4rem;
-
+  color:#4bace9
 }
 
+.btn-gradient {
+  color: white;
+  padding: 8px 24px;
+  margin-top: 150px;
+  border-radius: 50px;
+  font-weight: bold;
+  background: linear-gradient(#eca219, #eea406);
+  transition: background 0.3s ease;
+  border: 1px solid #eea406;
+}
 
-.text-container-presentation {
-  color:blue
+.btn-gradient:hover {
+  background: linear-gradient(#eca219, #eea406);
+  color: white;
 }
