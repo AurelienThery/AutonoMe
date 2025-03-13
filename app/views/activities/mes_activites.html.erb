@@ -1,8 +1,16 @@
 <h1>Mes Activités</h1>
-<ul>
+<ul class="list-unstyled mt-5">
   <% @activities.each do |activity| %>
     <li>
-      <%= "#{activity.starting_date.strftime("%Hh%M")} #{activity.name} "%>
+      <div class = "card-agenda">
+      <div class="vertical-line"></div>
+        <div class = "starting-time">
+          <p class= pt-1><%= activity.starting_date.strftime("%H:%M")  %></p>
+        </div>
+        <div class="card-body">
+          <%= activity.name %>
+        </div>
+      </div>
     </li>
   <% end %>
 </ul>

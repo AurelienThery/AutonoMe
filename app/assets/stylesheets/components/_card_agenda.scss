@@ -1,0 +1,38 @@
+.card-agenda {
+  background-color: #073b4c;
+  list-style-type: none;
+  position: relative;
+}
+
+.starting-time {
+  position: absolute;
+  top: 0px;
+  left: 20px;
+  background-color: white;
+  height: 40px;
+  width: 65px;
+  border-radius: 5px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  font-size: large;
+  font-weight: bold;
+}
+
+.vertical-line{
+  position: absolute;
+  left: 50px;
+  width: 2px; /* Line width */
+  background-color: #EF476F; /* Line color */
+  height: 100%; /* Override in-line if you want specific height. */
+}
+
+.card-body {
+  padding-top: 5px;
+  height: 100px;
+  text-align: center;
+  justify-content: center;
+  font-size: x-large;
+  font-weight: 600;
+}
