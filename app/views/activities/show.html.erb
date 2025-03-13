@@ -1,4 +1,33 @@
 <h1><%=@activity.name %></h1>
+
 <%=cl_image_tag(@activity.photo.key,width: 400, height: 300, crop: :fill)%>
+<div data-controller="help-calls" class="help-container">
+  <button data-action="click->help-calls#togglePopup" class="help-button" aria-label="Demander de l'aide">
+    🆘
+  </button>
+
+  <div data-help-calls-target="popup" class="popup hidden">
+    <div class="popup-content">
+      <button data-action="click->help-calls#togglePopup" class="close-button" aria-label="Fermer">×</button>
+      <h2>Comment puis-je vous aider ?</h2>
+      <div class="pictogram" data-action="click->help-calls#handleOption" data-option="aller-aux-wc">
+        🚽 Aller aux WC
+      </div>
+      <div class="pictogram" data-action="click->help-calls#handleOption" data-option="trop-de-bruit">
+        🗣️ Trop de bruit
+      </div>
+      <div class="pictogram" data-action="click->help-calls#handleOption" data-option="j-ai-une-question">
+        ❓ J'ai une question
+      </div>
+    </div>
+  </div>
+
+  <div data-help-calls-target="confirmation" class="confirmation hidden">
+    <p data-help-calls-target="message"></p>
+    <button data-action="click->help-calls#confirmResolution" class="btn btn-success">Problème résolu 👍</button>
+    <button data-action="click->help-calls#reopenHelp" class="btn btn-danger">Besoin d'aide à nouveau</button>
+  </div>
+</div>
+
 <p><%=@activity.description%></p>
 <%=cl_image_tag(@activity.educator.user.photo.key,width: 400, height: 300, crop: :fill)%>
