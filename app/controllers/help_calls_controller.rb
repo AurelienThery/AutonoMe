@@ -1,0 +1,2 @@
+class HelpCallsController < ApplicationController
+end
