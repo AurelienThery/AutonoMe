@@ -91,6 +91,7 @@ puts "Création des activités d'une journée courte"
 LIST_ACTIVITIES = %w[Trajet_aller Mathematiques Français Histoire Trajet_retour]
 LIST_DESCRIPTIONS = %w[matin cours1 cours2 cours3 soir]
 LIST_PICTURES = %w[college_jiemug cours_maths_jtebnf cours_francais_fdeyk0 cours_histoire_tlsvxi maison_j3nvou]
+LIST_ACTIV_TYPES = %w[journey activity activity activity journey]
 DAY_STARTS_AT = DateTime.tomorrow.to_time + 8 * 3600
 
 LIST_ACTIVITIES.each_with_index do |activite, index|
@@ -103,7 +104,8 @@ LIST_ACTIVITIES.each_with_index do |activite, index|
     # activity_pic_id: "",
     child_id: Child.last.id,
     educator_id: Educator.all.sample.id,
-    relative_id: Relative.all.sample.id
+    relative_id: Relative.all.sample.id,
+    activity_type: LIST_ACTIV_TYPES[index]
 )
   file = URI.parse(Cloudinary::Utils.cloudinary_url(LIST_PICTURES[index])).open
   activite.photo.attach(io: file, filename: "#{LIST_ACTIVITIES[index]}.jpeg", content_type:"image/jpeg")
