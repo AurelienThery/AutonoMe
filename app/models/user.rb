@@ -4,6 +4,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_one_attached :photo
 
     # enumerable pour stocker les types d'utilisateurs (choix lors du sign up)
   # /!\ stocké en integer dans bdd donc ds table user: t.integer "user_type"
