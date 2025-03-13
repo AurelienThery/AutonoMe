@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
 
   def mes_activites
-    @activities = Activity.all
+    @activities = Activity.all.order(starting_date: "asc")
   end
 
   def show
