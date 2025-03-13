@@ -170,24 +170,28 @@ User.last.photo.attach(io: file, filename: "#{User.last.first_name}.jpeg", conte
 User.last.save
 puts "Jessica (educatrice) a été créé"
 
-
 puts "Création des activités d'une journée courte"
-LIST_ACTIVITIES = %w[Trajet_aller Mathematiques Français Histoire Trajet_retour Cantine Geographie Devoirs Gaming Gymnase Recreation Ping_Pong Tv Repas Salle_de_bain ]
-LIST_DESCRIPTIONS = %w[Matin Salle_204 Salle_140 Salle_129 Soir Réfectoire Salle_224 Devoirs_du_jour Jeux_PC Sport_GymnaseA Cour_Collège Entrainement EmissionTv Repas_Famille Douche ]
-LIST_PICTURES = %w[college_jiemug cours_maths_jtebnf cours_francais_fdeyk0 cours_histoire_tlsvxi maison_j3nvou cantine_eek480 classe_géographie_wdumh3 devoirs_g6c3qk gaming_xxtqo7 gymnase_kvsgdc récréation_uhj8un pingpong_mpwidx salontv_yjuodu repas_dm1z4l sdb_adclbw ]
+
+LIST_ACTIVITIES = %w[Trajet_aller Mathematiques Français Recreation Histoire Cantine Geographie Gymnase Ping_Pong Trajet_retour Devoirs Gaming Salle_de_bain Repas Tv]
+LIST_DESCRIPTIONS = %w[Matin Salle_204 Salle_140 Cour_Collège Salle_129 Réfectoire Salle_224 Sport_GymnaseA Entrainement Soir Devoirs_du_jour Jeux_PC Douche Repas_Famille EmissionTv]
+LIST_PICTURES = %w[college_jiemug cours_maths_jtebnf cours_francais_fdeyk0 récréation_uhj8un cours_histoire_tlsvxi cantine_eek480 classe_géographie_wdumh3 gymnase_kvsgdc pingpong_mpwidx maison_j3nvou devoirs_g6c3qk gaming_xxtqo7 sdb_adclbw repas_dm1z4l salontv_yjuodu]
+LIST_ACTIV_TYPES = %w[journey activity activity breaktime activity breaktime activity activity activity journey activity activity activity activity breaktime]
+LIST_DURATION = %w[0.5 1 1 0.5 1.5 1 1.5 1.5 1 0.5 0.5 1 0.5 0.5 1.5]
+
 DAY_STARTS_AT = DateTime.tomorrow.to_time + 8 * 3600
 
 LIST_ACTIVITIES.each_with_index do |activite, index|
   activite = Activity.new(
     name: LIST_ACTIVITIES[index],
     starting_date: DAY_STARTS_AT + (index * 3600),
-    ending_date: DAY_STARTS_AT + (index * 3600) + 3600,
+    ending_date: DAY_STARTS_AT + (index * 3600) + ((LIST_DURATION[index].to_f * 3600).to_i),
     like: true,
     description: LIST_DESCRIPTIONS[index],
     # activity_pic_id: "",
     child_id: Child.last.id,
     educator_id: Educator.all.sample.id,
-    relative_id: Relative.all.sample.id
+    relative_id: Relative.all.sample.id,
+    activity_type: LIST_ACTIV_TYPES[index]
 )
   file = URI.parse(Cloudinary::Utils.cloudinary_url(LIST_PICTURES[index])).open
   activite.photo.attach(io: file, filename: "#{LIST_ACTIVITIES[index]}.jpeg", content_type:"image/jpeg")
