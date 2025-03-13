@@ -14,6 +14,7 @@
         <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to "My Profile", myprofil_path(current_user), class: "nav-link" %>
+            <%= link_to "My Agenda", activites_path(current_user), class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
