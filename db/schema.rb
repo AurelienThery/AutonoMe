@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_12_133206) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_13_114145) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,6 +53,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_12_133206) do
     t.bigint "relative_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "activity_type"
     t.index ["child_id"], name: "index_activities_on_child_id"
     t.index ["educator_id"], name: "index_activities_on_educator_id"
     t.index ["relative_id"], name: "index_activities_on_relative_id"
@@ -66,6 +67,16 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_12_133206) do
   create_table "educators", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "help_calls", force: :cascade do |t|
+    t.bigint "activity_id", null: false
+    t.string "need"
+    t.string "help_message"
+    t.boolean "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_help_calls_on_activity_id"
   end
 
   create_table "relatives", force: :cascade do |t|
@@ -98,4 +109,5 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_12_133206) do
   add_foreign_key "activities", "children"
   add_foreign_key "activities", "educators"
   add_foreign_key "activities", "relatives"
+  add_foreign_key "help_calls", "activities"
 end

@@ -6,7 +6,13 @@
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <% if user_signed_in? %>
+      <span class="navbar-toggler-icon navbar-icon-del ">
+        <%= image_tag "avatar_user.png", class: "avatar", alt: "dropdown menu" %>
+      </span>
+      <% else %>
+        <span class="navbar-toggler-icon"></span>
+      <% end %>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -14,17 +20,12 @@
         <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to "My Profile", myprofil_path(current_user), class: "nav-link" %>
+          </li>
+          <li class="nav-item">
             <%= link_to "My Agenda", activites_path(current_user), class: "nav-link" %>
           </li>
-          <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "avatar_user.png", class: "avatar", alt: "dropdown menu" %>
-          </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%#= link_to "Action", "#", class: "dropdown-item" %>
-              <%#= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
+          <li class="nav-item">
+            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
           </li>
         <% else %>
           <li class="nav-item">
