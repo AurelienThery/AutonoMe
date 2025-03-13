@@ -92,13 +92,14 @@ LIST_ACTIVITIES = %w[Trajet_aller Mathematiques Français Histoire Trajet_retour
 LIST_DESCRIPTIONS = %w[matin cours1 cours2 cours3 soir]
 LIST_PICTURES = %w[college_jiemug cours_maths_jtebnf cours_francais_fdeyk0 cours_histoire_tlsvxi maison_j3nvou]
 LIST_ACTIV_TYPES = %w[journey activity activity activity journey]
+LIST_DURATION = %w[1800 3600 3600 4200 1800]
 DAY_STARTS_AT = DateTime.tomorrow.to_time + 8 * 3600
 
 LIST_ACTIVITIES.each_with_index do |activite, index|
   activite = Activity.new(
     name: LIST_ACTIVITIES[index],
     starting_date: DAY_STARTS_AT + (index * 3600),
-    ending_date: DAY_STARTS_AT + (index * 3600) + 3600,
+    ending_date: DAY_STARTS_AT + (index * 3600) + (LIST_DURATION[index].to_i),
     like: true,
     description: LIST_DESCRIPTIONS[index],
     # activity_pic_id: "",
