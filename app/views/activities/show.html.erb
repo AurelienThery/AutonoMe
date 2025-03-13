@@ -1,2 +1,4 @@
 <h1><%=@activity.name %></h1>
 <%=cl_image_tag(@activity.photo.key,width: 400, height: 300, crop: :fill)%>
+<p><%=@activity.description%></p>
+<%=cl_image_tag(@activity.educator.user.photo.key,width: 400, height: 300, crop: :fill)%>
