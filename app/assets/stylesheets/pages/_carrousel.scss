@@ -31,3 +31,16 @@
   max-width: 100%; /* Empêche le débordement pour des écrans plus petits */
   word-wrap: break-word; /* Gère les longs textes */
 }
+
+.carousel-indicators button {
+  width: 20px !important; /* Augmente la largeur */
+  height: 10px !important; /* Augmente la hauteur */
+
+  background-color: #333; /* Modifie la couleur si nécessaire */
+  opacity: 0.8; /* Ajuste la transparence */
+}
+
+.carousel-indicators button.active {
+  background-color: #007bff; /* Couleur différente pour l'état actif */
+  transform: scale(1.2); /* Agrandit légèrement pour attirer l'œil */
+}
