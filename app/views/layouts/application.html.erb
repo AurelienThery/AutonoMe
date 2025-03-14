@@ -10,10 +10,40 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body data-controller="help-calls">
+
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
     <%= yield %>
     <%= render "shared/navbarButtom" %>
+    <div data-help-calls-target="popup" class="popup hidden">
+              <div class="popup-content">
+                <button data-action="click->help-calls#togglePopup" class="close-button" aria-label="Fermer">×</button>
+                <h2>Comment puis-je t'aider ?</h2>
+                <div class="pictogram" data-action="click->help-calls#handleOption" data-option="aller-aux-wc">
+                  🚽 Aller aux WC
+                </div>
+                <div class="pictogram" data-action="click->help-calls#handleOption" data-option="trop-de-bruit">
+                  🔊 Trop de bruit
+                </div>
+                <div class="pictogram" data-action="click->help-calls#handleOption" data-option="j-ai-une-question">
+                  ❓ J'ai une question
+                </div>
+              </div>
+            </div>
+
+            <div data-help-calls-target="confirmation" class="confirmation hidden">
+              <p data-help-calls-target="message"></p>
+              <button data-action="click->help-calls#confirmResolution" class="btn btn-success">Problème résolu 👍</button>
+              <button data-action="click->help-calls#showScenario" class="btn btn-info">Voir le scénario social</button>
+            </div>
+
+            <div data-help-calls-target="scenarioPopup" class="scenario-popup hidden">
+              <div class="scenario-popup-content">
+                <button data-action="click->help-calls#closeScenarioPopup" class="close-scenario-popup">×</button>
+                <div data-help-calls-target="scenarioContent"></div>
+                </div>
+              </div>
+            </div>
   </body>
 </html>
