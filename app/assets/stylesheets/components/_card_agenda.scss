@@ -63,3 +63,9 @@
   width: 20px;
   height: fit-content;
 }
+
+.active {
+  position: sticky;
+  width: 100%;
+  z-index: 10;
+}
