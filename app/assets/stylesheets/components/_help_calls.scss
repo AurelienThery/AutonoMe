@@ -80,3 +80,18 @@
   cursor: pointer;
 }
 
+.help-button {
+  font-size: 45px; /* Augmentation légère de la taille de l'emoji */
+  background-color: transparent; /* Supprime le fond */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.help-button:hover,
+.help-button:focus {
+  transform: scale(1.05);
+}
