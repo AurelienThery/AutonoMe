@@ -29,6 +29,8 @@ export default class extends Controller {
       default:
         message = "Option non reconnue."
     }
+    console.log(message)
+    console.log(this.messageTarget)
     this.messageTarget.textContent = message
     this.currentOption = option
     this.togglePopup()

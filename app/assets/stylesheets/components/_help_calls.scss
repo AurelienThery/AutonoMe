@@ -5,7 +5,7 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(246, 243, 243, 0.5);
 }
 
 .popup-content {
@@ -29,7 +29,7 @@
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: rgb(17, 16, 16);
   text-decoration: none;
   cursor: pointer;
 }
@@ -59,6 +59,9 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #f9f9f9;
+  position:absolute;
+  top:50px;
+  left:10%;
 }
 
 .btn-success {
@@ -81,7 +84,7 @@
 }
 
 .help-button {
-  font-size: 45px; /* Augmentation légère de la taille de l'emoji */
+  font-size: 25px; /* Augmentation légère de la taille de l'emoji */
   background-color: transparent; /* Supprime le fond */
   border-radius: 5px;
   cursor: pointer;
@@ -94,4 +97,44 @@
 .help-button:hover,
 .help-button:focus {
   transform: scale(1.05);
+}
+
+.scenario-popup{
+  position:absolute;
+  top:230px;
+  left:10%;
+}
+
+.scenario-popup-content {
+  background-color: #7EA4FE; /* Fond bleu clair */
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.scenario h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.scenario ol {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.scenario li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.scenario .picto {
+  font-size: 24px;
+  margin-right: 10px;
+  min-width: 30px;
 }
