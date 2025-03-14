@@ -3,7 +3,9 @@
   padding: 0%;
   font-family: 'Open Sans', sans-serif;
 }
-
+.navbar {
+  background: #4A4A4A !important;
+}
 .nav-link2 {
   background: none !important;
   color: #ffffff !important;
@@ -48,4 +50,9 @@ button {
 
 .navbar-icon-del {
   background-image: none; /* Supprime l'icône burger par défaut */
+}
+/* TO DO move navbar css */
+.navbar-toggler:focus {
+  outline: none; /* Supprime le cadre de sélection */
+  box-shadow: none; /* Supprime tout effet d'ombre potentiellement ajouté */
 }
