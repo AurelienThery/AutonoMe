@@ -3,7 +3,9 @@
   padding: 0%;
   font-family: 'Open Sans', sans-serif;
 }
-
+.navbar {
+  background: #4A4A4A !important;
+}
 .nav-link2 {
   background: none !important;
   color: #ffffff !important;
@@ -58,4 +60,9 @@ button {
   height: 50px; /* Ajuste la hauteur selon ton design */
   line-height: 50px; /* Centrer verticalement le texte */
   text-align: center;
+}
+/* TO DO move navbar css */
+.navbar-toggler:focus {
+  outline: none; /* Supprime le cadre de sélection */
+  box-shadow: none; /* Supprime tout effet d'ombre potentiellement ajouté */
 }
