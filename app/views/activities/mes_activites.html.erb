@@ -1,5 +1,5 @@
 <h1>Mes Activités</h1>
-<div class = "card-agenda active">
+<div class = "card-agenda in-progress">
   <div class="card-body <%=@active_activity.activity_type%>"
       style="height:  <%= (@active_activity.ending_date - @active_activity.starting_date)/40%>px">
       <%= @active_activity.name %>
