@@ -51,6 +51,16 @@ button {
 .navbar-icon-del {
   background-image: none; /* Supprime l'icône burger par défaut */
 }
+
+.fixed-under-navbar {
+  position: fixed;
+  top: 56px; /* Ajuste cette valeur à la hauteur de ta navbar (par défaut 56px pour Bootstrap) */
+  width: 100%;
+  z-index: 30; /* Place-le au-dessus du contenu principal mais derrière les overlays */
+  height: 50px; /* Ajuste la hauteur selon ton design */
+  line-height: 50px; /* Centrer verticalement le texte */
+  text-align: center;
+}
 /* TO DO move navbar css */
 .navbar-toggler:focus {
   outline: none; /* Supprime le cadre de sélection */

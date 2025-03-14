@@ -4,6 +4,9 @@ class UsersController < ApplicationController
 
   def show
     @first_name = @user.first_name
+    @activities = Activity.where(child_id: @user.userable.id).order(starting_date: "asc")
+    # @educators = Educator.where(id: @activities.educator_id)
+    @current_activity = @activities.first
   end
 end
 
@@ -11,8 +14,6 @@ private
 
 def set_user
   @user = current_user
-  @activities = Activity.where(child_id: @user.userable.id).order(starting_date: "asc")
-  # @educators = Educator.where(id: @activities.educator_id)
 end
 
 def set_simon
