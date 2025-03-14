@@ -1,11 +1,15 @@
 <h1>Mes Activités</h1>
 <ul class="list-unstyled mt-5">
-  <% @activities.each do |activity| %>
+  <% @activities.each_with_index do |activity, index| %>
     <li>
       <div class = "card-agenda">
-        <div class="vertical-line"></div>
+        <%# <div class="vertical-line"></div> %>
         <div class = "starting-time">
-          <p class= pt-1><%= activity.starting_date.strftime("%H:%M")  %></p>
+          <% if index >0 %>
+            <p><%= activity.starting_date.strftime("%H:%M")  %></p>
+            <% else %>
+              <div class= "loading"></div>
+          <% end %>
         </div>
         <div class="card-body <%=activity.activity_type%>"
               style="height:  <%= (activity.ending_date - activity.starting_date)/40%>px">
