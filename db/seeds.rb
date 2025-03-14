@@ -172,11 +172,11 @@ puts "Jessica (educatrice) a été créé"
 
 puts "Création des activités d'une journée courte"
 
-LIST_ACTIVITIES = %w[Trajet_aller Mathematiques Français Recreation Histoire Cantine Geographie Sport Ping_Pong Trajet_retour Devoirs Gaming Salle_de_bain Repas Tv]
-LIST_DESCRIPTIONS = %w[Matin Salle_204 Salle_140 Cour_Collège Salle_129 Réfectoire Salle_224 Sport_GymnaseA Entrainement Soir Devoirs_du_jour Jeux_PC Douche Repas_Famille EmissionTv]
-LIST_PICTURES = %w[college_jiemug cours_maths_jtebnf cours_francais_fdeyk0 récréation_uhj8un cours_histoire_tlsvxi cantine_eek480 classe_géographie_wdumh3 gymnase_kvsgdc pingpong_mpwidx maison_j3nvou devoirs_g6c3qk gaming_xxtqo7 sdb_adclbw repas_dm1z4l salontv_yjuodu]
-LIST_ACTIV_TYPES = %w[journey activity activity breaktime activity breaktime activity activity activity journey activity activity activity activity breaktime]
-LIST_DURATION = %w[1800 3600 3600 1800 5400 3600 5400 5400 3600 1800 1800 3600 1800 1800 5400]
+LIST_ACTIVITIES = %w[Trajet_aller Mathematiques Français Recreation Histoire Cantine Geographie Sport Ping_Pong Gaming DemoDay Trajet_retour  Salle_de_bain Repas Tv]
+LIST_DESCRIPTIONS = %w[Matin Salle_204 Salle_140 Cour_Collège Salle_129 Réfectoire Salle_224 Sport_GymnaseA Entrainement Jeux_PC DemoDay_leWagon Soir  Douche Repas_Famille EmissionTv]
+LIST_PICTURES = %w[college_jiemug cours_maths_jtebnf cours_francais_fdeyk0 récréation_uhj8un cours_histoire_tlsvxi cantine_eek480 classe_géographie_wdumh3 gymnase_kvsgdc pingpong_mpwidx gaming_xxtqo7 lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn maison_j3nvou  sdb_adclbw repas_dm1z4l salontv_yjuodu]
+LIST_ACTIV_TYPES = %w[journey activity activity breaktime activity breaktime activity activity activity activity activity journey   activity activity breaktime]
+LIST_DURATION = %w[1800 3600 3600 1800 5400 3600 5400 5400 3600 3600 1800 1800 1800 1800 5400]
 
 DAY_STARTS_AT = DateTime.tomorrow.to_time + 8 * 3600
 
