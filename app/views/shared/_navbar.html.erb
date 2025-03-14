@@ -8,7 +8,8 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <% if user_signed_in? %>
       <span class="navbar-toggler-icon navbar-icon-del ">
-        <%= image_tag "avatar_user.png", class: "avatar", alt: "dropdown menu" %>
+        <%=cl_image_tag(current_user.photo.key, class: "avatar",alt: "dropdown menu", crop: :fill)%>
+        <%# <%= image_tag "avatar_user.png", class: "avatar", alt: "dropdown menu" %>
       </span>
       <% else %>
         <span class="navbar-toggler-icon"></span>
