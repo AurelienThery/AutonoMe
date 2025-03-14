@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   # homepage correspondant au profil de l'utilisateur etant log-in
   get 'myprofil', to: 'users#show', as: "myprofil"
   get 'myprofil' => 'users#show', as: :myprofil_root # creates user_root_path after log in
+  get 'help_needed', to: 'helpcalls#index'
 end
