@@ -1,15 +1,11 @@
-<h1>Mes Activités</h1>
+<div class="margin-from-navbar"></div>
 <div class = "card-agenda in-progress">
   <div class="card-body <%=@active_activity.activity_type%>"
       style="height:  <%= (@active_activity.ending_date - @active_activity.starting_date)/40%>px">
       <%= @active_activity.name %>
   </div>
 </div>
-<%# décalage manuel très moche, pas moyen de blocquer la 1ère activité %>
-<div class="d-flex flex-column mt-5" style= "margin-top:25px">
-  </div>
   <% @activities.each_with_index do |activity, index| %>
-    <% if index >0 %>
       <div class = "card-agenda list-activities">
         <div class = "starting-time">
             <p><%= activity.starting_date.strftime("%H:%M")  %></p>
@@ -19,6 +15,11 @@
           <%= activity.name %>
         </div>
       </div>
-    <% end %>
+      <div class = "card-agenda in-progress">
+        <div class="card-body <%=@active_activity.activity_type%>"
+            style="height:  <%= (@active_activity.ending_date - @active_activity.starting_date)/40%>px">
+            <%= @active_activity.name %>
+        </div>
+      </div>
   <% end %>
 </div>
