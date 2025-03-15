@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_13_114145) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_15_100458) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,6 +54,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_13_114145) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "activity_type"
+    t.string "activity_status", default: "planned"
     t.index ["child_id"], name: "index_activities_on_child_id"
     t.index ["educator_id"], name: "index_activities_on_educator_id"
     t.index ["relative_id"], name: "index_activities_on_relative_id"

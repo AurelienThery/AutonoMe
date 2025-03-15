@@ -1,25 +1,33 @@
 <div class="margin-from-navbar"></div>
-<div class = "card-agenda in-progress">
-  <div class="card-body <%=@active_activity.activity_type%>"
-      style="height:  <%= (@active_activity.ending_date - @active_activity.starting_date)/40%>px">
-      <%= @active_activity.name %>
-  </div>
-</div>
-  <% @activities.each_with_index do |activity, index| %>
-      <div class = "card-agenda list-activities">
-        <div class = "starting-time">
-            <p><%= activity.starting_date.strftime("%H:%M")  %></p>
-        </div>
-        <div class="card-body <%=activity.activity_type%>"
-              style="height:  <%= (activity.ending_date - activity.starting_date)/40%>px">
-          <%= activity.name %>
-        </div>
+<div data-controller="update-activity-button">
+  <%# first card is fixed, it is the activity in progress if there is any%>
+  <% if @current_activity %>
+    <div class = "card-agenda in-progress">
+      <div class="card-body <%=@current_activity.activity_type%>"
+          style="height:  <%= (@current_activity.ending_date - @current_activity.starting_date)/40%>px">
+          <%= @current_activity.name %>
       </div>
-      <div class = "card-agenda in-progress">
-        <div class="card-body <%=@active_activity.activity_type%>"
-            style="height:  <%= (@active_activity.ending_date - @active_activity.starting_date)/40%>px">
-            <%= @active_activity.name %>
-        </div>
-      </div>
+    </div>
   <% end %>
+  <%# displays all the cards of activities  %>
+  <%# note that the first one is the activity in progress, displayed behind the previous one fixed %>
+    <% @activities.each do |activity| %>
+        <div class = "card-agenda list-activities">
+          <div class = "starting-time">
+              <p><%= activity.starting_date.strftime("%H:%M")  %></p>
+          </div>
+          <div class="card-body <%=activity.activity_type%>"
+                style="height:  <%= (activity.ending_date - activity.starting_date)/40%>px">
+            <%= activity.name %>
+            <% if activity == @next_activity && @current_activity.nil? %>
+              <button class="btn btn-primary btn-lg"
+                      data-action="click->update-activity-button#start"
+                      data-activity-id="<%= activity.id %>">
+                      Start this activity
+              </button>
+              <% end %>
+          </div>
+        </div>
+    <% end %>
+  </div>
 </div>
