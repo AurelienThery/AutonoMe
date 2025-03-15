@@ -6,6 +6,12 @@
       <div class="card-body <%=@current_activity.activity_type%>"
           style="height:  <%= (@current_activity.ending_date - @current_activity.starting_date)/40%>px">
           <%= @current_activity.name %>
+          <%= @current_activity.activity_status %>
+          <button class="btn btn-primary btn-lg"
+                      data-action="click->update-activity-button#finish"
+                      data-activity-id="<%= @current_activity.id %>">
+                      Finish this activity
+              </button>
       </div>
     </div>
   <% end %>
@@ -19,6 +25,7 @@
           <div class="card-body <%=activity.activity_type%>"
                 style="height:  <%= (activity.ending_date - activity.starting_date)/40%>px">
             <%= activity.name %>
+            <%= activity.activity_status %>
             <% if activity == @next_activity && @current_activity.nil? %>
               <button class="btn btn-primary btn-lg"
                       data-action="click->update-activity-button#start"

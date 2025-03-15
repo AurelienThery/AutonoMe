@@ -9,29 +9,59 @@ export default class extends Controller {
   }
 
   start(event) {
-    event.preventDefault();
+    // event.preventDefault(); désactivé car il faut recharger la page pour afficher l'activité en cours
     console.log(event.target.getAttribute("data-activity-id"))
     const activityId = event.target.getAttribute("data-activity-id");
 
-    // fetch("/activites", {
-    //   method: 'PATCH',
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     activity_id: activityId,  // ID de l'activité à mettre à jour
-    //     activity_status: 'inprogress'  // Nouveau statut (par exemple, 'inprogress')
-    //   })
-    // })
+    fetch(`/activities/${activityId}/start`, {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json", //important, sinon le format json n'est pas reconnu
+        "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
+      },
+      body: JSON.stringify({
+        // activity_id: activityId,  // ID de l'activité à mettre à jour
+        // activity_status: 'inprogress'  // Nouveau statut (par exemple, 'inprogress')
+      })
+    })
 
-    // .then(response => response.json())
-    // .then(data => {
-    //   // ajouter un rafraichissement de la page pour que la carte inprogress
-    //   // s'affiche et soit collée à la navbar
-    //   console.log(data);
-    // })
-    // .catch(error => {
-    //   console.error("Erreur:", error);
-    // });
+    // proposition de Claude pour la gestion des erreurs
+    .then(response => {
+      console.log("Response status:", response.status);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log("Success:", data);
+      window.location.reload();
+    })
+    .catch(error => {
+      console.error("Erreur complète:", error);
+    });
+  }
+
+  finish(event) {
+    console.log(event.target.getAttribute("data-activity-id"))
+    const activityId = event.target.getAttribute("data-activity-id");
+    
+    fetch(`/activities/${activityId}/finish`, {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json", //important, sinon le format json n'est pas reconnu
+        "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
+      },
+      body: JSON.stringify({})
+    })
+    .then(data => {
+      console.log("Success:", data);
+      window.location.reload();
+    })
+    .catch(error => {
+      console.error("Erreur complète:", error);
+    });
   }
 }
