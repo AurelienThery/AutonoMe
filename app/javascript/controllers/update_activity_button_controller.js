@@ -10,7 +10,7 @@ export default class extends Controller {
 
   start(event) {
     // event.preventDefault(); désactivé car il faut recharger la page pour afficher l'activité en cours
-    console.log(event.target.getAttribute("data-activity-id"))
+    // console.log(event.target.getAttribute("data-activity-id"))
     const activityId = event.target.getAttribute("data-activity-id");
 
     fetch(`/activities/${activityId}/start`, {
@@ -44,9 +44,9 @@ export default class extends Controller {
   }
 
   finish(event) {
-    console.log(event.target.getAttribute("data-activity-id"))
+    // console.log(event.target.getAttribute("data-activity-id"))
     const activityId = event.target.getAttribute("data-activity-id");
-    
+
     fetch(`/activities/${activityId}/finish`, {
       method: 'PATCH',
       headers: {

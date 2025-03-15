@@ -1,16 +1,15 @@
 <div class="margin-from-navbar"></div>
-<div data-controller="update-activity-button">
+<div class="a-dallas" data-controller="update-activity-button">
   <%# first card is fixed, it is the activity in progress if there is any%>
   <% if @current_activity %>
     <div class = "card-agenda in-progress">
       <div class="card-body <%=@current_activity.activity_type%>"
           style="height:  <%= (@current_activity.ending_date - @current_activity.starting_date)/40%>px">
           <%= @current_activity.name %>
-          <%= @current_activity.activity_status %>
-          <button class="btn btn-primary btn-lg"
+          <button class="btn btn-finish"
                       data-action="click->update-activity-button#finish"
                       data-activity-id="<%= @current_activity.id %>">
-                      Finish this activity
+                      J'ai terminé
               </button>
       </div>
     </div>
@@ -25,13 +24,12 @@
           </div>
           <div class="card-body <%=activity.activity_type%>"
                 style="height:  <%= (activity.ending_date - activity.starting_date)/40%>px">
-            <%= activity.name %>
-            <%= activity.activity_status %>
+            <div class= ""><%= activity.name %></div>
             <% if activity == @next_activity && @current_activity.nil? %>
-              <button class="btn btn-primary btn-lg"
+              <button class="btn btn-start"
                       data-action="click->update-activity-button#start"
                       data-activity-id="<%= activity.id %>">
-                      Start this activity
+                      Je commence
               </button>
               <% end %>
           </div>
