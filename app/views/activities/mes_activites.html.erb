@@ -18,6 +18,7 @@
   <%# displays all the cards of activities  %>
   <%# note that the first one is the activity in progress, displayed behind the previous one fixed %>
     <% @activities.each do |activity| %>
+      <% if activity.activity_status != "finished" %>
         <div class = "card-agenda list-activities">
           <div class = "starting-time">
               <p><%= activity.starting_date.strftime("%H:%M")  %></p>
@@ -35,6 +36,7 @@
               <% end %>
           </div>
         </div>
+      <% end %>
     <% end %>
   </div>
 </div>
