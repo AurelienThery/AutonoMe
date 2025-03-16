@@ -14,7 +14,19 @@
   border-radius: 5px;
   width: 100%;
   border: 1px solid $dark-blue;
-  display: flex;
+  display: block;
+}
+
+/// Section of the card head (always visible)
+
+.card-header {
+  margin-left: 65px; //offset to ovoid starting time overlay (fixed)
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: flex; // Utilise flex pour aligner horizontalement le nom et le bouton
+  justify-content: space-between; // Espace entre le nom et le bouton
+  align-items: center;
+  width: calc(100% - 65px);
 }
 
 .starting-time {
@@ -32,16 +44,32 @@
   font-size: large;
   font-weight: bold;
   border: 1px solid $dark-blue;
+  z-index: 1; // Assure qu'il est au-dessus des autres éléments
 }
 
 .activity-name {
+  // padding-left: 15px;
   font-weight: 600;
-  padding-top: 5px;
   font-size: x-large;
+  text-align: center;
+  // text-align: left;
+  flex-grow: 1;
 }
 
-// class to set the background color
-// according to type of activity
+/////// end of card head /////
+
+/// Section of the card body (diplayed through Stimulus controller)
+
+.card-body{
+
+}
+
+
+///// end of card body /////
+
+
+/// class to set the background color
+/// according to type of activity
 .journey {
   background-color: $yellow-autonome;
 }

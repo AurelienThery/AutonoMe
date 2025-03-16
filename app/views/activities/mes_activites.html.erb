@@ -4,13 +4,15 @@
   <% if @current_activity %>
       <div class="card-agenda in-progress <%=@current_activity.activity_type%>"
           style="height:  <%= (@current_activity.ending_date - @current_activity.starting_date)/40%>px">
-          <div class = "starting-time"></div> <%# space kept for loading bar %>
-          <div class= "activity-name"><%= @current_activity.name %></div>
-          <button class="btn btn-update btn-sm"
+          <div class = "starting-time"></div> <%# space kept for loading bar, no time value displayed %>
+          <div class="card-header">
+            <div class= "activity-name"><%= @current_activity.name %></div>
+            <button class="btn btn-update btn-sm"
                       data-action="click->update-activity-button#finish"
                       data-activity-id="<%= @current_activity.id %>">
-                      J'ai terminé
-              </button>
+                      Done !
+            </button>
+          </div>
       </div>
   <% end %>
   <%# displays all the cards of activities  %>
@@ -22,16 +24,21 @@
             <div class = "starting-time">
                 <p><%= activity.starting_date.strftime("%H:%M")  %></p>
             </div>
-            <div class= "activity-name"><%= activity.name %></div>
-            <% if activity == @next_activity && @current_activity.nil? %>
-              <button class="btn btn-update btn-sm"
-                      data-action="click->update-activity-button#start"
-                      data-activity-id="<%= activity.id %>">
-                      Je commence
-              </button>
+            <div class="card-header">
+              <div class= "activity-name"><%= activity.name %></div>
+              <button class="btn btn-details"><i class="fa-solid fa-caret-down"></i></button>
+              <% if activity == @next_activity && @current_activity.nil? %>
+                <button class="btn btn-update btn-sm"
+                        data-action="click->update-activity-button#start"
+                        data-activity-id="<%= activity.id %>">
+                        Start !
+                </button>
               <% end %>
+            </div>
+            <div class="card-body">
+            </div>
           </div>
-      <% end %>
-    <% end %>
+      <% end %> <%# close the condition if status not finished  %>
+    <% end %> <%# Close the each loop %>
   </div>
 </div>
