@@ -1,11 +1,9 @@
-.btn-start {
+.btn-update {
   background-color: $orange-autonome;
   font-weight: bold;
-  border: 2px, solid, $dark-blue;
-}
-
-.btn-finish {
-  background-color: $orange-autonome;
-  font-weight: bold;
-  border: 1px, solid, $dark-blue;
+  border: 1px solid $dark-blue !important;
+  border-radius: 5px;
+  height: $time-height;
+  text-align: center;
+  align-content: center;
 }

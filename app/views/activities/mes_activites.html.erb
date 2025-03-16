@@ -2,38 +2,35 @@
 <div class="a-dallas" data-controller="update-activity-button">
   <%# first card is fixed, it is the activity in progress if there is any%>
   <% if @current_activity %>
-    <div class = "card-agenda in-progress">
-      <div class="card-body <%=@current_activity.activity_type%>"
+      <div class="card-agenda in-progress <%=@current_activity.activity_type%>"
           style="height:  <%= (@current_activity.ending_date - @current_activity.starting_date)/40%>px">
-          <%= @current_activity.name %>
-          <button class="btn btn-finish"
+          <div class = "starting-time"></div> <%# space kept for loading bar %>
+          <div class= "activity-name"><%= @current_activity.name %></div>
+          <button class="btn btn-update btn-sm"
                       data-action="click->update-activity-button#finish"
                       data-activity-id="<%= @current_activity.id %>">
                       J'ai terminé
               </button>
       </div>
-    </div>
   <% end %>
   <%# displays all the cards of activities  %>
   <%# note that the first one is the activity in progress, displayed behind the previous one fixed %>
     <% @activities.each do |activity| %>
       <% if activity.activity_status != "finished" %>
-        <div class = "card-agenda list-activities">
-          <div class = "starting-time">
-              <p><%= activity.starting_date.strftime("%H:%M")  %></p>
-          </div>
-          <div class="card-body <%=activity.activity_type%>"
+          <div class="card-agenda <%=activity.activity_type%>"
                 style="height:  <%= (activity.ending_date - activity.starting_date)/40%>px">
-            <div class= ""><%= activity.name %></div>
+            <div class = "starting-time">
+                <p><%= activity.starting_date.strftime("%H:%M")  %></p>
+            </div>
+            <div class= "activity-name"><%= activity.name %></div>
             <% if activity == @next_activity && @current_activity.nil? %>
-              <button class="btn btn-start"
+              <button class="btn btn-update btn-sm"
                       data-action="click->update-activity-button#start"
                       data-activity-id="<%= activity.id %>">
                       Je commence
               </button>
               <% end %>
           </div>
-        </div>
       <% end %>
     <% end %>
   </div>

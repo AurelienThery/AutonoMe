@@ -1,23 +1,26 @@
 .margin-from-navbar {
   height: 65px;
 }
-
-.list-activities {
-  position: relative;
+//  class of the div for JS controller
+.a-dallas {
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .card-agenda {
-  background-color: #073b4c;
+  position: relative;
   min-height: fit-content;
   padding: 1px;
   border-radius: 5px;
   width: 100%;
+  border: 1px solid $dark-blue;
+  display: flex;
 }
 
 .starting-time {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: -1px;
+  left: -1px;
   background-color: white;
   height: $time-height;
   width: 65px;
@@ -28,20 +31,17 @@
   vertical-align: middle;
   font-size: large;
   font-weight: bold;
-  border: 1px, solid, $dark-blue;
+  border: 1px solid $dark-blue;
 }
 
-.card-body {
-  padding-top: 5px;
-  height: 100px;
-  text-align: center;
-  justify-content: center;
-  font-size: x-large;
+.activity-name {
   font-weight: 600;
-  border-radius: 5px;
-  width: 100%;
+  padding-top: 5px;
+  font-size: x-large;
 }
 
+// class to set the background color
+// according to type of activity
 .journey {
   background-color: $yellow-autonome;
 }
@@ -61,9 +61,4 @@
   width: calc(100% - 30px);
   left: 15px;
   right: 15px;
-}
-
-.a-dallas {
-  margin-left: 15px;
-  margin-right: 15px;
 }
