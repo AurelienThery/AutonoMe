@@ -61,9 +61,35 @@
 /// Section of the card body (diplayed through Stimulus controller)
 
 .card-body{
-
+  display: flex;
+  justify-content:space-between;
+  align-items: start;
 }
 
+.left-side {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  justify-content: center;
+
+  img {
+    border-radius: 3px;
+    border: 1px solid $dark-blue;
+  }
+}
+
+.description {
+  flex-grow: 1;
+  padding-left: 10px;
+}
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  align-items: center;
+  gap: 12px
+}
 
 ///// end of card body /////
 

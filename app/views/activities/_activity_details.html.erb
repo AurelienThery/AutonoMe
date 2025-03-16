@@ -1,0 +1,18 @@
+<div class="left-side">
+  <%=cl_image_tag(activity.photo.key,width: 80, height: 60, crop: :fill)%>
+  <p>Checklist</p>
+</div>
+<div class="description">
+  <p><%= activity.description  %>
+  <%= activity.activity_status  %></p>
+</div>
+<div class="right-side">
+  <%=cl_image_tag(activity.educator.user.photo.key, crop: :fill, class: "avatar-large" )%>
+  <% if activity.activity_status == "inprogress" %>
+    <button class="btn btn-update btn-sm"
+      data-action="click->update-activity-button#finish"
+      data-activity-id="<%= activity.id %>">
+      Done !
+    </button>
+  <% end %>
+</div>

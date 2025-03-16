@@ -7,11 +7,11 @@
           <div class = "starting-time"></div> <%# space kept for loading bar, no time value displayed %>
           <div class="card-header">
             <div class= "activity-name"><%= @current_activity.name %></div>
-            <button class="btn btn-update btn-sm"
-                      data-action="click->update-activity-button#finish"
-                      data-activity-id="<%= @current_activity.id %>">
-                      Done !
-            </button>
+              <button data-action="click->toggle-details#display"
+                      data-toggle-details-activity-id-value="<%= @current_activity.id %>"
+                      class="btn toggle-details">
+                <i class="fa-solid fa-caret-down"></i>
+              </button>
           </div>
       </div>
   <% end %>
@@ -26,7 +26,9 @@
             </div>
             <div class="card-header">
               <div class= "activity-name"><%= activity.name %></div>
-              <button data-action="click->toggle-details#display" class="btn toggle-details">
+              <button data-action="click->toggle-details#display"
+                      data-toggle-details-activity-id-value="<%= activity.id %>"
+                      class="btn toggle-details">
                 <i class="fa-solid fa-caret-down"></i>
               </button>
               <% if activity == @next_activity && @current_activity.nil? %>
@@ -39,7 +41,6 @@
             </div>
             <%# the rest of the information of the activity is displayed on demand %>
             <div data-toggle-details-target="togglableElement"
-                data-toggle-details-activity-value="<%= activity.to_json %>"
                 class="card-body d-none">
               <%= render "activity_details", activity: activity  %>
             </div>

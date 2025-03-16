@@ -4,14 +4,15 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
 
   static targets = ["togglableElement"]
-  static values = { activity: Object } // Permet de stocker et accéder à l'instance activity
-
+  // static values = { activity: Object } // Permet de stocker et accéder à l'instance activity
+  static values = { activityId: Number }
   connect() {
     console.log("Toggle details connected");
   }
 
-  display() {
+  display(event) {
+    event.preventDefault();
     this.togglableElementTarget.classList.toggle("d-none");
-    console.log(this.activityValue) // Pour vérifier qu'on récupère bien l'instance activity
+    console.log("Activity-ID:", this.activityIdValue);
   }
 }
