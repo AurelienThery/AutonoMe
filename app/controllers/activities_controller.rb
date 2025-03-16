@@ -30,5 +30,4 @@ class ActivitiesController < ApplicationController
       render json: { update_message: "Erreur, l'activité n'est pas terminée", status: false }, status: :unprocessable_entity
     end
   end
-
 end

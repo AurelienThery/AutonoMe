@@ -1,51 +1,51 @@
 <div class="margin-from-navbar"></div>
-<div class="a-dallas" data-controller="update-activity-button toggle-details">
+<div class="a-dallas" data-controller="update-activity-button">
   <%# first card is fixed, it is the activity in progress if there is any%>
   <% if @current_activity %>
       <div class="card-agenda in-progress <%=@current_activity.activity_type%>"
+          data-controller="toggle-details"
           style="height:  <%= (@current_activity.ending_date - @current_activity.starting_date)/40%>px">
           <div class = "starting-time"></div> <%# space kept for loading bar, no time value displayed %>
           <div class="card-header">
             <div class= "activity-name"><%= @current_activity.name %></div>
               <button data-action="click->toggle-details#display"
-                      data-toggle-details-activity-id-value="<%= @current_activity.id %>"
+                      data-toggle-details-activity-id-param="<%= @current_activity.id %>"
                       class="btn toggle-details">
                 <i class="fa-solid fa-caret-down"></i>
               </button>
           </div>
+          <%# the rest of the information of the activity is displayed on demand %>
+            <div data-toggle-details-target="togglableElement"
+                class="card-body d-none">
+              <%= render "activity_details", activity: @current_activity  %>
+            </div>
       </div>
   <% end %>
   <%# displays all the cards of activities  %>
   <%# note that the first one is the activity in progress, displayed behind the previous one fixed %>
-    <% @activities.each do |activity| %>
-      <% if activity.activity_status != "finished" %>
-          <div class="card-agenda <%=activity.activity_type%>"
-                style="height:  <%= (activity.ending_date - activity.starting_date)/40%>px">
-            <div class = "starting-time">
-                <p><%= activity.starting_date.strftime("%H:%M")  %></p>
-            </div>
-            <div class="card-header">
-              <div class= "activity-name"><%= activity.name %></div>
-              <button data-action="click->toggle-details#display"
-                      data-toggle-details-activity-id-value="<%= activity.id %>"
-                      class="btn toggle-details">
-                <i class="fa-solid fa-caret-down"></i>
-              </button>
-              <% if activity == @next_activity && @current_activity.nil? %>
-                <button class="btn btn-update btn-sm"
-                        data-action="click->update-activity-button#start"
-                        data-activity-id="<%= activity.id %>">
-                        Start !
-                </button>
-              <% end %>
-            </div>
-            <%# the rest of the information of the activity is displayed on demand %>
-            <div data-toggle-details-target="togglableElement"
-                class="card-body d-none">
-              <%= render "activity_details", activity: activity  %>
-            </div>
+  <% @activities.each do |activity| %>
+    <% if activity.activity_status != "finished" %>
+        <div class="card-agenda <%=activity.activity_type%>"
+            data-controller="toggle-details"
+              style="height:  <%= (activity.ending_date - activity.starting_date)/40%>px">
+          <div class = "starting-time">
+              <p><%= activity.starting_date.strftime("%H:%M")  %></p>
           </div>
-      <% end %> <%# close the condition if status not finished  %>
-    <% end %> <%# Close the each loop %>
+          <div class="card-header">
+            <div class= "activity-name"><%= activity.name %></div>
+            <button data-action="click->toggle-details#display"
+                    data-toggle-details-activity-id-param="<%= activity.id %>"
+                    class="btn toggle-details">
+              <i class="fa-solid fa-caret-down"></i>
+            </button>
+          </div>
+          <%# the rest of the information of the activity is displayed on demand %>
+          <div data-toggle-details-target="togglableElement"
+              class="card-body d-none">
+            <%= render "activity_details", activity: activity  %>
+          </div>
+        </div>
+    <% end %> <%# close the condition if status not finished  %>
+  <% end %> <%# Close the each loop %>
   </div>
 </div>

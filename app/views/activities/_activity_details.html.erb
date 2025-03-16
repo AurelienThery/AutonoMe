@@ -8,6 +8,13 @@
 </div>
 <div class="right-side">
   <%=cl_image_tag(activity.educator.user.photo.key, crop: :fill, class: "avatar-large" )%>
+  <% if activity == @next_activity && @current_activity.nil? %>
+    <button class="btn btn-update btn-sm"
+      data-action="click->update-activity-button#start"
+      data-activity-id="<%= activity.id %>">
+      Start !
+    </button>
+    <% end %>
   <% if activity.activity_status == "inprogress" %>
     <button class="btn btn-update btn-sm"
       data-action="click->update-activity-button#finish"
