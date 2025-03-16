@@ -11,7 +11,7 @@
               <button data-action="click->toggle-details#display"
                       data-toggle-details-activity-id-param="<%= @current_activity.id %>"
                       class="btn toggle-details">
-                <i class="fa-solid fa-caret-down"></i>
+                <i class="fa-solid fa-caret-down" data-toggle-details-target="caretIcon"></i>
               </button>
           </div>
           <%# the rest of the information of the activity is displayed on demand %>
@@ -36,7 +36,7 @@
             <button data-action="click->toggle-details#display"
                     data-toggle-details-activity-id-param="<%= activity.id %>"
                     class="btn toggle-details">
-              <i class="fa-solid fa-caret-down"></i>
+              <i class="fa-solid fa-caret-down" data-toggle-details-target="caretIcon"></i>
             </button>
           </div>
           <%# the rest of the information of the activity is displayed on demand %>

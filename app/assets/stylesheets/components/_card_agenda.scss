@@ -56,6 +56,11 @@
   flex-grow: 1;
 }
 
+.fa-caret-rotated {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
 /////// end of card head /////
 
 /// Section of the card body (diplayed through Stimulus controller)
