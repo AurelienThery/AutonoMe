@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   get 'myprofil', to: 'users#show', as: "myprofil"
   get 'myprofil' => 'users#show', as: :myprofil_root # creates user_root_path after log in
   get 'help_needed', to: 'helpcalls#index'
+  # routes for stimulus controller (start/finish)
+  patch 'activities/:activity_id/start', to: 'activities#start'
+  patch 'activities/:activity_id/finish', to: 'activities#finish'
 end
