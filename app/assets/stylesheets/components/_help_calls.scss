@@ -1,37 +1,47 @@
 .popup {
   position: fixed;
   z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(246, 243, 243, 0.5);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500px;
+  height: auto;
+  background-color: rgba(246, 243, 243, 0.9);
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .popup-content {
   background-color: #fefefe;
-  margin: 15% auto;
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 500px;
   border-radius: 10px;
   text-align: center;
 }
 
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
+.close-button {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 24px;
   font-weight: bold;
+  color: #1b1a1a;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.close:hover,
-.close:focus {
-  color: rgb(17, 16, 16);
-  text-decoration: none;
-  cursor: pointer;
+.close-button:hover,
+.close-button:focus {
+  background-color: #e0e0e0;
+  color: #000;
 }
 
 .hidden {
@@ -54,14 +64,38 @@
 }
 
 .confirmation {
-  margin-top: 20px;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  position: fixed;
+  z-index: 1002;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: #f9f9f9;
-  position:absolute;
-  top:50px;
-  left:10%;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 95%;
+  max-width: 500px;
+}
+
+.confirmation p {
+  margin-bottom: 20px;
+}
+
+.confirmation-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-success, .btn-info {
+  width: 100%;
+  max-width: 250px;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 12px 20px;
 }
 
 .btn-success {
@@ -71,21 +105,24 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 100%;
 }
 
-.btn-danger {
-  background-color: #dc3545;
+.btn-info {
+  background-color: #FCC734;
   color: white;
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  width: 100%;
 }
 
+
 .help-button {
-  font-size: 25px; /* Augmentation légère de la taille de l'emoji */
-  background-color: transparent; /* Supprime le fond */
+  font-size: 25px;
+  background-color: transparent;
   border-radius: 5px;
   cursor: pointer;
   transition: transform 0.2s;
@@ -99,42 +136,107 @@
   transform: scale(1.05);
 }
 
-.scenario-popup{
-  position:absolute;
-  top:230px;
-  left:10%;
+.scenario-popup {
+  position: fixed;
+  z-index: 1003;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(246, 243, 243, 0.5); /* Couleur semi-transparente */
+  backdrop-filter: blur(8px); /* Ajoute un effet de flou à l'arrière-plan */
 }
 
 .scenario-popup-content {
-  background-color: #7EA4FE; /* Fond bleu clair */
-  padding: 20px;
+  background-color: #7EA4FE;
+  padding: 5px 20px 20px; /* Réduit le padding en haut à 5px */
   border-radius: 10px;
-  width: 90%;
-  max-width: 600px;
-  max-height: 80vh;
-  overflow-y: auto;
+  width: 80%;
+  max-width: 450px;
+  height: auto;
+  max-height: calc(100vh - 120px);
+  overflow: hidden;
   position: relative;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  margin: auto;
 }
 
-.scenario h3 {
-  color: #2c3e50;
-  margin-bottom: 15px;
+
+
+.scenario {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: inset 0px -2px rgba(0,0,0,.1);
 }
 
-.scenario ol {
-  padding-left: 0;
-  list-style-type: none;
-}
-
-.scenario li {
-  margin-bottom: 10px;
+.scenario-title {
+  font-size: 1.4em;
+  color: #333;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
+  font-weight: bold;
 }
 
-.scenario .picto {
-  font-size: 24px;
+.scenario-icon {
+  font-size: 32px;
   margin-right: 10px;
+}
+
+.scenario-steps {
+  list-style-type: none;
+  padding: 0;
+}
+
+.scenario-step {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  background-color: #e1e2e3;
+  border-radius: 5px;
+  padding: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.scenario-step .step-text {
+  font-size: 1.1em;  /* Augmente la taille du texte dans les étapes du scénario */
+  font-weight: 500;  /* Rend le texte un peu plus épais, mais pas complètement gras */
+}
+
+.scenario-step:hover {
+  background-color: #9c9f9f;
+}
+
+.picto {
+  font-size: 24px;
+  margin-right: 15px;
   min-width: 30px;
+  text-align: center;
+}
+
+.step-text {
+  flex: 1;
+  font-size: 16px;
+  color: #222528;
+}
+
+/* Styles spécifiques pour chaque scénario */
+.scenario-wc { border-left: 5px solid #FCC734; }
+.scenario-noise { border-left: 5px solid #ffc107; }
+.scenario-question { border-left: 5px solid #FCC734; }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 999;
+  display: none;
+}
+
+body.popup-open {
+  overflow: hidden;
 }
