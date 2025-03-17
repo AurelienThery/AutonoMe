@@ -1,0 +1,18 @@
+name;activity_type;starting_time;duration;description;child_id;educator_id;relative_id;picture
+Trajet college;journey;07:15;00:30;;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;college_jiemug
+Mathematiques;activity;08:00;00:55;"Les geometrie et figures planes
+Les angles : types d'angles (aigus, droits, obtus), propriete‚ des angles opposes par le sommet, calcul des angles dans des figures simples.
+";Child.last.id;Educator.all.sample.id;Relative.all.sample.id;cours_maths_jtebnf
+Francais;activity;09:00;00:55; Lecture et comprehension de textes: Analyser le vocabulaire, les personnages, le cadre, et la structure du texte. Signification du texte, en utilisant des citations pour justifier leurs reponses.;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;cours_francais_fdeyk0
+Recreation;breaktime;09:55;00:15;Aller aux WC.;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;recreation_uhj8un
+Histoire;activity;10:10;00:55;Les grandes decouvertes et la Renaissance (XVe - XVIe siecles): L'exploration du monde par des navigateurs comme Christophe Colomb (1492) ou Vasco de Gama. L'invention de l'imprimerie par Johannes Gutenberg et les avancees dans des domaines comme l'astronomie, les mathematiques et la m‚decine.;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;cours_histoire_tlsvxi
+Anglais;activity;11:10;00:55;Vocabulaire:  situations de la vie quotidienne, comme les descriptions physiques et de personnalit‚, les objets de la maison, les emotions, les metiers, les saisons, les animaux. Exercices pratiques :  jeux de mots, des cartes memoire (flashcards).;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;classe_geographie_wdumh3
+Cantine;activity;12:10;00:50;;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;cantine_eek480
+Sport;activity;13:30;01:25;Activite : ping-pong;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;pingpong_mpwidx
+Soutien scolaire;activity;15:00;00:55;Exercices du jour, revision des cours pour le lendemain;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;cours_maths_jtebnf
+Trajet maison;journey;16:00;00:30;;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;maison_j3nvou
+Gouter;breaktime;16:30;00:20;;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;repas_dm1z4l
+Douche;activity;18:00;00:30;;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;sdb_adclbw
+Repas;activity;19:00;00:45;;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;repas_dm1z4l
+Tv;breaktime;19:45;01:00;;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;salontv_yjuodu
+Salle de bain;activity;20:45;00:10;Brossage de dent;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;sdb_adclbw

@@ -1,0 +1,16 @@
+name;activity_type;starting_time;duration;description;child_id;educator_id;relative_id;picture
+Trajet wagon;journey;08:15;00:30;;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn
+Daily review;activity;09:00;00:55;;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;cours_maths_jtebnf
+Debug agenda;activity;09:00;00:55;;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;cours_francais_fdeyk0
+Pause cafe;breaktime;09:55;00:15;;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;recreation_uhj8un
+Debug;activity;10:10;00:55;;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;cours_histoire_tlsvxi
+Live Code;activity;11:10;00:55;Vocabulaire:  situations de la vie quotidienne, comme les descriptions physiques et de personnalite, les objets de la maison, les �motions, les metiers, les saisons, les animaux. Exercices pratiques :  jeux de mots, des cartes memoire (flashcards).;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;classe_geographie_wdumh3
+Cantine;activity;12:10;00:50;;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;cantine_eek480
+Prepatation demo;activity;13:30;01:25;Activite : ping-pong;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;pingpong_mpwidx
+Repetition scenario;activity;15:00;00:55;Exercices du jour, revision des cours pour le lendemain;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;cours_maths_jtebnf
+Trajet maison;journey;16:00;00:30;;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;maison_j3nvou
+Gouter;breaktime;16:30;00:20;;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;repas_dm1z4l
+Trajet wagon;journey;18:00;00:30;;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn
+Demo Day;activity;18:30;01:30;Presentation des projets des bootcamp: Developpeur web, Data Analyst, Data Scientist.;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn
+Trajet maison;journey;20:00;00:30;;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;maison_j3nvou
+Salle de bain;activity;20:45;00:10;Brossage de dent;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;sdb_adclbw
