@@ -31,7 +31,7 @@ User.create(
   last_name:"Martin",
   address: "15 rue Baste, 33300 Bordeaux",
   userable: Child.create
-)
+  )
 file = URI.parse(Cloudinary::Utils.cloudinary_url("Simon_t7r62g")).open
   User.last.photo.attach(io: file, filename: "#{User.last.first_name}.jpeg", content_type:"image/jpeg")
   User.last.save
@@ -201,20 +201,23 @@ puts "Création des activités d'une journée courte"
 # end
 
 
-filetoday = "data/today_seeds.csv"
-filecollege = "data/college_seeds.csv"
+filetoday = Rails.root.join('db', 'data', 'today_seeds.csv')
+filecollege = Rails.root.join('db', 'data', 'college_seeds.csv')
 
 # Initialisation de la date du jour (démarrant à 00:00:00)
-TODAY = DateTime.tomorrow.to_time
+TODAY = Date.today.to_time # on considère qu'aujourd'hui c'est vendredi :-)
+MONDAY = TODAY + 86400*2     # donc dans deux jours c'est lundi :-)
+# puts TODAY
+# puts filetoday
 
 # Creation des activité spécifiques à la journée demo day
-CSV.foreach(filetoday, headers: :first_row) do |row|
+CSV.foreach(filetoday, headers: :first_row, col_sep: ';') do |row|
   today_activity = Activity.new(
     name: row['name'],
     activity_type: row['activity_type'],
     description: row['description'],
-    starting_date: TODAY + row['starting_time'],
-    ending_date: TODAY + row['starting_time'] + row['duration'],
+    starting_date: TODAY + row['starting_time'].to_i,
+    ending_date: TODAY + row['starting_time'].to_i + row['duration'].to_i,
     child_id: Child.last.id,
     educator_id: Educator.all.sample.id,
     relative_id: Relative.all.sample.id
@@ -223,4 +226,26 @@ CSV.foreach(filetoday, headers: :first_row) do |row|
   today_activity.photo.attach(io: file, filename: "#{today_activity.name}.jpeg", content_type:"image/jpeg")
   today_activity.save
   puts "#{today_activity.name} créé"
+end
+
+# Creation des activités d'une semaine au collège
+day = MONDAY
+1.times do
+  CSV.foreach(filecollege, headers: :first_row, col_sep: ';') do |row|
+    college_activity = Activity.new(
+      name: row['name'],
+      activity_type: row['activity_type'],
+      description: row['description'],
+      starting_date: day + row['starting_time'].to_i,
+      ending_date: day + row['starting_time'].to_i + row['duration'].to_i,
+      child_id: Child.last.id,
+      educator_id: Educator.all.sample.id,
+      relative_id: Relative.all.sample.id
+    )
+    file = URI.parse(Cloudinary::Utils.cloudinary_url(row['picture'])).open
+    college_activity.photo.attach(io: file, filename: "#{college_activity.name}.jpeg", content_type: "image/jpeg")
+    college_activity.save
+    puts "#{college_activity.name} créé"
+  end
+  day += 1
 end
