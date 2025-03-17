@@ -200,7 +200,6 @@ puts "Création des activités d'une journée courte"
 #   puts "#{activite.name} créé"
 # end
 
-
 filetoday = Rails.root.join('db', 'data', 'today_seeds.csv')
 filecollege = Rails.root.join('db', 'data', 'college_seeds.csv')
 
