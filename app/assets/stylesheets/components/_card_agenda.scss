@@ -10,7 +10,7 @@
 .card-agenda {
   position: relative;
   min-height: fit-content;
-  // padding: 1px;
+  padding: 1px;
   border-radius: 5px;
   width: 100%;
   border: 1px solid $dark-blue;
@@ -36,7 +36,7 @@
   background-color: white;
   height: $time-height;
   width: 65px;
-  border-radius: 0% 0% 5% 5% / 0% 0% 10% 5%  ;
+  border-radius: 5px;
   text-align: center;
   justify-content: center;
   align-items: center;

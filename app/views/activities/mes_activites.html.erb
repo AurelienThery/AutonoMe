@@ -23,28 +23,39 @@
   <% end %>
   <%# displays all the cards of activities  %>
   <%# note that the first one is the activity in progress, displayed behind the previous one fixed %>
+  <% du_plombier = [] %>
   <% @activities.each do |activity| %>
+    <% duration = activity.ending_date - activity.starting_date %>
     <% if activity.activity_status != "finished" %>
-        <div class="card-agenda <%=activity.activity_type%>"
-            data-controller="toggle-details"
-              style="height:  <%= (activity.ending_date - activity.starting_date)/40%>px">
-          <div class = "starting-time">
-              <p><%= activity.starting_date.strftime("%H:%M")  %></p>
-          </div>
-          <div class="card-header">
-            <div class= "activity-name"><%= activity.name %></div>
-            <button data-action="click->toggle-details#display"
-                    data-toggle-details-activity-id-param="<%= activity.id %>"
-                    class="btn toggle-details">
-              <i class="fa-solid fa-caret-down" data-toggle-details-target="caretIcon"></i>
-            </button>
-          </div>
-          <%# the rest of the information of the activity is displayed on demand %>
-          <div data-toggle-details-target="togglableElement"
-              class="card-body d-none">
-            <%= render "activity_details", activity: activity  %>
-          </div>
+      <%# Checks if there was an activity created previously  %>
+      <% if du_plombier.any? %>
+        <% last_activity_ending = du_plombier.pop %>
+        <% freetime = activity.starting_date - last_activity_ending %>
+        <%# create an empty space proportional to time with nothing planned with minimum 4px %>
+        <div style="height: <%= (freetime/40 < 4) ? 4 : (freetime/40) %>px"></div>
+      <% end %>
+      <div class="card-agenda <%=activity.activity_type%>"
+          data-controller="toggle-details"
+            style="height:  <%= duration/40 %>px">
+        <div class = "starting-time">
+            <p><%= activity.starting_date.strftime("%H:%M")  %></p>
         </div>
+        <div class="card-header">
+          <div class= "activity-name"><%= activity.name %></div>
+          <button data-action="click->toggle-details#display"
+                  data-toggle-details-activity-id-param="<%= activity.id %>"
+                  class="btn toggle-details">
+            <i class="fa-solid fa-caret-down" data-toggle-details-target="caretIcon"></i>
+          </button>
+        </div>
+        <%# the rest of the information of the activity is displayed on demand %>
+        <div data-toggle-details-target="togglableElement"
+            class="card-body d-none">
+          <%= render "activity_details", activity: activity  %>
+        </div>
+      </div>
+      <%# keep the ending date of this activity to compare with the next one %>
+      <% du_plombier << activity.ending_date %>
     <% end %> <%# close the condition if status not finished  %>
   <% end %> <%# Close the each loop %>
   </div>

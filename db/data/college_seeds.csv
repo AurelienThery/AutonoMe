@@ -1,16 +1,16 @@
-name;activity_type;heure_debut;starting_time;duree;duration;description;child_id;educator_id;relative_id;picture
-Trajet college;journey;07:15;26100;00:30;26100;Partir a l'heure!;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;college_jiemug
-Mathematiques;activity;08:00;28800;00:55;28800;Les geometrie et figures planesLes angles : types d'angles (aigus, droits, obtus), propriétées des angles opposes par le sommet, calcul des angles dans des figures simples;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;cours_maths_jtebnf
-Francais;activity;09:00;32400;00:55;32400; Lecture et comprehension de textes: Analyser le vocabulaire, les personnages, le cadre, et la structure du texte. Signification du texte, en utilisant des citations pour justifier leurs reponses.;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;cours_francais_fdeyk0
-Recreation;breaktime;09:55;35700;00:15;35700;Aller aux WC.;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;recreation_uhj8un
-Histoire;activity;10:10;36600;00:55;36600;Les grandes decouvertes et la Renaissance (XVe - XVIe siecles): L'exploration du monde par des navigateurs comme Christophe Colomb (1492) ou Vasco de Gama. L'invention de l'imprimerie par Johannes Gutenberg et les avancees dans des domaines comme l'astronomie, les mathematiques et la m�decine.;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;cours_histoire_tlsvxi
-Anglais;activity;11:10;40200;00:55;40200;Vocabulaire:  situations de la vie quotidienne, comme les descriptions physiques et de personnalit�, les objets de la maison, les emotions, les metiers, les saisons, les animaux. Exercices pratiques :  jeux de mots, des cartes memoire (flashcards).;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;classe_geographie_wdumh3
-Cantine;activity;12:10;43800;00:50;43800;Miam miam;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;cantine_eek480
-Sport;activity;13:30;48600;01:25;48600;Activite : ping-pong;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;pingpong_mpwidx
-Soutien scolaire;activity;15:00;54000;00:55;54000;Exercices du jour, revision des cours pour le lendemain;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;cours_maths_jtebnf
-Trajet maison;journey;16:00;57600;00:30;57600;Attention aux velos sur la route;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;maison_j3nvou
-Gouter;breaktime;16:30;59400;00:20;59400;Miam miam;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;repas_dm1z4l
-Douche;activity;18:00;64800;00:30;64800;Shampoing doux qui ne pique pas les yeux;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;sdb_adclbw
-Repas;activity;19:00;68400;00:45;68400;Miam miam;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;repas_dm1z4l
-Tv;breaktime;19:45;71100;01:00;71100;Questions pour un champion (rediff);Child.last.id;Educator.all.sample.id;Relative.all.sample.id;salontv_yjuodu
-Salle de bain;activity;20:45;74700;00:10;74700;Brossage de dent;Child.last.id;Educator.all.sample.id;Relative.all.sample.id;sdb_adclbw
+name;activity_type;heure_debut;starting_time;duree;duration;description;picture
+Trajet college;journey;07:15;26100;00:30;1800;Partir a l'heure!;college_jiemug
+Mathematiques;activity;08:00;28800;00:55;3300;Les angles : types d'angles (aigus, droits, obtus), proprietées des angles opposes par le sommet, calcul des angles dans des figures simples.;cours_maths_jtebnf
+Francais;activity;09:00;32400;00:55;3300; Lecture et comprehension de textes: Analyser le vocabulaire, les personnages, le cadre, et la structure du texte. Signification du texte, en utilisant des citations pour justifier leurs reponses.;cours_francais_fdeyk0
+Recreation;breaktime;09:55;35700;00:15;900;Aller aux WC.;recreation_uhj8un
+Histoire;activity;10:10;36600;00:55;3300;Les grandes decouvertes et la Renaissance (XVe - XVIe siecles): L'exploration du monde par des navigateurs comme Christophe Colomb (1492) ou Vasco de Gama. L'invention de l'imprimerie par Johannes Gutenberg et les avancees dans des domaines comme l'astronomie, les mathematiques et la médecine.;cours_histoire_tlsvxi
+Anglais;activity;11:10;40200;00:55;3300;Vocabulaire:  situations de la vie quotidienne, comme les descriptions physiques et de personnalité, les objets de la maison, les emotions, les metiers, les saisons, les animaux. Exercices pratiques :  jeux de mots, des cartes memoire (flashcards).;classe_geographie_wdumh3
+Cantine;activity;12:10;43800;00:50;3000;Miam miam;cantine_eek480
+Sport;activity;13:30;48600;01:25;5100;Activite : ping-pong;pingpong_mpwidx
+Soutien scolaire;activity;15:00;54000;00:55;3300;Exercices du jour, revision des cours pour le lendemain;cours_maths_jtebnf
+Trajet maison;journey;16:00;57600;00:30;1800;Attention aux velos sur la route;maison_j3nvou
+Gouter;breaktime;16:30;59400;00:20;1200;Miam miam;repas_dm1z4l
+Douche;activity;18:00;64800;00:30;1800;Shampoing doux qui ne pique pas les yeux;sdb_adclbw
+Repas;activity;19:00;68400;00:45;2700;Miam miam;repas_dm1z4l
+Tv;breaktime;19:45;71100;01:00;3600;Questions pour un champion (rediff);salontv_yjuodu
+Salle de bain;activity;20:45;74700;00:10;600;Brossage de dent;sdb_adclbw

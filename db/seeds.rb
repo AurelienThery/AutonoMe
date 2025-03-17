@@ -204,8 +204,8 @@ filetoday = Rails.root.join('db', 'data', 'today_seeds.csv')
 filecollege = Rails.root.join('db', 'data', 'college_seeds.csv')
 
 # Initialisation de la date du jour (démarrant à 00:00:00)
-TODAY = Date.today.to_time # on considère qu'aujourd'hui c'est vendredi :-)
-MONDAY = TODAY + 86400*2     # donc dans deux jours c'est lundi :-)
+TODAY = Date.today.to_time + 3600 # on considère qu'aujourd'hui c'est vendredi :-)
+MONDAY = TODAY + 86400*2    # donc dans deux jours c'est lundi :-)
 # puts TODAY
 # puts filetoday
 
