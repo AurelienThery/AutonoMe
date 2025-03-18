@@ -35,7 +35,7 @@
   left: -1px;
   background-color: white;
   height: $time-height;
-  width: 65px;
+  width: 60px;
   border-radius: 5px;
   text-align: center;
   justify-content: center;
@@ -44,7 +44,7 @@
   font-size: large;
   font-weight: bold;
   border: 1px solid $dark-blue;
-  z-index: 1; // Assure qu'il est au-dessus des autres éléments
+  z-index: 1; // Make sure it is above the other components except the timer (see below)
 }
 
 .activity-name {
@@ -113,8 +113,23 @@
   background-color: $breaktime;
 }
 
+
+/// class to set the style of the card in progress ///
 .in-progress {
   position: fixed;
   top:65px;
   z-index: 10;
+}
+
+.loading {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  background-color: $orange-autonome;
+  height: $time-height;
+  width: 60px;
+  border-radius: 5px;
+  z-index: 2;
+  border: 1px solid $dark-blue;
+  border-right: none;
 }
