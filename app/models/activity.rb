@@ -3,6 +3,7 @@ class Activity < ApplicationRecord
   belongs_to :educator
   belongs_to :relative
   has_one_attached :photo
+  has_many :checklist_items
 
    # enumerable pour stocker les types d'activités
   # /!\ stocké en integer dans bdd donc ds table activity: t.integer "activity_type"
