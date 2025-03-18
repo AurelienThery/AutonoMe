@@ -4,10 +4,20 @@ class ActivitiesController < ApplicationController
     @activities = Activity.all.order(starting_date: "asc")
     @current_activity = @activities.find_by(activity_status: "inprogress")
     @next_activity = @activities.find_by(activity_status: "planned")
+    @markers = @activities.geocoded.map do |activity|
+      {
+        lat: activity.latitude,
+        lng: activity.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { activity: activity }),
+        marker_html: render_to_string(partial: "marker", locals: { activity: activity })
+      }
+    end
   end
 
   def show
     @activity = Activity.find(params[:id])
+    @next_activity = Activity.where("starting_date > ? AND activity_status = ?", @activity.starting_date, "planned").order(starting_date: :asc).first
+    @mapbox_api_key = ENV['MAPBOX_API_KEY']
   end
 
   def start

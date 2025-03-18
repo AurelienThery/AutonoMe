@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
+
 ActiveRecord::Schema[7.1].define(version: 2025_03_18_104202) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,6 +58,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_18_104202) do
     t.datetime "updated_at", null: false
     t.integer "activity_type"
     t.string "activity_status", default: "planned"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "address"
     t.index ["child_id"], name: "index_activities_on_child_id"
     t.index ["educator_id"], name: "index_activities_on_educator_id"
     t.index ["relative_id"], name: "index_activities_on_relative_id"
