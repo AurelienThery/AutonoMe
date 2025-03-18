@@ -10,7 +10,7 @@ export default class extends Controller {
   }
 
   connect() {
-    this.initialWidth = 60 // largeur initiale en pixels du timer blanc
+    this.initialWidth = 0 // largeur initiale en pixels du timer orange
     this.interval = setInterval(() => {
       this.updateCountdown()
     }, 1000)
@@ -29,7 +29,7 @@ export default class extends Controller {
 
     if (timeRemaining <= 0) {
       // this.displayTarget.textContent = "L'activité est terminée"
-      // Prévoir une action --> pop up pour signaler l
+      // Prévoir une action --> pop up pour signaler à l'utilisateur de déclarer done!
       this.progressBarTarget.style.width = "60px"
       clearInterval(this.interval)
       return

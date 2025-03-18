@@ -113,11 +113,21 @@
   background-color: $breaktime;
 }
 
+
+/// class to set the style of the card in progress ///
 .in-progress {
   position: fixed;
   top:65px;
   z-index: 10;
-  width: calc(100% - 30px);
-  left: 15px;
-  right: 15px;
+}
+
+.loading {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  background-color: $orange-autonome;
+  height: $time-height;
+  width: 60px;
+  border-radius: 5px;
+  z-index: 2;
 }

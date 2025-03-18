@@ -8,9 +8,11 @@
           data-countdown-target-time-value="<%= @current_activity.ending_date.to_i * 1000 %>"
           data-countdown-duration-value="<%= total_seconds_remaining %>"
           style="height:  <%= (@current_activity.ending_date - @current_activity.starting_date)/40%>px">
-          <div class = "starting-time" data-countdown-target="progressBar">
-            <p><span data-countdown-target="display"></span></p>
-          </div> <%# space kept for loading bar, no time value displayed %>
+          <%# the div below is used to display time elapsed in orange %>
+          <div class="loading" data-countdown-target="progressBar"></div>
+          <div class = "starting-time">
+            <p><span data-countdown-target="display"></span></p> <%# temporary display to check value calculation%>
+          </div> <%# white space kept for loading bar to overlay, no time value displayed %>
           <div class="card-header">
             <div class= "activity-name"><%= @current_activity.name %></div>
               <button data-action="click->toggle-details#display"
