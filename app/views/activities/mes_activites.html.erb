@@ -2,10 +2,15 @@
 <div class="a-dallas" data-controller="update-activity-button">
   <%# first card is fixed, it is the activity in progress if there is any%>
   <% if @current_activity %>
+      <% total_seconds_remaining = (@current_activity.ending_date - Time.now ).to_i %>
       <div class="card-agenda in-progress <%=@current_activity.activity_type%>"
-          data-controller="toggle-details"
+          data-controller="toggle-details countdown"
+          data-countdown-target-time-value="<%= @current_activity.ending_date.to_i * 1000 %>"
+          data-countdown-duration-value="<%= total_seconds_remaining %>"
           style="height:  <%= (@current_activity.ending_date - @current_activity.starting_date)/40%>px">
-          <div class = "starting-time"></div> <%# space kept for loading bar, no time value displayed %>
+          <div class = "starting-time" data-countdown-target="progressBar">
+            <p><span data-countdown-target="display"></span></p>
+          </div> <%# space kept for loading bar, no time value displayed %>
           <div class="card-header">
             <div class= "activity-name"><%= @current_activity.name %></div>
               <button data-action="click->toggle-details#display"
