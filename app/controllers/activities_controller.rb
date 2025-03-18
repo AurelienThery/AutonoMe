@@ -16,6 +16,8 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
+    @next_activity = Activity.where("starting_date > ? AND activity_status = ?", @activity.starting_date, "planned").order(starting_date: :asc).first
+    @mapbox_api_key = ENV['MAPBOX_API_KEY']
   end
 
   def start
