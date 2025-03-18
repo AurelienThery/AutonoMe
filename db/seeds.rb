@@ -15,6 +15,7 @@ require 'date'
 require "csv"
 
 #Nettoyage de la base (efface les users de la DB avant d'en créer de nouveaux)
+ChecklistItem.destroy_all
 Activity.destroy_all
 Child.destroy_all
 Relative.destroy_all
@@ -251,6 +252,10 @@ day = MONDAY
     college_activity.photo.attach(io: file, filename: "#{college_activity.name}.jpeg", content_type: "image/jpeg")
     college_activity.save
     puts "#{college_activity.name} créé"
+
+    # Création des checklist items associés à l'activité
+    ChecklistItem.create!(activity: college_activity, content: "Prend le livre de #{college_activity.name}")
+    puts "Checklist pour #{college_activity.name} créée"
   end
   day += 1
 end
