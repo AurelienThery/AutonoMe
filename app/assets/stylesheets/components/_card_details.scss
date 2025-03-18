@@ -12,3 +12,29 @@
   display: flex;
   justify-content: center;
 }
+
+.btn-update {
+  margin-left: 280px;
+}
+
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+
+.overlay-image-educator {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background-color: $activity;
+  border-bottom-left-radius: 50%;
+  padding: 10px;
+  img {
+    height: 100%;
+  }
+}
