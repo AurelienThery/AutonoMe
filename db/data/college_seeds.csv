@@ -1,3 +1,4 @@
+
 name;activity_type;heure_debut;starting_time;duree;duration;description;picture;address
 Trajet college;journey;07:15;26100;00:30;1800;Partir a l'heure!;college_jiemug;109 Cour du Médoc 33300 Bordeaux
 Mathematiques;activity;08:00;28800;00:55;3300;Les angles : types d'angles (aigus, droits, obtus), proprietées des angles opposes par le sommet, calcul des angles dans des figures simples.;cours_maths_jtebnf;109 Cour du Médoc 33300 Bordeaux

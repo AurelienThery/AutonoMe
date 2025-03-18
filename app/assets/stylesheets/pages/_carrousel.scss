@@ -44,3 +44,13 @@
   background-color: #007bff; /* Couleur différente pour l'état actif */
   transform: scale(1.2); /* Agrandit légèrement pour attirer l'œil */
 }
+
+/*  */
+
+.list-container {
+  display: flex; /* Utilise Flexbox pour centrer */
+  flex-direction: column; /* Dispose les éléments en colonne */
+  align-items: center; /* Centre horizontalement */
+  justify-content: center; /* Centre verticalement si nécessaire */
+  margin: 0 auto; /* Centre le conteneur lui-même */
+}
