@@ -1,11 +1,12 @@
 <% if @next_activity && @next_activity.address.present? && @mapbox_api_key.present? %>
   <div data-controller="map"
+        data-map-activities-value="<%= @activities.to_json(only: [:name, :address, :latitude, :longitude]) %>"
        data-map-destination-value="<%= @next_activity.address %>"
        data-map-api-key-value="<%= @mapbox_api_key %>"
        data-map-next-activity-name-value="<%= @next_activity.name %>">
 
     <button data-action="click->map#toggleRoute" data-map-target="button" class="btn btn-primary">
-      Voir le trajet depuis ma position
+      Voir le trajet 
     </button>
 
     <div data-map-target="container"
