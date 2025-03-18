@@ -10,5 +10,5 @@ class Activity < ApplicationRecord
 
   # on indique en validation du activity_type la liste des clés de user_typeS
   validates :activity_type, inclusion: { in: Activity.activity_types.keys }
-  # ajouter presence: true quand les seeds seront créées avec cette column 
+  # ajouter presence: true quand les seeds seront créées avec cette column
 end
