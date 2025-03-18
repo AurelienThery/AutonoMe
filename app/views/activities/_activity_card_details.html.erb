@@ -1,4 +1,4 @@
-<div class="right-side">
+<%# <div class="right-side"> %>
   <div class="card-details">
       <div class="image-container">
       <%=cl_image_tag(activity.photo.key)%>
@@ -22,7 +22,7 @@
         Done !
       </button>
     <% end %>
-        <p>lorem ipsum orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        <p><%= activity.description  %></p>
   </div>
   <div class="flex-container-items">
     <div class="index-items1">
@@ -39,4 +39,4 @@
     </div>
   </div>
 </div>
-  </div>
+  <%# </div> %>
