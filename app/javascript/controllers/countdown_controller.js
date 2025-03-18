@@ -10,7 +10,6 @@ export default class extends Controller {
   }
 
   connect() {
-    this.initialWidth = 0 // largeur initiale en pixels du timer orange
     this.interval = setInterval(() => {
       this.updateCountdown()
     }, 1000)
@@ -23,9 +22,10 @@ export default class extends Controller {
     }
   }
   updateCountdown() {
-    const now = new Date().getTime()
-    const targetTime = this.targetTimeValue
-    const timeRemaining = targetTime - now
+    const now = Date.now();
+    const targetTime = this.targetTimeValue;
+    const timeRemainingms = targetTime - now; //in milliseconds
+    const timeRemaining = (timeRemainingms/1000) -3600;  // converted in seconds and Timeline corrected
 
     if (timeRemaining <= 0) {
       // this.displayTarget.textContent = "L'activité est terminée"
@@ -36,22 +36,29 @@ export default class extends Controller {
     }
 
     // Calcul du temps total
-    const totalDuration = this.durationValue * 1000 // convertir en millisecondes
+    const totalDuration = this.durationValue // convertir en millisecondes
 
     // Calcul de la proportion de temps restant
-    const proportion = timeRemaining / totalDuration
+    const proportion = ((1-(timeRemaining / totalDuration)) * 60 )
+
 
     // Calcul de la nouvelle largeur
-    const newWidth = Math.max(0, Math.floor(this.initialWidth * proportion))
+    const newWidth = Math.max(0, Math.floor(proportion))
 
     // Application de la nouvelle largeur
     this.progressBarTarget.style.width = `${newWidth}px`
 
     // Calcul des secondes restantes (uniquement pour vérification)
     const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000)
+    const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60))
+    const formattedMinutes = minutes.toString().padStart(2, '0')
     const formattedSeconds = seconds.toString()
 
     // Affichage du résultat
-    this.displayTarget.textContent = `${formattedSeconds}`
+    // this.displayTarget.textContent = `${formattedMinutes}:${formattedSeconds}`
+    // this.displayTarget.textContent = `${Math.floor(timeRemaining)}`
+    // this.displayTarget.textContent = `${proportion}`
+    // this.displayTarget.textContent = `${Math.floor(newWidth)}`
+    // this.displayTarget.textContent = `${Math.floor(now/1000)}`
   }
 }
