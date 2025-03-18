@@ -5,11 +5,18 @@ export default class extends Controller {
 
   connect() {
     console.log("HelpCallsController connected")
+    this.overlay = document.createElement('div')
+    this.overlay.className = 'overlay'
+    document.body.appendChild(this.overlay)
   }
 
   togglePopup() {
     console.log("togglePopup called")
     this.popupTarget.classList.toggle("hidden")
+    this.toggleOverlay()
+    if (!this.popupTarget.classList.contains("hidden")) {
+      this.centerElement(this.popupTarget.querySelector('.popup-content'))
+    }
   }
 
   handleOption(event) {
@@ -18,20 +25,18 @@ export default class extends Controller {
     let message = ""
     switch (option) {
       case "aller-aux-wc":
-        message = "Demande à ton professeur."
+        message = "<strong style='font-size: 1.2em;'>Va aux toilettes.</strong>"
         break
       case "trop-de-bruit":
-        message = "Mets ton casque anti-bruit."
+        message = "<strong style='font-size: 1.2em;'>Mets ton casque anti-bruit.</strong>"
         break
       case "j-ai-une-question":
-        message = "Pose la question à ton professeur."
+        message = "<strong style='font-size: 1.2em;'>Pose une question à quelqu'un.</strong>"
         break
       default:
-        message = "Option non reconnue."
+        message = "<strong style='font-size: 1.2em;'>Option non reconnue.</strong>"
     }
-    console.log(message)
-    console.log(this.messageTarget)
-    this.messageTarget.textContent = message
+    this.messageTarget.innerHTML = message
     this.currentOption = option
     this.togglePopup()
     this.showConfirmation()
@@ -40,13 +45,14 @@ export default class extends Controller {
   showConfirmation() {
     console.log("showConfirmation called")
     this.confirmationTarget.classList.remove("hidden")
+    this.centerElement(this.confirmationTarget)
+    this.showOverlay()
   }
 
   confirmResolution() {
     console.log("confirmResolution called")
     alert("👍 Super ! Le problème est résolu.")
-    this.confirmationTarget.classList.add("hidden")
-    this.closeScenarioPopup() // Ferme le popup du scénario social
+    this.closeAll()
   }
 
   reopenHelp() {
@@ -60,57 +66,98 @@ export default class extends Controller {
     const scenarioContent = this.getScenarioContent(this.currentOption)
     this.scenarioContentTarget.innerHTML = scenarioContent
     this.scenarioPopupTarget.classList.remove("hidden")
+    this.confirmationTarget.classList.add("hidden")
+    this.centerElement(this.scenarioPopupTarget.querySelector('.scenario-popup-content'))
+    this.showOverlay()
   }
 
   closeScenarioPopup() {
     console.log("closeScenarioPopup called")
     this.scenarioPopupTarget.classList.add("hidden")
+    this.confirmationTarget.classList.remove("hidden")
+    this.centerElement(this.confirmationTarget)
   }
 
+  closeAll() {
+    this.popupTarget.classList.add("hidden")
+    this.confirmationTarget.classList.add("hidden")
+    this.scenarioPopupTarget.classList.add("hidden")
+    this.hideOverlay()
+  }
+
+  centerElement(element) {
+    const windowHeight = window.innerHeight
+    const elementHeight = element.offsetHeight
+    element.style.top = `${Math.max((windowHeight - elementHeight) / 2, 0)}px`
+  }
+
+  toggleOverlay() {
+    if (this.overlay.style.display === 'block') {
+      this.hideOverlay()
+    } else {
+      this.showOverlay()
+    }
+  }
+
+  showOverlay() {
+    this.overlay.style.display = 'block'
+    document.body.style.overflow = 'hidden'
+  }
+
+  hideOverlay() {
+    this.overlay.style.display = 'none'
+    document.body.style.overflow = 'auto'
+  }
   getScenarioContent(option) {
-    switch (option) {
-      case "aller-aux-wc":
-        return `
-          <h3>🚽 Scénario social : Demander pour aller aux toilettes</h3>
-          <ol>
-            <li><span class="picto">🤔</span> Je remarque que j'ai besoin d'aller aux toilettes.</li>
-            <li><span class="picto">🖐️</span> Je lève la main calmement.</li>
-            <li><span class="picto">⏳</span> J'attends que le professeur me donne la parole.</li>
-            <li><span class="picto">🗣️</span> Je dis poliment : "Excusez-moi, puis-je aller aux toilettes s'il vous plaît ?"</li>
-            <li><span class="picto">👍</span> Si le professeur dit oui, je me lève doucement et je sors de la classe.</li>
-            <li><span class="picto">🚫</span> Si le professeur dit non, je reste calme et j'attends le moment approprié.</li>
-            <li><span class="picto">🔄</span> Quand je reviens, je rentre discrètement et je reprends mon travail.</li>
+  switch (option) {
+    case "aller-aux-wc":
+      return `
+        <div class="scenario scenario-wc">
+          <button class="close-button" aria-label="Fermer" data-action="click->help-calls#closeScenarioPopup">x</button>
+          <h3 class="scenario-title"><span class="scenario-icon">🚽</span> Demander pour aller aux toilettes</h3>
+          <ol class="scenario-steps">
+            <li class="scenario-step"><span class="picto">🤔</span> <span class="step-text">Je remarque que j'ai besoin d'aller aux toilettes</span></li>
+            <li class="scenario-step"><span class="picto">🖐️</span> <span class="step-text">Je lève la main calmement</span></li>
+            <li class="scenario-step"><span class="picto">⏳</span> <span class="step-text">J'attends que le professeur me donne la parole</span></li>
+            <li class="scenario-step"><span class="picto">🗣️</span> <span class="step-text">Je dis poliment : "Excusez-moi, puis-je aller aux toilettes s'il vous plaît ?"</span></li>
+            <li class="scenario-step"><span class="picto">👍</span> <span class="step-text">Si oui, je sors calmement</span></li>
+            <li class="scenario-step"><span class="picto">🚫</span> <span class="step-text">Si non, j'attends un moment approprié</span></li>
+            <li class="scenario-step"><span class="picto">🔄</span> <span class="step-text">Je reviens discrètement</span></li>
           </ol>
-        `
-      case "trop-de-bruit":
-        return `
-          <h3>🔊 Scénario social : Gérer le bruit excessif</h3>
-          <ol>
-            <li><span class="picto">👂</span> Je remarque que le bruit me dérange.</li>
-            <li><span class="picto">😌</span> Je prends une grande respiration pour rester calme.</li>
-            <li><span class="picto">🎧</span> Je sors mon casque anti-bruit de mon sac.</li>
-            <li><span class="picto">🤫</span> Je mets doucement mon casque sur mes oreilles.</li>
-            <li><span class="picto">🖐️</span> Si le bruit est toujours trop fort, je lève la main.</li>
-            <li><span class="picto">🗣️</span> Quand le professeur me donne la parole, je dis : "Excusez-moi, le bruit me gêne beaucoup."</li>
-            <li><span class="picto">👂</span> J'écoute la réponse du professeur et je suis ses instructions.</li>
+        </div>`
+
+    case "trop-de-bruit":
+      return `
+        <div class="scenario scenario-noise">
+          <button class="close-button" aria-label="Fermer" data-action="click->help-calls#closeScenarioPopup">x</button>
+          <h3 class="scenario-title"><span class="scenario-icon">🔊</span> Gérer le bruit excessif</h3>
+          <ol class="scenario-steps">
+            <li class="scenario-step"><span class="picto">👂</span> <span class="step-text">Je remarque que le bruit me dérange</span></li>
+            <li class="scenario-step"><span class="picto">😌</span> <span class="step-text">Je respire profondément</span></li>
+            <li class="scenario-step"><span class="picto">🎧</span> <span class="step-text">Je mets mon casque anti-bruit</span></li>
+            <li class="scenario-step"><span class="picto">🖐️</span> <span class="step-text">Si nécessaire, je lève la main</span></li>
+            <li class="scenario-step"><span class="picto">🗣️</span> <span class="step-text">"Excusez-moi, le bruit me gêne"</span></li>
+            <li class="scenario-step"><span class="picto">👂</span> <span class="step-text">J'écoute les instructions</span></li>
           </ol>
-        `
-      case "j-ai-une-question":
-        return `
-          <h3>❓ Scénario social : Poser une question en classe</h3>
-          <ol>
-            <li><span class="picto">💡</span> Je réalise que j'ai une question sur le cours.</li>
-            <li><span class="picto">⏳</span> J'attends un moment où le professeur ne parle pas.</li>
-            <li><span class="picto">🖐️</span> Je lève la main et j'attends patiemment.</li>
-            <li><span class="picto">🗣️</span> Quand le professeur me donne la parole, je dis : "Excusez-moi, j'ai une question."</li>
-            <li><span class="picto">❓</span> Je pose ma question clairement et brièvement.</li>
-            <li><span class="picto">👂</span> J'écoute attentivement la réponse du professeur.</li>
-            <li><span class="picto">🤔</span> Si je ne comprends pas, je peux dire : "Pourriez-vous expliquer autrement, s'il vous plaît ?"</li>
-            <li><span class="picto">🙏</span> Je remercie le professeur pour son explication.</li>
+        </div>`
+
+    case "j-ai-une-question":
+      return `
+        <div class="scenario scenario-question">
+          <button class="close-button" aria-label="Fermer" data-action="click->help-calls#closeScenarioPopup"></button>
+          <h3 class="scenario-title"><span class="scenario-icon">❓</span> Poser une question en classe</h3>
+          <ol class="scenario-steps">
+            <li class="scenario-step"><span class="picto">💡</span> <span class="step-text">Je repère un moment approprié</span></li>
+            <li class="scenario-step"><span class="picto">🖐️</span> <span class="step-text">Je lève la main</span></li>
+            <li class="scenario-step"><span class="picto">🗣️</span> <span class="step-text">"J'ai une question s'il vous plaît"</span></li>
+            <li class="scenario-step"><span class="picto">❓</span> <span class="step-text">Je pose ma question clairement</span></li>
+            <li class="scenario-step"><span class="picto">🤔</span> <span class="step-text">Si besoin : "Pourriez-vous répéter ?"</span></li>
+            <li class="scenario-step"><span class="picto">🙏</span> <span class="step-text">Je remercie</span></li>
           </ol>
-        `
-      default:
-        return "<p>Aucun scénario disponible pour cette situation.</p>"
+        </div>`
+
+    default:
+      return `<p>Scénario non disponible pour cette situation.</p>`
     }
   }
 }

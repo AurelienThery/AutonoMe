@@ -11,6 +11,8 @@
 require "open-uri"
 # Pour pouvoir générer des dates d'activités
 require 'date'
+# Pour parser les fichiers avec les utilisateurs et toutes les activités
+require "csv"
 
 #Nettoyage de la base (efface les users de la DB avant d'en créer de nouveaux)
 Activity.destroy_all
@@ -29,11 +31,11 @@ User.create(
   last_name:"Martin",
   address: "15 rue Baste, 33300 Bordeaux",
   userable: Child.create
-)
+  )
 file = URI.parse(Cloudinary::Utils.cloudinary_url("Simon_t7r62g")).open
   User.last.photo.attach(io: file, filename: "#{User.last.first_name}.jpeg", content_type:"image/jpeg")
   User.last.save
-puts "Simon a été créé"
+puts "#{User.last.first_name} a été créé"
 
 # création du user Père
 User.create(
@@ -68,7 +70,7 @@ User.create(
   password:"123456",
   email: "michel@lewagon.org",
   first_name: "Michel",
-  last_name:"Michel",
+  last_name:"Carpaccio",
   address: "12 rue Paul Berthelot, 33300 Bordeaux",
   userable: Educator.create
 )
@@ -172,29 +174,77 @@ puts "Jessica (educatrice) a été créé"
 
 puts "Création des activités d'une journée courte"
 
-LIST_ACTIVITIES = %w[Trajet_aller Mathematiques Français Recreation Histoire Cantine Geographie Sport Ping_Pong Gaming DemoDay Trajet_retour  Salle_de_bain Repas Tv]
-LIST_DESCRIPTIONS = %w[Matin Salle_204 Salle_140 Cour_Collège Salle_129 Réfectoire Salle_224 Sport_GymnaseA Entrainement Jeux_PC DemoDay_leWagon Soir  Douche Repas_Famille EmissionTv]
-LIST_PICTURES = %w[college_jiemug cours_maths_jtebnf cours_francais_fdeyk0 récréation_uhj8un cours_histoire_tlsvxi cantine_eek480 classe_géographie_wdumh3 gymnase_kvsgdc pingpong_mpwidx gaming_xxtqo7 lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn maison_j3nvou  sdb_adclbw repas_dm1z4l salontv_yjuodu]
-LIST_ACTIV_TYPES = %w[journey activity activity breaktime activity breaktime activity activity activity activity activity journey   activity activity breaktime]
-LIST_DURATION = %w[1800 3600 3600 1800 5400 3600 5400 5400 3600 3600 1800 1800 1800 1800 5400]
+# LIST_ACTIVITIES = ["Trajet collège", "Mathematiques", "Français", "Recreation", "Histoire", "Cantine", "Geographie", "Sport", "Ping Pong", "Gaming", "DemoDay", "Trajet de retour",  "Salle de bain", "Repas", "Tv"]
+# LIST_DESCRIPTIONS = %w[Matin Salle_204 Salle_140 Cour_Collège Salle_129 Réfectoire Salle_224 Sport_GymnaseA Entrainement Jeux_PC DemoDay_leWagon Soir  Douche Repas_Famille EmissionTv]
+# LIST_PICTURES = %w[college_jiemug cours_maths_jtebnf cours_francais_fdeyk0 récréation_uhj8un cours_histoire_tlsvxi cantine_eek480 classe_géographie_wdumh3 gymnase_kvsgdc pingpong_mpwidx gaming_xxtqo7 lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn maison_j3nvou  sdb_adclbw repas_dm1z4l salontv_yjuodu]
+# LIST_ACTIV_TYPES = %w[journey activity activity breaktime activity breaktime activity activity activity activity activity journey   activity activity breaktime]
+# LIST_DURATION = %w[1800 3600 3600 1800 5400 3600 5400 5400 3600 3600 1800 1800 1800 1800 5400]
 
-DAY_STARTS_AT = DateTime.tomorrow.to_time + 8 * 3600
+# DAY_STARTS_AT = DateTime.tomorrow.to_time + 8 * 3600
 
-LIST_ACTIVITIES.each_with_index do |activite, index|
-  activite = Activity.new(
-    name: LIST_ACTIVITIES[index],
-    starting_date: DAY_STARTS_AT + (index * 3600),
-    ending_date: DAY_STARTS_AT + (index * 3600) + (LIST_DURATION[index].to_i),
-    like: true,
-    description: LIST_DESCRIPTIONS[index],
-    # activity_pic_id: "",
+# LIST_ACTIVITIES.each_with_index do |activite, index|
+#   activite = Activity.new(
+#     name: LIST_ACTIVITIES[index],
+#     starting_date: DAY_STARTS_AT + (index * 3600),
+#     ending_date: DAY_STARTS_AT + (index * 3600) + (LIST_DURATION[index].to_i),
+#     like: true,
+#     description: LIST_DESCRIPTIONS[index],
+#     child_id: Child.last.id,
+#     educator_id: Educator.all.sample.id,
+#     relative_id: Relative.all.sample.id,
+#     activity_type: LIST_ACTIV_TYPES[index]
+#   )
+#   file = URI.parse(Cloudinary::Utils.cloudinary_url(LIST_PICTURES[index])).open
+#   activite.photo.attach(io: file, filename: "#{LIST_ACTIVITIES[index]}.jpeg", content_type:"image/jpeg")
+#   activite.save
+#   puts "#{activite.name} créé"
+# end
+
+filetoday = Rails.root.join('db', 'data', 'today_seeds.csv')
+filecollege = Rails.root.join('db', 'data', 'college_seeds.csv')
+
+# Initialisation de la date du jour (démarrant à 00:00:00)
+TODAY = Date.today.to_time + 3600 # on considère qu'aujourd'hui c'est vendredi :-)
+MONDAY = TODAY + 86400*2    # donc dans deux jours c'est lundi :-)
+# puts TODAY
+# puts filetoday
+
+# Creation des activité spécifiques à la journée demo day
+CSV.foreach(filetoday, headers: :first_row, col_sep: ';') do |row|
+  today_activity = Activity.new(
+    name: row['name'],
+    activity_type: row['activity_type'],
+    description: row['description'],
+    starting_date: TODAY + row['starting_time'].to_i,
+    ending_date: TODAY + row['starting_time'].to_i + row['duration'].to_i,
     child_id: Child.last.id,
     educator_id: Educator.all.sample.id,
-    relative_id: Relative.all.sample.id,
-    activity_type: LIST_ACTIV_TYPES[index]
-)
-  file = URI.parse(Cloudinary::Utils.cloudinary_url(LIST_PICTURES[index])).open
-  activite.photo.attach(io: file, filename: "#{LIST_ACTIVITIES[index]}.jpeg", content_type:"image/jpeg")
-  activite.save
-  puts "#{activite.name} créé"
+    relative_id: Relative.all.sample.id
+  )
+  file = URI.parse(Cloudinary::Utils.cloudinary_url(row['picture'])).open
+  today_activity.photo.attach(io: file, filename: "#{today_activity.name}.jpeg", content_type:"image/jpeg")
+  today_activity.save
+  puts "#{today_activity.name} créé"
+end
+
+# Creation des activités d'une semaine au collège
+day = MONDAY
+1.times do
+  CSV.foreach(filecollege, headers: :first_row, col_sep: ';') do |row|
+    college_activity = Activity.new(
+      name: row['name'],
+      activity_type: row['activity_type'],
+      description: row['description'],
+      starting_date: day + row['starting_time'].to_i,
+      ending_date: day + row['starting_time'].to_i + row['duration'].to_i,
+      child_id: Child.last.id,
+      educator_id: Educator.all.sample.id,
+      relative_id: Relative.all.sample.id
+    )
+    file = URI.parse(Cloudinary::Utils.cloudinary_url(row['picture'])).open
+    college_activity.photo.attach(io: file, filename: "#{college_activity.name}.jpeg", content_type: "image/jpeg")
+    college_activity.save
+    puts "#{college_activity.name} créé"
+  end
+  day += 1
 end
