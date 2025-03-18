@@ -25,7 +25,7 @@
           <%# the rest of the information of the activity is displayed on demand %>
             <div data-toggle-details-target="togglableElement"
                 class="card-body d-none">
-              <%= render "activity_details", activity: @current_activity  %>
+              <%= render "activity_card_details", activity: @current_activity  %>
             </div>
       </div>
   <% end %>
@@ -59,7 +59,7 @@
         <%# the rest of the information of the activity is displayed on demand %>
         <div data-toggle-details-target="togglableElement"
             class="card-body d-none">
-          <%= render "activity_details", activity: activity  %>
+          <%= render "activity_card_details", activity: activity  %>
         </div>
       </div>
       <%# keep the ending date of this activity to compare with the next one %>

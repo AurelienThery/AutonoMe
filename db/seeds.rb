@@ -15,6 +15,7 @@ require 'date'
 require "csv"
 
 #Nettoyage de la base (efface les users de la DB avant d'en créer de nouveaux)
+ChecklistItem.destroy_all
 Activity.destroy_all
 Child.destroy_all
 Relative.destroy_all
@@ -215,6 +216,7 @@ CSV.foreach(filetoday, headers: :first_row, col_sep: ';') do |row|
     name: row['name'],
     activity_type: row['activity_type'],
     description: row['description'],
+    address: row['address'],
     starting_date: TODAY + row['starting_time'].to_i,
     ending_date: TODAY + row['starting_time'].to_i + row['duration'].to_i,
     child_id: Child.last.id,
@@ -225,6 +227,10 @@ CSV.foreach(filetoday, headers: :first_row, col_sep: ';') do |row|
   today_activity.photo.attach(io: file, filename: "#{today_activity.name}.jpeg", content_type:"image/jpeg")
   today_activity.save
   puts "#{today_activity.name} créé"
+
+  # Création des checklist items associés à l'activité
+  ChecklistItem.create!(activity: today_activity, content: "Prend le livre de #{today_activity.name}")
+  puts "Checklist pour #{today_activity.name} créée"
 end
 
 # Creation des activités d'une semaine au collège
@@ -235,6 +241,7 @@ day = MONDAY
       name: row['name'],
       activity_type: row['activity_type'],
       description: row['description'],
+      address: row['address'],
       starting_date: day + row['starting_time'].to_i,
       ending_date: day + row['starting_time'].to_i + row['duration'].to_i,
       child_id: Child.last.id,
@@ -245,6 +252,10 @@ day = MONDAY
     college_activity.photo.attach(io: file, filename: "#{college_activity.name}.jpeg", content_type: "image/jpeg")
     college_activity.save
     puts "#{college_activity.name} créé"
+
+    # Création des checklist items associés à l'activité
+    ChecklistItem.create!(activity: college_activity, content: "Prend le livre de #{college_activity.name}")
+    puts "Checklist pour #{college_activity.name} créée"
   end
   day += 1
 end

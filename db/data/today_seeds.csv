@@ -1,16 +1,16 @@
-name;activity_type;heure_debut;starting_time;duree;duration;description;picture
-Trajet wagon;journey;08:15:00;29700;00:30:00;1800;Tramway;lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn
-Daily review;activity;09:00:00;32400;00:55:00;3300;Point quotidien avec toute l'équipe;cours_maths_jtebnf
-Pause cafe;breaktime;09:55:00;35700;00:15:00;900;petit mate pour déborder d'énergie;recreation_uhj8un
-Debug;activity;10:10:00;36600;00:55:00;3300;c'est reparti, le code progresse;cours_histoire_tlsvxi
-Live Code;activity;11:10:00;40200;00:55:00;3300;Vocabulaire:  situations de la vie quotidienne, comme les descriptions physiques et de personnalité, les objets de la maison, les émotions, les métiers, les saisons, les animaux. Exercices pratiques :  jeux de mots, des cartes mémoire (flashcards).;classe_geographie_wdumh3
-Cantine;activity;12:10:00;43800;00:50:00;3000;miam;cantine_eek480
-Prépatation demo;activity;13:30:00;48600;01:25:00;5100;Activité: ping-pong;pingpong_mpwidx
-Répetition scenario;activity;15:00:00;54000;00:55:00;3300;Exercices du jour, revision des cours pour le lendemain;cours_maths_jtebnf
-Trajet maison;journey;16:00:00;57600;00:30:00;1800;Tramway;maison_j3nvou
-Gouter;breaktime;16:30:00;59400;00:20:00;1200;miam;repas_dm1z4l
-Trajet wagon;journey;18:00:00;64800;00:30:00;1800;Tramway;lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn
-Demo Day;activity;18:30:00;66600;01:30:00;5400;Présentation des projets des bootcamp: Developpeur web, Data Analyst, Data Scientist.;lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn
-Repas;breaktime;19:30:00;70200;00:30:00;1800;Buffet offert par le wagon;repas_dm1z4l
-Trajet maison;journey;20:00:00;72000;00:30:00;1800;Tramway;maison_j3nvou
-Salle de bain;activity;20:45:00;74700;00:10:00;600;Brossage de dent;sdb_adclbw
+name;activity_type;heure_debut;starting_time;duree;duration;description;picture;address
+Trajet wagon;journey;08:15:00;29700;00:30:00;1800;Tramway;lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+Daily review;activity;09:00:00;32400;00:55:00;3300;Avec toute l'equipe;cours_maths_jtebnf;109 Cour du Médoc 33300 Bordeaux
+Pause cafe;breaktime;09:55:00;35700;00:15:00;900;petit mate;recreation_uhj8un;109 Cour du Médoc 33300 Bordeaux
+Debug;activity;10:10:00;36600;00:55:00;3300;c'est reparti;cours_histoire_tlsvxi;109 Cour du Médoc 33300 Bordeaux
+Live Code;activity;11:10:00;40200;00:55:00;3300;Vocabulaire: situations de la vie quotidienne, comme les descriptions physiques et de personnalité, les objets de la maison, les émotions, les métiers, les saisons, les animaux. Exercices pratiques :  jeux de mots, des cartes mémoire (flashcards).;classe_geographie_wdumh3;109 Cour du Médoc 33300 Bordeaux
+Cantine;activity;12:10:00;43800;00:50:00;3000;miam;cantine_eek480;109 Cour du Médoc 33300 Bordeaux
+Préparation demo;activity;13:30:00;48600;01:25:00;5100;Activité: ping-pong;pingpong_mpwidx;7 Rue André Maginot 33200 Bordeaux
+Répetition scenario;activity;15:00:00;54000;00:55:00;3300;Exercices du jour, revision des cours pour le lendemain;cours_maths_jtebnf;109 Cour du Médoc 33300 Bordeaux
+Trajet maison;journey;16:00:00;57600;00:30:00;1800;Tramway;maison_j3nvou;15 rue Baste, 33300 Bordeaux
+Gouter;breaktime;16:30:00;59400;00:20:00;1200;miam;repas_dm1z4l;15 rue Baste, 33300 Bordeaux
+Trajet wagon;journey;18:00:00;64800;00:30:00;1800;Tramway;lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+Demo Day;activity;18:30:00;66600;01:30:00;5400;Présentation des projets des bootcamp: Developpeur web, Data Analyst, Data Scientist.;lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+repas;breaktime;19:30:00;70200;00:30:00;1800;Buffet offert par le wagon;repas_dm1z4l;15 rue Baste, 33300 Bordeaux
+Trajet maison;journey;20:00:00;72000;00:30:00;1800;Tramway;maison_j3nvou;15 rue Baste, 33300 Bordeaux
+Salle de bain;activity;20:45:00;74700;00:10:00;600;Brossage de dent;sdb_adclbw;15 rue Baste, 33300 Bordeaux
