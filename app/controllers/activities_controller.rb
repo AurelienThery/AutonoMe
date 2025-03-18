@@ -4,12 +4,12 @@ class ActivitiesController < ApplicationController
     @activities = Activity.all.order(starting_date: "asc")
     @current_activity = @activities.find_by(activity_status: "inprogress")
     @next_activity = @activities.find_by(activity_status: "planned")
-    @markers = @acitivities.geocoded.map do |flat|
-    {
-      lat: flat.latitude,
-      lng: flat.longitude
-    }
-
+    @markers = @activities.geocoded.map do |activity|
+      {
+        lat: activity.latitude,
+        lng: activity.longitude
+      }
+    end
   end
 
   def show
