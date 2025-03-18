@@ -44,7 +44,7 @@
   font-size: large;
   font-weight: bold;
   border: 1px solid $dark-blue;
-  z-index: 1; // Assure qu'il est au-dessus des autres éléments
+  z-index: 1; // Make sure it is above the other components except the timer (see below)
 }
 
 .activity-name {

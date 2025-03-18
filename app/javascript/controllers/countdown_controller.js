@@ -35,30 +35,21 @@ export default class extends Controller {
       return
     }
 
-    // Calcul du temps total
-    const totalDuration = this.durationValue // convertir en millisecondes
+    // Get the scheduled duration of the activity
+    const totalDuration = this.durationValue
 
-    // Calcul de la proportion de temps restant
+    // Calculation of area to cover proportionnaly to time elapsed
     const proportion = ((1-(timeRemaining / totalDuration)) * 60 )
 
 
-    // Calcul de la nouvelle largeur
+    // Width adapted to integer value
     const newWidth = Math.max(0, Math.floor(proportion))
 
     // Application de la nouvelle largeur
     this.progressBarTarget.style.width = `${newWidth}px`
 
-    // Calcul des secondes restantes (uniquement pour vérification)
-    const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000)
-    const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60))
-    const formattedMinutes = minutes.toString().padStart(2, '0')
-    const formattedSeconds = seconds.toString()
-
-    // Affichage du résultat
-    // this.displayTarget.textContent = `${formattedMinutes}:${formattedSeconds}`
-    // this.displayTarget.textContent = `${Math.floor(timeRemaining)}`
-    // this.displayTarget.textContent = `${proportion}`
-    // this.displayTarget.textContent = `${Math.floor(newWidth)}`
-    // this.displayTarget.textContent = `${Math.floor(now/1000)}`
+    // For testing purpose only (display is not on the features list)
+    // const seconds = Math.floor((timeRemaining / 1000))
+    // this.displayTarget.textContent = `${seconds}`
   }
 }
