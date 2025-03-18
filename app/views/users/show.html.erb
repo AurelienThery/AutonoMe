@@ -1,63 +1,29 @@
-<div class="fixed-under-navbar bg-secondary text-white">
-  <%= render "activities/current_activity", activity: @current_activity %>
+<div class="fixed-under-navbar bg-secondary text-white mt-2">
+ <h2>Check list Day</h2>
 </div>
 
 <h2>Bonsoir <%= "#{@user.first_name}" %></h2>
-<div id="carouselExampleCaptions" class="carousel slide mb-4">
-  <div class="carousel-indicators">
-    <% @activities.each_with_index do |activity, index| %>
-      <button
-      type="button"
-      data-bs-target="#carouselExampleCaptions"
-      data-bs-slide-to="<%= index %>"
-      class="<%= 'active' if index == 0 %>"
-      aria-current="<%= 'true' if index == 0 %>"
-      aria-label="Slide <%= index + 1 %>">
-    </button>
+<% @activities.each do |activity| %>
+    <% if activity.activity_status != "finished" %>
+        <div class="card-agenda <%=activity.activity_type%>"
+            data-controller="toggle-details"
+              style="height:  <%= (activity.ending_date - activity.starting_date)/40%>px">
+          <div class = "starting-time">
+              <p><%= activity.starting_date.strftime("%H:%M")  %></p>
+          </div>
+          <div class="card-header">
+            <div class= "activity-name"><%= activity.name %></div>
+            <button data-action="click->toggle-details#display"
+                    data-toggle-details-activity-id-param="<%= activity.id %>"
+                    class="btn toggle-details">
+              <i class="fa-solid fa-caret-down" data-toggle-details-target="caretIcon"></i>
+            </button>
+          </div>
+          <%# the rest of the information of the activity is displayed on demand %>
+          <div data-toggle-details-target="togglableElement"
+              class="card-body d-none">
+            <%= render "activity_details", activity: activity  %>
+          </div>
+        </div>
+    <% end %> <%# close the condition if status not finished  %>
   <% end %>
-
-
-
-  </div>
-  <div class="carousel-inner">
-    <% @activities.each_with_index do |activity, index| %>
-    <div class="carousel-item <%= 'active' if index == 0 %>">
-       <%= cl_image_tag(activity.photo.key, width: 400, height: 400, crop: :fill) %>
-
-      <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Some representative placeholder content for the first slide.</p>
-      </div>
-    </div>
-    <% end %>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-
-
-<ol class="list-group list-group-numbered w-100 mb-5">
-  <p>Voici le déroulement de ma journée du
-  <%= @activities.first.starting_date.strftime("%A %d %B") %></p>
-  <% @activities.each do |activity| %>
-
-    <li class="list-group-item d-flex justify-content-between fixed-width-item">
-      <div class="ms-2 me-auto">
-        <div class="fw-bold"><%= "#{activity.name}" %></div>
-        <%= activity.description %>
-
-      </div>
-      <span class="badge bg-primary rounded-pill"><%= "#{activity.starting_date.strftime("%Hh%M")}" %></span>
-    </li>
-<% end %>
-</ol>
-
-
-
-<%# raise %>
