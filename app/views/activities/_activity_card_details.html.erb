@@ -1,0 +1,42 @@
+<div class="right-side">
+  <div class="card-details">
+      <div class="image-container">
+      <%=cl_image_tag(activity.photo.key)%>
+      <div class="overlay-image-educator">
+        <%=cl_image_tag(activity.educator.user.photo.key, crop: :fill, class: "avatar-large" )%>
+      </div>
+      </div>
+  <%# <p><%= activity.description </p> %>
+  <div class="container pb-1" style="background-color: #D2E4FE">
+    <% if activity == @next_activity && @current_activity.nil? %>
+      <button class="btn btn-update btn-sm"
+      data-action="click->update-activity-button#start"
+      data-activity-id="<%= activity.id %>">
+      Start !
+      </button>
+    <% end %>
+    <% if activity.activity_status == "inprogress" %>
+      <button class="btn btn-update btn-sm"
+        data-action="click->update-activity-button#finish"
+        data-activity-id="<%= activity.id %>">
+        Done !
+      </button>
+    <% end %>
+        <p>lorem ipsum orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+  </div>
+  <div class="flex-container-items">
+    <div class="index-items1">
+      <ul>
+        <li>to do Item</li>
+        <li>to do Item</li>
+      </ul>
+    </div>
+    <div class="index-items2">
+      <ul>
+    <li>to do Item</li>
+    <li>to do Item</li>
+  </ul>
+    </div>
+  </div>
+</div>
+  </div>
