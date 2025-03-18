@@ -1,6 +1,6 @@
 <h1><%=@activity.name %></h1>
 
-<%=cl_image_tag(@activity.photo.key,width: 400, height: 300, crop: :fill)%>
+<%# <%=cl_image_tag(@activity.photo.key,width: 400, height: 300, crop: :fill)%>
 
 <%# <div data-controller="help-calls">
   <button data-action="click->help-calls#togglePopup" class="help-button" aria-label="Demander de l'aide">
@@ -40,4 +40,4 @@
 
 
 <p><%=@activity.description%></p>
-<%=cl_image_tag(@activity.educator.user.photo.key,width: 100, height: 90, crop: :fill)%>
+<%# <%=cl_image_tag(@activity.educator.user.photo.key,width: 100, height: 90, crop: :fill)%>

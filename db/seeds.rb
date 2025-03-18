@@ -225,6 +225,10 @@ CSV.foreach(filetoday, headers: :first_row, col_sep: ';') do |row|
   today_activity.photo.attach(io: file, filename: "#{today_activity.name}.jpeg", content_type:"image/jpeg")
   today_activity.save
   puts "#{today_activity.name} créé"
+
+  # Création des checklist items associés à l'activité
+  ChecklistItem.create!(activity: today_activity, content: "Prend le livre de #{today_activity.name}")
+  puts "Checklist pour #{today_activity.name} créée"
 end
 
 # Creation des activités d'une semaine au collège
