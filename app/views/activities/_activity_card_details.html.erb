@@ -2,7 +2,7 @@
   <div class="card-details w-100">
       <div class="image-container">
       <%=cl_image_tag(activity.photo.key)%>
-      <div class="overlay-image-educator">
+      <div class="overlay-image-educator <%=activity.activity_type%>">
         <%=cl_image_tag(activity.educator.user.photo.key, crop: :fill, class: "avatar-large" )%>
       </div>
       </div>
