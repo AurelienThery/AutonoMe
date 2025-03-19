@@ -1,13 +1,14 @@
+<div class="margin-from-navbar mb-5"></div>
 <div class="fixed-under-navbar bg-secondary text-white mt-2">
  <h2>Check list Day</h2>
 </div>
 
-<h2>Bonsoir <%= "#{@user.first_name}" %></h2>
+<h3>Voici ce que tu dois emporter pour la journée, <%= "#{@user.first_name}" %></h3>
 <% @activities.each do |activity| %>
     <% if activity.checklist_items.any? %>
-        <div class="card-agenda <%=activity.activity_type%>"
+        <div class="card-agenda <%=activity.activity_type%> mt-1"
             data-controller="toggle-details"
-              style="height:  <%= (activity.ending_date - activity.starting_date)/40%>px">
+              style="height: 40px">
           <div class = "starting-time">
               <i class="fa-regular fa-rectangle-xmark"></i>
           </div>
