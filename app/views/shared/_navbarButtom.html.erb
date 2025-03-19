@@ -1,4 +1,4 @@
- <% if user_signed_in? && request.path != "/home" %>
+ <% if user_signed_in? && request.path != "/home" && request.path != "/"%>
  <nav class="navbar navbar-light navbar-expand w-100 fixed-bottom"
         <%# style="background: #0f071f;"> %>
         style="background: #4A4A4A;">
