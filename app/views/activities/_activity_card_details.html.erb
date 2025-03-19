@@ -2,27 +2,35 @@
   <div class="card-details w-100">
       <div class="image-container">
       <%=cl_image_tag(activity.photo.key)%>
-      <div class="overlay-image-educator">
+      <div class="overlay-image-educator <%=activity.activity_type%>">
         <%=cl_image_tag(activity.educator.user.photo.key, crop: :fill, class: "avatar-large" )%>
       </div>
       </div>
   <%# <p><%= activity.description </p> %>
-  <div class="container pb-1" style="background-color: #D2E4FE">
-    <% if activity == @next_activity && @current_activity.nil? %>
-      <button class="btn btn-update btn-sm"
-      data-action="click->update-activity-button#start"
-      data-activity-id="<%= activity.id %>">
-      Start !
-      </button>
-    <% end %>
-    <% if activity.activity_status == "inprogress" %>
-      <button class="btn btn-update btn-sm"
-        data-action="click->update-activity-button#finish"
+  <div style="background-color: #D2E4FE" class="pb-3">
+    <div class="container pb-1" >
+      <% if activity == @next_activity && @current_activity.nil? %>
+        <button class="btn btn-update btn-sm"
+        data-action="click->update-activity-button#start"
         data-activity-id="<%= activity.id %>">
-        Done !
-      </button>
-    <% end %>
-        <p><%= activity.description  %></p>
+        Start !
+        </button>
+      <% end %>
+      <% if activity.activity_status == "inprogress" %>
+        <button class="btn btn-update btn-sm"
+          data-action="click->update-activity-button#finish"
+          data-activity-id="<%= activity.id %>">
+          Done !
+        </button>
+      <% end %>
+      <p><%= activity.description%></p>
+    </div>
+    <div class="text-center">
+    <% next_activity = Activity.where("starting_date > ?", activity.starting_date)
+                              .order(starting_date: :asc)
+                              .first %>
+      <%= render "journey_map", next_activity: next_activity, mapbox_api_key: @mapbox_api_key, activity: activity%>
+    </div>
   </div>
   <div class="flex-container-items">
     <div class="index-items1">
