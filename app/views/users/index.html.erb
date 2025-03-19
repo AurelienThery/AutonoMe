@@ -4,16 +4,24 @@
   <p>Pas d'activité démarrée pour le moment</p>
   <%# espace d'affichage de l'activité en cours s'il y en a une  %>
   </div>
-  <div class="block-logo">
+  <div class="block-logo"> <%# Display the map with current location  %>
     <div class="symbol"><%= image_tag "logo/pinmap_yellow.png", alt: "pin map" %></div>
   </div>
-  <div class="block-logo">
+  <div class="block-logo"> <%# Link to agenda view  %>
+    <%= link_to myprofil_path(current_user) do %>
     <div class="symbol"><i class="fa-solid fa-calendar"></i></div>
+    <% end %>
   </div>
-  <div class="block-logo">
-    <div class="symbol"><i class="fa-solid fa-bell"></i></div>
+  <div class="block-logo"> <%# Link to notification view  %>
+    <%= link_to myprofil_path(current_user) do %>
+      <div class="symbol"><i class="fa-solid fa-bell"></i></div>
+     <% end %>
   </div>
-  <div class="block-logo">
-    <div class="symbol">🚨</div>
+  <div class="block-logo"> <%# Display the help pop-up  %>
+    <div class="symbol">
+      <button data-action="click->help-calls#togglePopup" aria-label="Demander de l'aide">
+        🚨
+      </button>
+    </div>
   </div>
 </div>

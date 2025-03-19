@@ -19,6 +19,20 @@
   height: auto;
   display: block;
     }
+
+  button {
+    background-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  :hover,:focus {
+  transform: scale(1.05);
+}
 }
 
 .symbol {
