@@ -18,10 +18,6 @@
   border: none !important;
 }
 
-.card {
-    background-color: rgb(252, 0, 0) !important;
-
-}
 
 button {
   border: none !important;
@@ -58,7 +54,7 @@ button {
   width: 100%;
   z-index: 30; /* Place-le au-dessus du contenu principal mais derrière les overlays */
   height: 50px; /* Ajuste la hauteur selon ton design */
-  line-height: 50px; /* Centrer verticalement le texte */
+  // line-height: 50px; /* Centrer verticalement le texte */
   text-align: center;
 }
 /* TO DO move navbar css */
@@ -74,4 +70,18 @@ button {
 .navbar p {
   color: #FFC65A;
   display: inline;
+}
+
+.en-vrac {
+  position: fixed;
+  padding: 0;
+  z-index: 2000;
+  left: 161px;
+  bottom: 25px;
+  height: 50px;
+  width: 70px;
+  border-radius: 50%;
+  background-color: $grey-autonome;
+  justify-content: center;
+  align-items: center;
 }

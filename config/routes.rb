@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   # routes for stimulus controller (start/finish)
   patch 'activities/:activity_id/start', to: 'activities#start'
   patch 'activities/:activity_id/finish', to: 'activities#finish'
+  get 'home', to: 'users#index', as: 'home'
 end
