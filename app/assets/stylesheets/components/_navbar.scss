@@ -1,52 +1,12 @@
-/* Correction pour aligner le logo à gauche et l'avatar à droite */
 .navbar-lewagon {
-  justify-content: space-between;
-  background: #4A4A4A !important; /* Cohérence avec la classe .navbar */
-  padding: 0 16px; /* Ajoute un peu d'espace sur les côtés */
-}
-
-/* Corriger la position du logo et du texte */
-.navbar-brand {
-  display: flex;
-  align-items: center;
-  margin-right: 0; /* Annule la marge par défaut */
-}
-
-.navbar-brand img {
-  width: 40px;
-  margin-right: 8px; /* Espace entre le logo et le texte */
-}
-
-.navbar-brand p {
-  color: #FFC65A;
-  margin: 0; /* Supprime les marges par défaut */
-}
-
-/* Assurer que le toggler est bien aligné à droite */
-.navbar-toggler {
-  padding: 0;
-  margin-left: auto; /* Force l'alignement à droite */
-}
-
-/* Correction pour l'avatar */
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-/* Supprimer la marge automatique qui centre tout */
-* {
-  margin: 0; /* Remplace margin: auto; qui centre tout */
-  padding: 0;
-  font-family: 'Open Sans', sans-serif;
-}
-
-/* Ajouter un style pour les conteneurs du navbar */
-.navbar > div {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  width: 100%;
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
 }
