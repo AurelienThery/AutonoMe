@@ -9,10 +9,13 @@
                 <% end %>
             </li>
 
-            <li class="nav-item" role="presentation">
-              <%= link_to root_path, class: "btn btn-outline-light me-2 nav-link2" do %>
-                  <span><i class="fa-solid fa-phone fs-2"></i></span>
-                <% end %>
+            <li class="nav-item" role="presentation" data-controller="location-map" data-location-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
+              <%= link_to "#", class: "btn btn-outline-light me-2 nav-link2", data: { action: "click->location-map#showMap" } do %>
+                <span><i class="fa-solid fa-location-dot fs-2"></i></span>
+              <% end %>
+              <div data-location-map-target="mapContainer" style="display: none; position: fixed; top: 60px; right: 10px; width: 300px; height: 300px; z-index: 1000;">
+                <button data-action="click->location-map#closeMap" class="btn btn-sm btn-danger" style="position: absolute; top: 10px; right: 10px; z-index: 1001;">Fermer</button>
+              </div>
             </li>
 
             <li class="nav-item" role="presentation">

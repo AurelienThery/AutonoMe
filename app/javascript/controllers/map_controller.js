@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import mapboxgl from 'mapbox-gl'
 
 export default class extends Controller {
-  static targets = ["container", "button"]
+  static targets = ["container"]
   static values = {
     destination: String,
     apiKey: String,
@@ -11,98 +11,77 @@ export default class extends Controller {
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
-    this.map = null
-    this.isMapVisible = false
-    this.#addMarkersToMap()
-    this.#addMarkersToMap()
-    this.#fitMapToMarkers()
+    this.#initializeMap()
   }
 
-  #fitMapToMarkers() {
-    const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
-  }
-
-  #addMarkersToMap() {
-    this.markersValue.forEach((marker) => {
-      const popup = new mapboxgl.Popup().setHTML(marker.info_window_html) // Add this
-      new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
-        .setPopup(popup) // Add this
-        .addTo(this.map)
-    });
-  }
-
-  async toggleRoute() {
-    if (this.isMapVisible) {
-      this.hideMap()
-    } else {
-      await this.showRoute()
-    }
-  }
-
-  async showRoute() {
+  async #initializeMap() {
     try {
-      const currentPosition = await this.getCurrentPosition()
-      const destinationCoords = await this.geocode(this.destinationValue)
+      // Créer la carte immédiatement
+      this.map = new mapboxgl.Map({
+        container: this.containerTarget,
+        style: 'mapbox://styles/mapbox/streets-v12',
+      })
 
-      if (!this.map) {
-        this.initializeMap(currentPosition, destinationCoords)
-      }
+      // Obtenir les coordonnées
+      const [startCoords, endCoords] = await Promise.all([
+        this.#getCurrentPosition(),
+        this.#geocode(this.destinationValue)
+      ])
 
-      this.containerTarget.style.display = "block"
-      this.buttonTarget.textContent = "Fermer la carte"
-      this.isMapVisible = true
+      // Ajouter les marqueurs
+      this.#addMarkers(startCoords, endCoords)
+
+      // Ajouter le trajet
+      await this.#addRoute(startCoords, endCoords)
+
+      // Centrer sur le trajet
+      this.#centerOnRoute(startCoords, endCoords)
 
     } catch (error) {
       console.error("Erreur :", error)
-      alert("Impossible d'afficher le trajet. Vérifiez les autorisations de localisation.")
+      this.containerTarget.innerHTML = "<p>Impossible de charger la carte</p>"
     }
   }
 
-  hideMap() {
-    this.containerTarget.style.display = "none"
-    this.buttonTarget.textContent = "Voir le trajet depuis ma position"
-    this.isMapVisible = false
-  }
-
-  getCurrentPosition() {
-    return new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(
-        position => resolve([position.coords.longitude, position.coords.latitude]),
-        error => reject(error)
-      )
-    })
-  }
-
-  initializeMap(startCoords, endCoords) {
-    this.map = new mapboxgl.Map({
-      container: this.containerTarget,
-      style: 'mapbox://styles/mapbox/streets-v12',
-      center: startCoords,
-      zoom: 12
-    })
-
-    new mapboxgl.Marker({ color: '#00FF00' })
+  #addMarkers(startCoords, endCoords) {
+    // Marqueur position actuelle
+    new mapboxgl.Marker({ color: '#4CAF50' })
       .setLngLat(startCoords)
       .setPopup(new mapboxgl.Popup().setHTML("Je suis ici"))
       .addTo(this.map)
 
-    new mapboxgl.Marker({ color: '#FF0000' })
+    // Marqueur destination
+    new mapboxgl.Marker({ color: '#F44336' })
       .setLngLat(endCoords)
-      .setPopup(new mapboxgl.Popup().setHTML(`${this.nextActivityNameValue}`))
+      .setPopup(new mapboxgl.Popup().setHTML(`
+        <strong>Prochaine activité :</strong><br>
+        ${this.nextActivityNameValue}
+      `))
       .addTo(this.map)
-
-    this.addRoute(startCoords, endCoords)
-
-    const bounds = new mapboxgl.LngLatBounds()
-    bounds.extend(startCoords)
-    bounds.extend(endCoords)
-    this.map.fitBounds(bounds, { padding: 50 })
   }
 
-  async geocode(address) {
+  #centerOnRoute(startCoords, endCoords) {
+    const bounds = new mapboxgl.LngLatBounds()
+      .extend(startCoords)
+      .extend(endCoords)
+
+    this.map.fitBounds(bounds, {
+      padding: 100,
+      maxZoom: 15,
+      duration: 0
+    })
+  }
+
+  async #getCurrentPosition() {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        position => resolve([position.coords.longitude, position.coords.latitude]),
+        error => reject(new Error("Géolocalisation refusée"))
+      )
+    })
+  }
+
+  async #geocode(address) {
     const response = await fetch(
       `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${mapboxgl.accessToken}`
     )
@@ -110,7 +89,7 @@ export default class extends Controller {
     return data.features[0].center
   }
 
-  async addRoute(startCoords, endCoords) {
+  async #addRoute(startCoords, endCoords) {
     const response = await fetch(
       `https://api.mapbox.com/directions/v5/mapbox/walking/${startCoords[0]},${startCoords[1]};${endCoords[0]},${endCoords[1]}?geometries=geojson&access_token=${mapboxgl.accessToken}`
     )
@@ -132,8 +111,9 @@ export default class extends Controller {
         'line-cap': 'round'
       },
       paint: {
-        'line-color': '#3887be',
-        'line-width': 4
+        'line-color': '#2196F3',
+        'line-width': 4,
+        'line-opacity': 0.7
       }
     })
   }
