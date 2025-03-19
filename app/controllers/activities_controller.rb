@@ -12,6 +12,7 @@ class ActivitiesController < ApplicationController
         marker_html: render_to_string(partial: "marker", locals: { activity: activity })
       }
     end
+    @mapbox_api_key = ENV['MAPBOX_API_KEY']
   end
 
   def show

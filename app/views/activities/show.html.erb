@@ -1,4 +1,4 @@
 <h1>Détails de l'activité</h1>
 
 <p>Nom: <%= @activity.name %></p>
-<%= render "journey_map", next_activity: @next_activity, mapbox_api_key: @mapbox_api_key %>
+<%= render "journey_map", next_activity: @next_activity, mapbox_api_key: @mapbox_api_key, activity: @activity%>
