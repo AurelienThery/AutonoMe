@@ -1,168 +1,27 @@
 /* Homepage (Activity) */
-/* Homepage (Activity) */
 
-.back {
-  background-color: $light-autonome;
+.current-activity {
+  margin-bottom: 12px;
 }
-
-/* AutonoMe_logo 4 */
-.logo-incline-right {
-  position: absolute;
-  width: 130px;
-  height: 130px;
-  left: 200px;
-  top: 170px;
-  background: url(app/assets/images/logo/AutonoMe_logo.png);
-}
-
-/* AutonoMe_logo 5 */
-.logo-incline-left {
-  position: absolute;
-  width: 130px;
-  height: 130px;
-  left: 198px;
-  top: 385px;
-  background: url(app/assets/images/logo/AutonoMe_logo.png);
-  transform: matrix(-1, 0, 0, 1, 0, 0);
-}
-
-
-/* Notif_block */
-.block-notif {
-  position: absolute;
-  width: 228.92px;
-  height: 234.72px;
-  left: -2.92px;
-  top: 486.19px;
-}
-
-/* Polygon_notif */
-.polygon-notif {
-  position: absolute;
-  width: 198.43px;
-  height: 190.82px;
-  left: 183.46px;
-  top: 486.19px;
+.block-logo {
   background-color: $grey-autonome;
-  border-radius: 26px;
-  transform: rotate(77.62deg);
+  height: 160px;
+  width: 160px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+  max-width: 55%;
+  max-height: 55%;
+  width: auto;
+  height: auto;
+  display: block;
+    }
 }
 
-/* notif_logo */
-.logo-notif {
-  position: absolute;
-  width: 111px;
-  height: 111px;
-  left: 54px;
-  top: 545px;
-  background: url(app/assets/images/logo/notification.png);
-}
-
-/* Help_block */
-.block-help {
-  position: absolute;
-  width: 259.63px;
-  height: 259.43px;
-  left: 156.91px;
-  top: 600px;
-}
-
-/* Polygon_help */
-.polygon-help {
-  position: absolute;
-  width: 192.48px;
-  height: 192.93px;
-  left: 416.54px;
-  top: 688.3px;
-  background-color: $grey-autonome;
-  border-radius: 26px;
-  transform: rotate(117.24deg);
-}
-
-
-/* aide 1 */
-.logo-help {
-  position: absolute;
-  width: 127px;
-  height: 127px;
-  left: 223px;
-  top: 668px;
-  background: url(app/assets/images/logo/aide.png);
-}
-
-
-/* Map_block */
-.block-map {
-  position: absolute;
-  width: 273.24px;
-  height: 263.06px;
-  left: -22.46px;
-  top: 61px;
-}
-
-
-
-/* Polygon_map */
-.polygon-map {
-  position: absolute;
-  width: 225.48px;
-  height: 210.95px;
-  left: -22.46px;
-  top: 120.62px;
-  background-color: $grey-autonome;
-  border-radius: 34px;
-  transform: rotate(-15.33deg);
-}
-
-/* localisateur */
-.logo-map {
-  position: absolute;
-  width: 115px;
-  height: 115px;
-  left: 55px;
-  top: 129px;
-  background: url(app/assets/images/logo/localisateur.png);
-}
-
-/* Agenda_block */
-.block-agenda {
-  position: absolute;
-  width: 301.2px;
-  height: 305.05px;
-  left: 119.02px;
-  top: 242.01px;
-}
-
-/* Polygon_agenda */
-.polygon-agenda {
-  position: absolute;
-  width: 225.48px;
-  height: 210.95px;
-  left: 119.02px;
-  top: 428.53px;
-  background-color: $grey-autonome;
-  border-radius: 34px;
-  transform: rotate(-55.81deg);
-}
-
-
-/* Agenda */
-.logo-agenda {
-  position: absolute;
-  width: 141px;
-  height: 141px;
-  left: 198px;
-  top: 320px;
-  background: url(app/assets/images/logo/agenda.png);
-}
-
-
-/* div pour symboliser le timer*/
-.loading-bar {
-  position: absolute;
-  width: 91px;
-  height: 30px;
-  left: 213px;
-  top: 335px;
-  border-radius: 86px;
+.symbol {
+  color: $yellow-autonome;
+  font-size: 80px;
 }

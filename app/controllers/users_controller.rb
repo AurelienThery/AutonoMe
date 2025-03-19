@@ -2,10 +2,12 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show]
   before_action :set_simon, only: [:show]
 
+  def index
+  end
+
   def show
     @first_name = @user.first_name
     @activities = Activity.where(child_id: @user.userable.id).order(starting_date: "asc")
-    # @educators = Educator.where(id: @activities.educator_id)
     @current_activity = @activities.first
   end
 end
