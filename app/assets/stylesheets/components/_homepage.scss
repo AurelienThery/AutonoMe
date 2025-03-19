@@ -1,0 +1,41 @@
+/* Homepage (Activity) */
+
+.current-activity {
+  margin-bottom: 12px;
+}
+.block-logo {
+  background-color: $grey-autonome;
+  height: 160px;
+  width: 160px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+  max-width: 55%;
+  max-height: 55%;
+  width: auto;
+  height: auto;
+  display: block;
+    }
+
+  button {
+    background-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  :hover,:focus {
+  transform: scale(1.05);
+}
+}
+
+.symbol {
+  color: $yellow-autonome;
+  font-size: 80px;
+}

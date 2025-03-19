@@ -1,5 +1,5 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
-  <div class="container-fluid">
+<div class="navbar navbar-expand-sm navbar-lewagon fixed-top">
+  <div>
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "logo/AutonoMe_logo.png" %>
      <p>AutonoMe</p>
@@ -19,12 +19,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "My Profile", myprofil_path(current_user), class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "My Agenda", activites_path(current_user), class: "nav-link" %>
-          </li>
+        <%# links to profil and agenda removed because accessible from home  %>
           <li class="nav-item">
             <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
           </li>
