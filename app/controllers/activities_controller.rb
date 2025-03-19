@@ -13,7 +13,6 @@ class ActivitiesController < ApplicationController
       }
     end
     @mapbox_api_key = ENV['MAPBOX_API_KEY']
-    
   end
 
   def show
