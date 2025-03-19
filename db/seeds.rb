@@ -230,15 +230,15 @@ CSV.foreach(filetoday, headers: :first_row, col_sep: ';') do |row|
 
   # Création des checklist items associés à l'activité
   case today_activity[:name]
-  when "Mathematiques"
-    ChecklistItem.create!(activity: today_activity, content: "Prend le livre de #{today_activity.name}")
-    puts "Checklist pour #{today_activity.name} créée"
+  # when "Mathematiques"
+  #   ChecklistItem.create!(activity: today_activity, content: "Prend le livre de #{today_activity.name}")
+  #   puts "Checklist pour #{today_activity.name} créée"
   when "Demo Day"
     ChecklistItem.create!(activity: today_activity, content: "Prend ton casque anti-bruit")
     puts "Checklist pour #{today_activity.name} créée"
-  when "Anglais"
-    ChecklistItem.create!(activity: today_activity, content: "Prend le livre d'#{today_activity.name}")
-    puts "Checklist pour #{today_activity.name} créée"
+  # when "Anglais"
+  #   ChecklistItem.create!(activity: today_activity, content: "Prend le livre d'#{today_activity.name}")
+  #   puts "Checklist pour #{today_activity.name} créée"
   else
     puts "Activité ignorée : #{today_activity[:name]}"
   end
@@ -270,14 +270,14 @@ day = MONDAY
 
     case college_activity[:name]
     when "Mathematiques"
-      ChecklistItem.create!(activity: college_activity, content: "Prend le livre de #{college_activity.name}")
+      ChecklistItem.create!(activity: college_activity, content: "Prend le livre de #{college_activity.name}", completed: true )
       puts "Checklist pour #{college_activity.name} créée"
-    when "Francais"
-      ChecklistItem.create!(activity: college_activity, content: "Prend le livre de #{college_activity.name}")
-      puts "Checklist pour #{college_activity.name} créée"
-    when "Anglais"
-      ChecklistItem.create!(activity: college_activity, content: "Prend le livre d'#{college_activity.name}")
-      puts "Checklist pour #{college_activity.name} créée"
+    # when "Francais"
+    #   ChecklistItem.create!(activity: college_activity, content: "Prend le livre de #{college_activity.name}")
+    #   puts "Checklist pour #{college_activity.name} créée"
+    # when "Anglais"
+    #   ChecklistItem.create!(activity: college_activity, content: "Prend le livre d'#{college_activity.name}")
+    #   puts "Checklist pour #{college_activity.name} créée"
     else
       puts "Activité ignorée : #{college_activity[:name]}"
     end
