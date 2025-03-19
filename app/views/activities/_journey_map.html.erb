@@ -1,16 +1,21 @@
 
-<h1><%= @activity.name %></h1>
-<!-- Autres détails de l'activité -->
-<% if @activity.activity_type == "journey" && @next_activity && @next_activity.address.present? && @mapbox_api_key.present? %>
-  <div data-controller="map"
-       data-map-destination-value="<%= @next_activity.address %>"
-       data-map-api-key-value="<%= @mapbox_api_key %>"
-       data-map-next-activity-name-value="<%= @next_activity.name %>">
+<% if activity.activity_type == "journey" && next_activity && next_activity.address.present? && mapbox_api_key.present? %>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#activity-<%=activity.id %>">
+    Voir le trajet
+  </button>
+  <div class="modal fade" id="activity-<%=activity.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <h1 class="modal-title fs-5" id="exampleModalLabel">Trajet</h1>
 
-    <div data-map-target="container"
-         style="height: 500px; width: 100%; margin-top: 20px;">
+      <div data-controller="map"
+           data-map-destination-value="<%= next_activity.address %>"
+           data-map-api-key-value="<%= mapbox_api_key %>"
+           data-map-next-activity-name-value="<%= next_activity.name %>">
+        <div data-map-target="container"
+            style="height: 500px; width: 100%; margin-top: 20px;">
+        </div>
+      </div>
     </div>
-  </div>
-<% elsif @activity.activity_type == "journey" %>
-
+ </div>
 <% end %>
