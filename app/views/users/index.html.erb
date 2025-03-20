@@ -1,19 +1,27 @@
 <div class="margin-from-navbar"></div>
-<div class="container">
+<div class="container" data-controller="location-map" >
   <div class="current-activity">
   <p>Pas d'activité démarrée pour le moment</p>
   <%# espace d'affichage de l'activité en cours s'il y en a une  %>
   </div>
-  <div class="block-logo" data-controller="location-map" <%# Display the map with current location  %>
-      data-location-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
-    <%= link_to "#", data: { action: "click->location-map#showMap" } do %>
+  <div class="block-logo" data-bs-toggle="modal" data-bs-target="#location" data-location-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
+    <%= link_to "#", class: "d-flex justify-content-center", data: { action: "click->location-map#showMap" } do %>
       <div class="symbol"><%= image_tag "logo/pinmap_yellow.png", alt: "pin map" %>
-        <div data-location-map-target="mapContainer" style="display: none; position: fixed; top: -5px; left: 11px; width: 300px; height: 300px; z-index: 1000;">
-          <button data-action="click->location-map#closeMap" class="btn btn-sm btn-danger" style="position: absolute; top: 10px; left: 10px; z-index: 1001;">Fermer</button>
-        </div>
-      </div>
     <% end %>
+
   </div>
+  </div>
+        <div class="modal fade" id="location" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <button data-action="click->location-map#closeMap" class="close-button"> <i class="fa-solid fa-xmark"></i></button>
+
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Trajet</h1>
+
+                      <div data-location-map-target="mapContainer" >
+                        <i class="fa-solid fa-xmark" style="display: none;"></i>
+                      </div>
+                    </div>
+                </div>
   <div class="block-logo"> <%# Link to agenda view  %>
     <%= link_to activites_path(current_user) do %>
     <div class="symbol"><i class="fa-solid fa-calendar"></i></div>
