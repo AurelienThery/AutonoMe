@@ -56,7 +56,7 @@ export default class extends Controller {
 
     new mapboxgl.Marker()
       .setLngLat(position)
-      .setPopup(new mapboxgl.Popup().setHTML("<p><strong>Je suis ici</strong></p>"))
+      .setPopup(new mapboxgl.Popup().setHTML("<p>Tu es ici</p>"))
       .addTo(this.map)
   }
 }

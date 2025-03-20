@@ -6,13 +6,14 @@
   </div>
   <div class="block-logo" data-controller="location-map" <%# Display the map with current location  %>
       data-location-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
-    <%= link_to "#", data: { action: "click->location-map#showMap" } do %>
+    <%= link_to "#", class: "d-flex justify-content-center", data: { action: "click->location-map#showMap" } do %>
       <div class="symbol"><%= image_tag "logo/pinmap_yellow.png", alt: "pin map" %>
+    <% end %>
         <div data-location-map-target="mapContainer" style="display: none; position: fixed; top: -5px; left: 11px; width: 300px; height: 300px; z-index: 1000;">
           <button data-action="click->location-map#closeMap" class="btn btn-sm btn-danger" style="position: absolute; top: 10px; left: 10px; z-index: 1001;">Fermer</button>
         </div>
       </div>
-    <% end %>
+
   </div>
   <div class="block-logo"> <%# Link to agenda view  %>
     <%= link_to activites_path(current_user) do %>
