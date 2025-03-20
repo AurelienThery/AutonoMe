@@ -1,7 +1,11 @@
 class ActivitiesController < ApplicationController
 
   def mes_activites
-    @activities = Activity.all.order(starting_date: "asc")
+    # @activities = Activity.all.order(starting_date: "asc") # on n'affiche plus toutes les cartes
+    # si l'utilisateur a  sélectionné une date spécifique pour afficher les activités
+    # @activities = Activity.where("starting_date  ?", params[])
+    # par défaut l'utilisateur reçoit les activités de la date du jour
+    @activities = Activity.where("starting_date < ?", Date.tomorrow).order(starting_date: "asc")
     @current_activity = @activities.find_by(activity_status: "inprogress")
     @next_activity = @activities.find_by(activity_status: "planned")
     @markers = @activities.geocoded.map do |activity|
@@ -44,5 +48,11 @@ class ActivitiesController < ApplicationController
     else
       render json: { update_message: "Erreur, l'activité n'est pas terminée", status: false }, status: :unprocessable_entity
     end
+  end
+
+  private
+  # confirmer si c'est nécessaire de gérer un strong params (on n'écrit pas dans la DB)
+  def activity_params
+    params.require(:activities).permit(:selected_date)
   end
 end

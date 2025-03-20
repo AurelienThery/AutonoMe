@@ -1,4 +1,10 @@
 <div class="margin-from-navbar"></div>
+<%# display date selected to view the agenda  %>
+<div class="selected-date">
+  <div class="arrow"><i class="fa-solid fa-square-caret-left fs-1"></i></div>
+  <div class="date-display"><p>20/03/2025</p></div>
+  <div class="arrow to-right"><i class="fa-solid fa-square-caret-left fs-1"></i></div>
+</div>
 <div class="a-dallas" data-controller="update-activity-button">
   <%# first card is fixed, it is the activity in progress if there is any%>
   <% if @current_activity %>
