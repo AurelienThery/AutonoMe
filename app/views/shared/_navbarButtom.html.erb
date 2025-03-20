@@ -1,15 +1,16 @@
 <!-- Navbar fixe en bas -->
+ <% if user_signed_in? && request.path != "/home" && request.path != "/"%>
     <nav class="navbar navbar-bottom">
         <ul class="navbar-nav d-flex flex-row w-100">
             <%# Button to home  %>
             <li class="nav-item">
-                <%= link_to home_path, class: "btn btn-outline-light me-2 nav-link" do %>
+                <%= link_to home_path, class: "btn me-2 nav-link" do %>
                   <span><i class="fa-solid fa-house fs-2"></i></span>
                 <% end %>
             </li>
             <%# Button to map  %>
             <li class="nav-item" data-controller="location-map" data-location-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
-                <%= link_to "#", class: "btn btn-outline-light me-2 nav-link", data: { action: "click->location-map#showMap" } do %>
+                <%= link_to "#", class: "btn me-2 nav-link", data: { action: "click->location-map#showMap" } do %>
                 <span><i class="fa-solid fa-location-dot fs-2"></i></span>
               <% end %>
               <div data-location-map-target="mapContainer" style="display: none; position: fixed; top: 60px; right: 10px; width: 300px; height: 300px; z-index: 1000;">
@@ -25,16 +26,17 @@
 
              <%# Button to agenda  %>
             <li class="nav-item">
-                <%= link_to activites_path(current_user), class: "btn btn-outline-light me-2 nav-link" do %>
+                <%= link_to activites_path(current_user), class: "btn me-2 nav-link" do %>
                   <span><i class="fa-solid fa-calendar fs-2"></i></span>
                 <% end %>
             </li>
 
              <%# Button to checklist  %>
             <li class="nav-item">
-              <%= link_to myprofil_path(current_user), class: "btn btn-outline-light me-2 nav-link" do %>
+              <%= link_to myprofil_path(current_user), class: "btn me-2 nav-link" do %>
                 <span><i class="fa-solid fa-bell fs-2"></i></span>
               <% end %>
             </li>
         </ul>
 </nav>
+<% end %>
