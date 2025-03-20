@@ -1,27 +1,26 @@
-<div class="fixed-under-navbar bg-secondary text-white mt-2">
- <h2>Check list Day</h2>
+<div class="margin-from-navbar mb-5"></div>
+<div class="fixed-under-navbar bg-secondary text-white mb-5">
+ <h2>Affaires à préparer</h2>
 </div>
 
-<h2>Bonsoir <%= "#{@user.first_name}" %></h2>
 <% @activities.each do |activity| %>
     <% if activity.checklist_items.any? %>
-        <div class="card-agenda <%=activity.activity_type%>"
-            data-controller="toggle-details"
-              style="height:  <%= (activity.ending_date - activity.starting_date)/40%>px">
-          <div class = "starting-time">
+        <div class="card-agenda <%=activity.activity_type%> mt-1"
+            data-controller="toggle-details checklist"
+              style="height: 40px">
+          <div class = "starting-time" data-checklist-target="status">
               <i class="fa-regular fa-rectangle-xmark"></i>
           </div>
           <div class="card-header">
             <div class= "activity-name"><%= activity.name %></div>
-            <button data-action="click->toggle-details#display"
+            <button data-action="click->toggle-details#always_open"
                     data-toggle-details-activity-id-param="<%= activity.id %>"
                     class="btn toggle-details">
-              <i class="fa-solid fa-caret-down" data-toggle-details-target="caretIcon"></i>
+
             </button>
           </div>
           <%# the rest of the information of the activity is displayed on demand %>
-          <div data-toggle-details-target="togglableElement"
-              class="card-body d-none">
+          <div class="card-body">
             <%= render "activities/checklist_details", activity: activity  %>
           </div>
         </div>

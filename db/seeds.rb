@@ -229,8 +229,19 @@ CSV.foreach(filetoday, headers: :first_row, col_sep: ';') do |row|
   puts "#{today_activity.name} créé"
 
   # Création des checklist items associés à l'activité
-  ChecklistItem.create!(activity: today_activity, content: "Prend le livre de #{today_activity.name}")
-  puts "Checklist pour #{today_activity.name} créée"
+  case today_activity[:name]
+  # when "Mathematiques"
+  #   ChecklistItem.create!(activity: today_activity, content: "Prends le livre de #{today_activity.name}")
+  #   puts "Checklist pour #{today_activity.name} créée"
+  when "Demo Day"
+    ChecklistItem.create!(activity: today_activity, content: "Prends ton casque anti-bruit")
+    puts "Checklist pour #{today_activity.name} créée"
+  # when "Anglais"
+  #   ChecklistItem.create!(activity: today_activity, content: "Prends le livre d'#{today_activity.name}")
+  #   puts "Checklist pour #{today_activity.name} créée"
+  else
+    puts "Activité ignorée : #{today_activity[:name]}"
+  end
 end
 
 # Creation des activités d'une semaine au collège
@@ -253,9 +264,19 @@ day = MONDAY
     college_activity.save
     puts "#{college_activity.name} créé"
 
-    # Création des checklist items associés à l'activité
-    ChecklistItem.create!(activity: college_activity, content: "Prend le livre de #{college_activity.name}")
-    puts "Checklist pour #{college_activity.name} créée"
+    case college_activity[:name]
+    when "Mathematiques"
+      ChecklistItem.create!(activity: college_activity, content: "Prends le livre de #{college_activity.name}", completed: true )
+      puts "Checklist pour #{college_activity.name} créée"
+    # when "Francais"
+    #   ChecklistItem.create!(activity: college_activity, content: "Prends le livre de #{college_activity.name}")
+    #   puts "Checklist pour #{college_activity.name} créée"
+    # when "Anglais"
+    #   ChecklistItem.create!(activity: college_activity, content: "Prends le livre d'#{college_activity.name}")
+    #   puts "Checklist pour #{college_activity.name} créée"
+    else
+      puts "Activité ignorée : #{college_activity[:name]}"
+    end
   end
   day += 1
 end
