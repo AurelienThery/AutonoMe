@@ -21,7 +21,7 @@
             </li>
 
              <%# Button for help  %>
-            <li class="nav-item" >
+            <li class="nav-item" role="presentation" >
               <p>
                  (.)(.)
               </p>
@@ -36,7 +36,7 @@
 
             <%# Button to checklist  %>
             <li class="nav-item" role="presentation" >
-                <%= link_to myprofil_path(current_user), class: "btn btn-outline-light me-2 nav-link2 position-relative" do %>
+                <%= link_to myprofil_path(current_user), class: "btn btn-outline-light me-2 nav-link2" do %>
                   <span><i class="fa-solid fa-bell fs-2"></i></span>
                   <%# <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" data-checklist-target="nbr_notif"> %>
                      <!-- Nombre de notifications -->

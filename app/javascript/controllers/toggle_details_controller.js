@@ -7,7 +7,6 @@ export default class extends Controller {
   static values = { activityId: Number }
   connect() {
     console.log("Toggle details connected");
-    this.always_open()
   }
 
   display(event) {
@@ -16,9 +15,5 @@ export default class extends Controller {
     this.togglableElementTarget.classList.toggle("d-none");
     this.caretIconTarget.classList.toggle("fa-caret-rotated");
     console.log("Activity-ID:", event.params.activityId);
-  }
-
-  always_open() {
-    this.togglableElementTarget.classList.remove("d-none");
   }
 }

@@ -32,8 +32,8 @@
       <%= render "journey_map", next_activity: next_activity, mapbox_api_key: @mapbox_api_key, activity: activity%>
     </div>
   </div>
-  <div class="flex-container-items">
-    <div class="index-items1">
+  <div class="flex-container-items pt-2 pt-2">
+    <%# <div class="index-items1">
       <ul>
         <li>to do Item</li>
         <li>to do Item</li>
@@ -43,7 +43,8 @@
       <ul>
     <li>to do Item</li>
     <li>to do Item</li>
-  </ul>
+  </ul> %>
+   <%= render "activities/checklist_details", activity: activity  %>
     </div>
   </div>
 </div>
