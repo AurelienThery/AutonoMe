@@ -1,17 +1,16 @@
-<div class="container">
+<%# <div class="container">
   <h1 class="pt-5 mb-3 fw-bold " id="typed-text">Bienvenue sur AutonoMe</h1>
-</div>
-<div class="homepage-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path "logo/AutonoMe_logo.png" %>')">
-
-
-  <div class="container-home">
-    <%= link_to "Essayez AutonoMe",  home_path, class: "btn btn-gradient" %>
-  </div>
+</div> %>
+<%# <div class="homepage-banner" style="background-image: url('<%= image_path "logo/AutonoMe_logo.png" %>')"> %>
+<div class="homepage-banner" >
+  <%# <div class="container-home"> %>
+  <h3 class="text-center fw-bold fs-1 mt-6">Renforcer l'Autonomie</h3>
+    <%= link_to "Essayez AutonoMe",  home_path, class: "btn btn-gradient mt-3" %>
+  <%# </div> %>
 </div>
 
 <div class="homepage-text">
-  <h3 class="text-center fw-bold fs-1">les fonctionnalités d'AutonoMe</h3>
-  <p class="text-center fs-4">Une application pour renforcer l’autonomie et l’inclusion sociale</p>
+  <%# <p class="text-center fs-4">Une application pour renforcer l’autonomie et l’inclusion sociale</p> %>
   <div class="container">
     <main class="row">
 
@@ -21,7 +20,7 @@
             <i class="fa-regular fa-calendar super-large-icon"></i>
           </div>
           <h3 class="fw-bold">Agenda</h3>
-          <p class="flex-grow-1">Planifiez votre journée et votre semaine avec un agenda.</p>
+          <%# <p class="flex-grow-1">Planifiez votre journée et votre semaine avec un agenda.</p> %>
         </div>
 
       </div>
@@ -31,7 +30,7 @@
             <i class="fa-regular fa-clock super-large-icon"></i>
           </div>
           <h3 class="fw-bold">Timer</h3>
-          <p class="flex-grow-1">Visualisez le temps qui passe grâce à un time-timer.</p>
+          <%# <p class="flex-grow-1">Visualisez le temps qui passe grâce à un time-timer.</p> %>
         </div>
       </div>
       <div class="col-6 mb-4">
@@ -40,7 +39,7 @@
             <i class="fa-solid fa-triangle-exclamation super-large-icon"></i>
           </div>
           <h3 class="fw-bold">Aide</h3>
-          <p class="flex-grow-1">Demandez de l’aide facilement en cas de besoin.</p>
+          <%# <p class="flex-grow-1">Demandez de l’aide facilement en cas de besoin.</p> %>
         </div>
       </div>
       <div class="col-6 mb-4">
@@ -49,7 +48,7 @@
             <i class="fa-solid fa-location-dot super-large-icon"></i>
           </div>
           <h3 class="fw-bold">trajet</h3>
-          <p class="flex-grow-1">Déplacez-vous en autonomie en anticipant les difficultés de chaque trajet</p>
+          <%# <p class="flex-grow-1">Déplacez-vous en autonomie en anticipant les difficultés de chaque trajet</p> %>
         </div>
       </div>
 

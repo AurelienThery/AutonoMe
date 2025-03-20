@@ -7,8 +7,8 @@
       </div>
       </div>
   <%# <p><%= activity.description </p> %>
-  <div style="background-color: #D2E4FE" class="pb-3">
-    <div class="container pb-1" >
+  <div style="background-color: <%=activity.activity_type%>" class="pb-3">
+      <div class="container pb-1" >
       <% if activity == @next_activity && @current_activity.nil? %>
         <button class="btn btn-update btn-sm"
         data-action="click->update-activity-button#start"
@@ -23,7 +23,7 @@
           Done !
         </button>
       <% end %>
-      <p><%= activity.description%></p>
+      <span class="fs-4"><%= activity.description%></span>
     </div>
     <div class="text-center">
     <% next_activity = Activity.where("starting_date > ?", activity.starting_date)

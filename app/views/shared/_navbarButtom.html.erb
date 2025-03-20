@@ -15,9 +15,13 @@
               <%= link_to "#", class: "btn btn-outline-light me-2 nav-link2", data: { action: "click->location-map#showMap" } do %>
                 <span><i class="fa-solid fa-location-dot fs-2"></i></span>
               <% end %>
-              <div data-location-map-target="mapContainer" style="display: none; position: fixed; top: 60px; right: 10px; width: 300px; height: 300px; z-index: 1000;">
-                <button data-action="click->location-map#closeMap" class="btn btn-sm btn-danger" style="position: absolute; top: 10px; right: 10px; z-index: 1001;">Fermer</button>
+              <div data-location-map-target="mapContainer" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; background-color: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3); z-index: 1000; overflow: hidden;">
+                <button data-action="click->location-map#closeMap" class="close-button" style="position: absolute; top: 10px; right: 10px; z-index: 1001; background: none; border: none; font-size: 24px; color: #333; cursor: pointer;">&times;</button>
+                <i class="fa-solid fa-xmark" style="display: none;"></i>
               </div>
+
+
+
             </li>
 
              <%# Button for help  %>
