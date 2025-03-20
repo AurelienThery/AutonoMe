@@ -1,18 +1,16 @@
+<!-- Navbar fixe en bas -->
  <% if user_signed_in? && request.path != "/home" && request.path != "/"%>
- <nav class="navbar navbar-light navbar-expand w-100 fixed-bottom"
-        <%# style="background: #0f071f;"> %>
-        style="background: #4A4A4A;">
-        <ul class="nav nav-justified w-100" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <%# Button to home  %>
-                <%= link_to home_path, class: "btn btn-outline-light me-2 nav-link2" do %>
+    <nav class="navbar navbar-bottom">
+        <ul class="navbar-nav d-flex flex-row w-100">
+            <%# Button to home  %>
+            <li class="nav-item">
+                <%= link_to home_path, class: "btn me-2 nav-link" do %>
                   <span><i class="fa-solid fa-house fs-2"></i></span>
                 <% end %>
             </li>
-
             <%# Button to map  %>
-            <li class="nav-item" role="presentation" data-controller="location-map" data-location-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
-              <%= link_to "#", class: "btn btn-outline-light me-2 nav-link2", data: { action: "click->location-map#showMap" } do %>
+            <li class="nav-item" data-controller="location-map" data-location-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
+                <%= link_to "#", class: "btn me-2 nav-link", data: { action: "click->location-map#showMap" } do %>
                 <span><i class="fa-solid fa-location-dot fs-2"></i></span>
               <% end %>
               <div data-location-map-target="mapContainer" style="display: none; position: fixed; top: 60px; right: 10px; width: 300px; height: 300px; z-index: 1000;">
@@ -20,35 +18,25 @@
               </div>
             </li>
 
-             <%# Button for help  %>
-            <li class="nav-item" role="presentation" >
-              <p>
-                 (.)(.)
-              </p>
+            <li class="nav-item highlight-link">
+              <span data-action="click->help-calls#togglePopup" class="help-button" aria-label="Demander de l'aide">
+                🚨
+              </span>
             </li>
 
-            <%# Button to agenda  %>
-            <li class="nav-item" role="presentation">
-                <%= link_to activites_path(current_user), class: "btn btn-outline-light me-2 nav-link2" do %>
-                  <span><i class="fa-solid fa-calendar"></i></span>
+             <%# Button to agenda  %>
+            <li class="nav-item">
+                <%= link_to activites_path(current_user), class: "btn me-2 nav-link" do %>
+                  <span><i class="fa-solid fa-calendar fs-2"></i></span>
                 <% end %>
             </li>
 
-            <%# Button to checklist  %>
-            <li class="nav-item" role="presentation" >
-                <%= link_to myprofil_path(current_user), class: "btn btn-outline-light me-2 nav-link2" do %>
-                  <span><i class="fa-solid fa-bell fs-2"></i></span>
-                  <%# <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" data-checklist-target="nbr_notif"> %>
-                     <!-- Nombre de notifications -->
-                  <%# <span class="visually-hidden">unread notifications</span> %>
-                </span>
-                <% end %>
+             <%# Button to checklist  %>
+            <li class="nav-item">
+              <%= link_to myprofil_path(current_user), class: "btn me-2 nav-link" do %>
+                <span><i class="fa-solid fa-bell fs-2"></i></span>
+              <% end %>
             </li>
-          </ul>
+        </ul>
 </nav>
-<div class="en-vrac">
-  <button data-action="click->help-calls#togglePopup" class="help-button" aria-label="Demander de l'aide">
-        🚨
-  </button>
-</div>
 <% end %>

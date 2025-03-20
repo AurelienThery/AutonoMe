@@ -1,0 +1,86 @@
+* {
+  margin: auto;
+  padding: 0%;
+  font-family: 'Open Sans', sans-serif;
+}
+.navbar {
+  background: #4A4A4A !important;
+}
+.nav-link2 {
+  background: none !important;
+  color: #ffffff !important;
+  // color: $blue-autonome !important;
+  font-weight: bolder;
+  border: none !important;
+}
+
+.nav-item{
+  border: none !important;
+}
+
+button {
+  border: none !important;
+  outline: none !important;
+}
+
+.tab-content {
+  -ms-overflow-style: none !important; /* IE and Edge */
+  scrollbar-width: none !important; /* Firefox */
+}
+
+.tab-content::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Icons */
+.bi {
+    color: #dfd3fa;
+    font-size: 1.7em;
+}
+
+.bi:hover {
+    color: #9287ac;
+    font-size: 1.7em;
+}
+
+.navbar-icon-del {
+  background-image: none; /* Supprime l'icône burger par défaut */
+}
+
+.fixed-under-navbar {
+  position: fixed;
+  top: 56px; /* Ajuste cette valeur à la hauteur de ta navbar (par défaut 56px pour Bootstrap) */
+  width: 100%;
+  z-index: 30; /* Place-le au-dessus du contenu principal mais derrière les overlays */
+  height: 50px; /* Ajuste la hauteur selon ton design */
+  // line-height: 50px; /* Centrer verticalement le texte */
+  text-align: center;
+}
+/* TO DO move navbar css */
+.navbar-toggler:focus {
+  outline: none; /* Supprime le cadre de sélection */
+  box-shadow: none; /* Supprime tout effet d'ombre potentiellement ajouté */
+}
+
+.navbar .nav-link {
+  color: #ffffff;
+}
+
+.navbar p {
+  color: #FFC65A;
+  display: inline;
+}
+
+.en-vrac {
+  position: fixed;
+  padding: 0;
+  z-index: 2000;
+  left: 161px;
+  bottom: 25px;
+  height: 50px;
+  width: 70px;
+  border-radius: 50%;
+  background-color: $grey-autonome;
+  justify-content: center;
+  align-items: center;
+}
