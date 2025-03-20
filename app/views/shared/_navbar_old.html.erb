@@ -1,0 +1,37 @@
+<div class="navbar navbar-expand-sm navbar-lewagon fixed-top">
+  <div>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "logo/AutonoMe_logo.png" %>
+     <p>AutonoMe</p>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <% if user_signed_in? %>
+      <span class="navbar-toggler-icon navbar-icon-del ">
+        <%=cl_image_tag(current_user.photo.key, class: "avatar",alt: "dropdown menu", crop: :fill)%>
+        <%# <%= image_tag "avatar_user.png", class: "avatar", alt: "dropdown menu" %>
+      </span>
+      <% else %>
+        <span class="navbar-toggler-icon"></span>
+      <% end %>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <% if user_signed_in? %>
+        <%# links to profil and agenda removed because accessible from home  %>
+          <li class="nav-item">
+            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Signup", new_user_registration_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
