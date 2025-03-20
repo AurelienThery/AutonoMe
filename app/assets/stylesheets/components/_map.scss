@@ -6,3 +6,14 @@
   text-align: center;
   font-family: "Open Sans", sans-serif;
 }
+
+.mapboxgl-map {
+  position: absolute;
+  top: 150px;
+  bottom: 0;
+  width: 100%;
+  }
+
+  .modal-dialog {
+  height: 80%;
+  }

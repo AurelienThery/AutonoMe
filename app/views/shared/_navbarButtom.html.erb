@@ -8,14 +8,21 @@
                 <% end %>
             </li>
             <%# Button to map  %>
-            <li class="nav-item" data-controller="location-map" data-location-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
-                <%= link_to "#", class: "btn btn-outline-light me-2 nav-link", data: { action: "click->location-map#showMap" } do %>
+            <li class="nav-item" data-controller="location-map" data-bs-toggle="modal" data-bs-target="#location" data-location-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
+                <%= link_to "#", class: "btn me-2 nav-link", data: { action: "click->location-map#showMap" } do %>
                 <span><i class="fa-solid fa-location-dot fs-2"></i></span>
               <% end %>
-              <div data-location-map-target="mapContainer" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; background-color: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3); z-index: 1000; overflow: hidden;">
-                <button data-action="click->location-map#closeMap" class="close-button" style="position: absolute; top: 10px; right: 10px; z-index: 1001; background: none; border: none; font-size: 24px; color: #333; cursor: pointer;">&times;</button>
-                <i class="fa-solid fa-xmark" style="display: none;"></i>
-              </div>
+                 <div class="modal fade" id="location" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <button data-action="click->location-map#closeMap" class="close-button"> <i class="fa-solid fa-xmark"></i></button>
+
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Trajet</h1>
+
+                      <div data-location-map-target="mapContainer" >
+                        <i class="fa-solid fa-xmark" style="display: none;"></i>
+                      </div>
+                    </div>
+                </div>
             </li>
 
             <li class="nav-item highlight-link">
