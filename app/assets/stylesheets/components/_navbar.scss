@@ -1,12 +1,21 @@
-.navbar-lewagon {
-  display: flex;
-  justify-content: space-between;
+.navbar-bottom {
+  margin: 0% !important;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.navbar-brand img {
+  width: 35px;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-toggler:focus {
+  outline: none; /* Supprime le cadre de sélection */
+  box-shadow: none; /* Supprime tout effet d'ombre potentiellement ajouté */
+}
+
+.navbar .nav-link {
+  color: #ffffff;
+}
+
+.navbar p {
+  color: #FFC65A;
+  display: inline;
 }
