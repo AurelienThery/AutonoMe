@@ -6,82 +6,45 @@
 .navbar {
   background: #4A4A4A !important;
 }
-.nav-link2 {
-  background: none !important;
-  color: #ffffff !important;
-  // color: $blue-autonome !important;
-  font-weight: bolder;
-  border: none !important;
-}
 
-.nav-item{
-  border: none !important;
-}
-
-
-button {
-  border: none !important;
-  outline: none !important;
-}
-
-.tab-content {
-  -ms-overflow-style: none !important; /* IE and Edge */
-  scrollbar-width: none !important; /* Firefox */
-}
-
-.tab-content::-webkit-scrollbar {
-  display: none !important;
-}
-
-/* Icons */
-.bi {
-    color: #dfd3fa;
-    font-size: 1.7em;
-}
-
-.bi:hover {
-    color: #9287ac;
-    font-size: 1.7em;
-}
-
-.navbar-icon-del {
-  background-image: none; /* Supprime l'icône burger par défaut */
-}
-
-.fixed-under-navbar {
+.navbar-bottom {
   position: fixed;
-  top: 56px; /* Ajuste cette valeur à la hauteur de ta navbar (par défaut 56px pour Bootstrap) */
-  width: 100%;
-  z-index: 30; /* Place-le au-dessus du contenu principal mais derrière les overlays */
-  height: 50px; /* Ajuste la hauteur selon ton design */
-  // line-height: 50px; /* Centrer verticalement le texte */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #f8f9fa;
+  border-top: 1px solid #ddd;
+  z-index: 1030;
+  height: 65px; /* Définit la hauteur de la navbar */
+  // line-height: 10px; /* Assure un alignement vertical des éléments */
+}
+
+.nav-item {
+  flex: 1;
   text-align: center;
 }
-/* TO DO move navbar css */
-.navbar-toggler:focus {
-  outline: none; /* Supprime le cadre de sélection */
-  box-shadow: none; /* Supprime tout effet d'ombre potentiellement ajouté */
+
+.highlight-link {
+  position: relative;
+  display: inline-block;
+  margin-top: -15px; /* Pour faire dépasser le lien */
 }
 
-.navbar .nav-link {
-  color: #ffffff;
+.highlight-link button {
+  font-size: 3rem;
+  text-decoration: none;
 }
 
-.navbar p {
-  color: #FFC65A;
-  display: inline;
-}
-
-.en-vrac {
-  position: fixed;
-  padding: 0;
-  z-index: 2000;
-  left: 161px;
-  bottom: 25px;
-  height: 50px;
-  width: 70px;
+.highlight-link::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  background-color: #4A4A4A ;
+  border: 0px solid #007bff;
   border-radius: 50%;
-  background-color: $grey-autonome;
-  justify-content: center;
-  align-items: center;
+  z-index: -1;
 }
