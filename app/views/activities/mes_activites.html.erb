@@ -1,9 +1,10 @@
 <div class="margin-from-navbar"></div>
 <%# display date selected to view the agenda  %>
 <div class="selected-date">
-  <div class="arrow"><p>◄</p></div>
-  <div class="date-display"><p>20/03/2025</p></div>
-  <div class="arrow to-right"><p>►</p></div>
+  <div class="arrow"><%= link_to "◄", activites_path(activity_date: @activities.first.starting_date.yesterday)%></div>
+  <div class="date-display"><p>
+  <%=@activities.first.starting_date.strftime("%d/%m/%Y")  %></p></div>
+  <div class="arrow"><%= link_to "►", activites_path(activity_date: @activities.first.starting_date.tomorrow) %></div>
 </div>
 <div class="a-dallas" data-controller="update-activity-button">
   <%# first card is fixed, it is the activity in progress if there is any%>

@@ -3,9 +3,15 @@ class ActivitiesController < ApplicationController
   def mes_activites
     # @activities = Activity.all.order(starting_date: "asc") # on n'affiche plus toutes les cartes
     # si l'utilisateur a  sélectionné une date spécifique pour afficher les activités
-    # @activities = Activity.where("starting_date  ?", params[])
-    # par défaut l'utilisateur reçoit les activités de la date du jour
-    @activities = Activity.where("starting_date < ?", Date.tomorrow).order(starting_date: "asc")
+    if params[:activity_date]
+      @activities = Activity.all.select do |activity|
+        activity.starting_date.to_date == params[:activity_date].to_date
+        raise
+      end
+    else
+      # par défaut l'utilisateur reçoit les activités de la date du jour
+      @activities = Activity.where("starting_date < ?", Date.tomorrow).order(starting_date: "asc")
+    end
     @current_activity = @activities.find_by(activity_status: "inprogress")
     @next_activity = @activities.find_by(activity_status: "planned")
     @markers = @activities.geocoded.map do |activity|
@@ -50,9 +56,4 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  private
-  # confirmer si c'est nécessaire de gérer un strong params (on n'écrit pas dans la DB)
-  def activity_params
-    params.require(:activities).permit(:selected_date)
-  end
 end

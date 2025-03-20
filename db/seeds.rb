@@ -180,7 +180,7 @@ filecollege = Rails.root.join('db', 'data', 'college_seeds.csv')
 
 # Initialisation de la date du jour (démarrant à 00:00:00)
 TODAY = Date.today.to_time + 3600 # on considère qu'aujourd'hui c'est vendredi :-)
-MONDAY = TODAY + 86400*2    # donc dans deux jours c'est lundi :-)
+NEXTDAY = Date.tomorrow    # donc dans deux jours c'est lundi :-)
 # puts TODAY
 # puts filetoday
 
@@ -216,7 +216,7 @@ CSV.foreach(filetoday, headers: :first_row, col_sep: ';') do |row|
 end
 
 # Creation des activités d'une semaine au collège
-day = MONDAY
+day = NEXTDAY
 1.times do
   CSV.foreach(filecollege, headers: :first_row, col_sep: ';') do |row|
     college_activity = Activity.new(

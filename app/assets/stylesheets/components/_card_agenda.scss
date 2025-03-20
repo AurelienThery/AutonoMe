@@ -1,6 +1,6 @@
 // class to display right under the navbar
 .margin-from-navbar {
-  height: 90px;
+  height: 92px;
 }
 
 .selected-date {
@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
   position: fixed;
-  top: 55px;
+  top: 57px;
   height: 35px;
   width: 100%;
   background-color: $grey-autonome;
@@ -169,7 +169,7 @@
 /// class to set the style of the card in progress ///
 .in-progress {
   position: fixed;
-  top:90px;
+  top:92px;
   z-index: 10;
 }
 
