@@ -1,40 +1,51 @@
 // class to display right under the navbar
 .margin-from-navbar {
-  height: 100px;
+  height: 90px;
 }
 
 .selected-date {
-  padding-top: 2px;
   display: flex;
   justify-content: center;
-  justify-items: center;
-  align-content: center;
   align-items: center;
   position: fixed;
-  top: 57px;
-  height: 40px;
+  top: 55px;
+  height: 35px;
   width: 100%;
   background-color: $grey-autonome;
   z-index: 20;
+  padding-left: 4px;
+  padding-right: 4px;
 
-  .arrow{
-    // font-size: x-large;
+  .arrow {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  .arrow p {
+    margin: 0;
+    font-size: x-large;
+    color: $yellow-autonome;
+    padding-left: 4px;
+    padding-right: 4px;
+    line-height: 1;
   }
 
   .date-display {
+    display: flex;
+    align-items: center;
     width: fit-content;
     background-color: white;
     height: $time-height;
-    // width: 100px;
     border-radius: 5px;
     text-align: center;
     justify-content: center;
-    align-items: center;
-    vertical-align: middle;
     font-size: large;
     font-weight: bold;
     border: 1px solid $dark-blue;
+
     p {
+      margin: 0;
       padding-left: 4px;
       padding-right: 4px;
     }
@@ -158,7 +169,7 @@
 /// class to set the style of the card in progress ///
 .in-progress {
   position: fixed;
-  top:100px;
+  top:90px;
   z-index: 10;
 }
 
