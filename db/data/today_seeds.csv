@@ -1,16 +1,27 @@
-name;activity_type;heure_debut;starting_time;duree;duration;description;picture;address
-Trajet wagon;journey;08:15:00;29700;00:30:00;1800;Tramway;lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
-Daily review;activity;09:00:00;32400;00:55:00;3300;Avec toute l'equipe;cours_maths_jtebnf;109 Cour du Médoc 33300 Bordeaux
-Pause cafe;breaktime;09:55:00;35700;00:15:00;900;petit mate;recreation_uhj8un;109 Cour du Médoc 33300 Bordeaux
-Debug;activity;10:10:00;36600;00:55:00;3300;c'est reparti;cours_histoire_tlsvxi;109 Cour du Médoc 33300 Bordeaux
-Live Code;activity;11:10:00;40200;00:55:00;3300;Vocabulaire: situations de la vie quotidienne, comme les descriptions physiques et de personnalité, les objets de la maison, les émotions, les métiers, les saisons, les animaux. Exercices pratiques :  jeux de mots, des cartes mémoire (flashcards).;classe_geographie_wdumh3;109 Cour du Médoc 33300 Bordeaux
-Cantine;activity;12:10:00;43800;00:50:00;3000;miam;cantine_eek480;109 Cour du Médoc 33300 Bordeaux
-Préparation demo;activity;13:30:00;48600;01:25:00;5100;Activité: ping-pong;pingpong_mpwidx;7 Rue André Maginot 33200 Bordeaux
-Répetition scenario;activity;15:00:00;54000;00:55:00;3300;Exercices du jour, revision des cours pour le lendemain;cours_maths_jtebnf;109 Cour du Médoc 33300 Bordeaux
-Trajet maison;journey;16:00:00;57600;00:30:00;1800;Tramway;maison_j3nvou;15 rue Baste, 33300 Bordeaux
-Gouter;breaktime;16:30:00;59400;00:20:00;1200;miam;repas_dm1z4l;15 rue Baste, 33300 Bordeaux
-Trajet wagon;journey;18:00:00;64800;00:30:00;1800;Tramway;lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
-Demo Day;activity;18:30:00;66600;01:30:00;5400;Présentation des projets des bootcamp: Developpeur web, Data Analyst, Data Scientist.;lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
-repas;breaktime;19:30:00;70200;00:30:00;1800;Buffet offert par le wagon;repas_dm1z4l;15 rue Baste, 33300 Bordeaux
-Trajet maison;journey;20:00:00;72000;00:30:00;1800;Tramway;maison_j3nvou;15 rue Baste, 33300 Bordeaux
-Salle de bain;activity;20:45:00;74700;00:10:00;600;Brossage de dent;sdb_adclbw;15 rue Baste, 33300 Bordeaux
+name;activity_type;heure_debut;Heure_fin;heure_UTC;starting_time;duree;duration;description;picture;address
+Trajet wagon;journey;08:15:00;08:45:00;07:15:00;26100;00:30:00;1800;Tramway;lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+Daily review;activity;09:00:00;09:55:00;08:00:00;28800;00:55:00;3300;Avec toute l'equipe;cours_maths_jtebnf;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+Pause cafe;breaktime;09:55:00;10:10:00;08:55:00;32100;00:15:00;900;petit mate;recreation_uhj8un;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+Debug;activity;10:10:00;11:05:00;09:10:00;33000;00:55:00;3300;c'est reparti;cours_histoire_tlsvxi;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+Pull request & Merge;activity;11:10:00;11:40:00;10:10:00;36600;00:30:00;1800;Dès que la feature est terminée, la soumettre sur GitHub. Review du code des pull requests en cours et merge de l'ensemble sur la branche master.;cours_maths_jtebnf;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+Live Code et Figma;activity;11:45:00;12:40:00;10:45:00;38700;00:55:00;3300;On vérifie ensemble que l'application correspond à ce qu'on a définit ensemble, on s'aligne sur le prototype des différents écrans de navigation.;classe_geographie_wdumh3;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+Point de matinée;activity;12:45:00;13:00:00;11:45:00;42300;00:15:00;900;Il faut faire un push sur Heroku pour s'assurer que l'application fonctionne correctement en prod.;cours_histoire_tlsvxi;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+Courses à Carrefour;journey;13:00:00;13:15:00;12:00:00;43200;00:15:00;900;;lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn;82 Cr Balguerie Stuttenberg, 33000 Bordeaux
+Cantine;breaktime;13:15:00;13:45:00;12:15:00;44100;00:30:00;1800;miam, on va se faire un kébab ce midi ?;cantine_eek480;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+Animation;activity;13:45:00;14:00:00;12:45:00;45900;00:15:00;900;Quizz de culture générale, quel batch va l'emporter ?;cantine_eek480;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+Préparation demo;activity;14:05:00;15:00:00;13:05:00;47100;00:55:00;3300;On répète le scénario pour la présentation de ce soir.;pingpong_mpwidx;7 Rue André Maginot 33200 Bordeaux
+Débrief;breaktime;15:00:00;15:15:00;14:00:00;50400;00:15:00;900;C'est le moment de souffler. Pas de pression pour ce soir.;recreation_uhj8un;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+Trajet boulangerie;journey;15:15:00;15:45:00;14:15:00;51300;00:30:00;1800;Tramway;lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn;109 Cr du Médoc, 33000 Bordeaux
+Goûter;breaktime;16:00:00;16:20:00;15:00:00;54000;00:20:00;1200;miam;repas_dm1z4l;15 rue Baste, 33300 Bordeaux
+Vidéo projet;activity;16:30:00;17:00:00;15:30:00;55800;00:30:00;1800;Inès nous propose de créer de tourner une vidéo où nous avons l'occasion de présenter le projet d'un point de vue technique.;cours_maths_jtebnf;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+Trajet maison ;journey;17:00:00;17:15:00;16:00:00;57600;00:15:00;900;Retour vers la maison pour se détendre;recreation_uhj8un;32 rue des Cavailles, Lormont
+Dernière révision;activity;17:15:00;17:45:00;16:15:00;58500;00:30:00;1800;Au calme à la maison;cours_maths_jtebnf;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+Trajet wagon;journey;18:00:00;18:30:00;17:00:00;61200;00:30:00;1800;Tramway;lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+Demo Day: lancement;activity;18:30:00;18:40:00;17:30:00;63000;00:10:00;600;Présentation des projets des bootcamp: Developpeur web, Data Analyst, Data Scientist.;lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+Présentation projet;activity;18:50:00;19:00:00;17:50:00;64200;00:10:00;600;Demo day: tous les groupes présentent leur projet de fin de bootcamp;lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+Présentation projet;activity;19:00:00;19:10:00;18:00:00;64800;00:10:00;600;Demo day: tous les groupes présentent leur projet de fin de bootcamp;lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+Présentation projet;activity;19:10:00;19:20:00;18:10:00;65400;00:10:00;600;Demo day: tous les groupes présentent leur projet de fin de bootcamp;lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+Présentation projet;activity;19:20:00;19:30:00;18:20:00;66000;00:10:00;600;Demo day: tous les groupes présentent leur projet de fin de bootcamp;lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+Buffet;breaktime;19:30:00;20:00:00;18:30:00;66600;00:30:00;1800;Buffet offert par le wagon;repas_dm1z4l;107 Cr Balguerie Stuttenberg, 33300 Bordeaux
+Trajet maison;journey;20:00:00;20:30:00;19:00:00;68400;00:30:00;1800;Tramway ligne B, puis ligne A;maison_j3nvou;15 rue Baste, 33300 Bordeaux
+Salle de bain;activity;20:45:00;20:55:00;19:45:00;71100;00:10:00;600;Brossage de dent;sdb_adclbw;32 rue des Cavailles, Lormont
