@@ -13,14 +13,14 @@
         <button class="btn btn-update btn-sm"
         data-action="click->update-activity-button#start"
         data-activity-id="<%= activity.id %>">
-        Start !
+        Commencer !
         </button>
       <% end %>
       <% if activity.activity_status == "inprogress" %>
         <button class="btn btn-update btn-sm"
           data-action="click->update-activity-button#finish"
           data-activity-id="<%= activity.id %>">
-          Done !
+          Fini !
         </button>
       <% end %>
       <span class="fs-4"><%= activity.description%></span>
