@@ -180,7 +180,7 @@ filecollege = Rails.root.join('db', 'data', 'college_seeds.csv')
 
 # Initialisation de la date du jour (démarrant à 00:00:00)
 TODAY = Date.today.to_time + 3600 # on considère qu'aujourd'hui c'est vendredi :-)
-NEXTDAY = Date.tomorrow    # donc dans deux jours c'est lundi :-)
+NEXTDAY = Date.tomorrow.to_time + 3600    # donc dans deux jours c'est lundi :-)
 # puts TODAY
 # puts filetoday
 
@@ -233,6 +233,7 @@ day = NEXTDAY
     file = URI.parse(Cloudinary::Utils.cloudinary_url(row['picture'])).open
     college_activity.photo.attach(io: file, filename: "#{college_activity.name}.jpeg", content_type: "image/jpeg")
     college_activity.save
+    # debugger
     puts "#{college_activity.name} créé"
 
     case college_activity[:name]
