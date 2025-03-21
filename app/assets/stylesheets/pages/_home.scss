@@ -124,6 +124,24 @@ p {
   color: white;
 }
 
+.btn-gradient-secondary {
+  width: fit-content;
+  color: black;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 18px;
+  background: linear-gradient(#ffd166,#FCC734);
+  transition: background 0.3s ease;
+  border: 1px solid #FF782C;
+
+}
+
+.btn-gradient-secondary:hover {
+  background: linear-gradient(#ff9d64, #FF782C);
+  color: black;
+}
+
 
 
 .container-home {
