@@ -4,64 +4,77 @@
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+        .top-half {
+            height: 50%;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+        .bottom-half {
+            height: 50%;
+            background-color: #FF8C00; /* Orange */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding-top: 2rem;
+        }
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
+        .error-image {
+            width: 80%;
+            position: relative;
+            z-index: 10;
+
+        }
+
+        .error-message {
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-top: 6vw;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .back-button {
+            background-color: #000000;
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+        }
+    </style>
 </head>
-
-<body class="rails-default-error-page">
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+<body>
+    <div class="top-half">
+        <img src="https://www.autonome.online/assets/logo/AutonoMe_logo-ac774c646b50d583fc3cae5e6c5482d3378ada30799ef9a05a5f874a920f5bdc.png" alt="Erreur 404 image" class="error-image">
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
+    <div class="bottom-half">
+        <div class="error-message">Oops ! La page que vous recherchez est introuvable.</div>
+        <a class="back-button" href="https://www.autonome.online">Retour a l'acceuil</a>
+    </div>
 </body>
 </html>
