@@ -14,7 +14,7 @@ require 'date'
 # Pour parser les fichiers avec les utilisateurs et toutes les activités
 require "csv"
 
-#Nettoyage de la base (efface les users de la DB avant d'en créer de nouveaux)
+# Nettoyage de la base (efface les users de la DB avant d'en créer de nouveaux)
 ChecklistItem.destroy_all
 Activity.destroy_all
 Child.destroy_all
@@ -23,8 +23,8 @@ Educator.destroy_all
 User.destroy_all
 puts "La Base de donnée à été effacée avant création de nouveaux utilisateurs"
 puts "Création de 3 utilisateurs"
-# création du user Simon
 
+# création du user Simon
 User.create(
   password:"123456",
   email: "simon@lewagon.org",
@@ -175,38 +175,12 @@ puts "Jessica (educatrice) a été créé"
 
 puts "Création des activités d'une journée courte"
 
-# LIST_ACTIVITIES = ["Trajet collège", "Mathematiques", "Français", "Recreation", "Histoire", "Cantine", "Geographie", "Sport", "Ping Pong", "Gaming", "DemoDay", "Trajet de retour",  "Salle de bain", "Repas", "Tv"]
-# LIST_DESCRIPTIONS = %w[Matin Salle_204 Salle_140 Cour_Collège Salle_129 Réfectoire Salle_224 Sport_GymnaseA Entrainement Jeux_PC DemoDay_leWagon Soir  Douche Repas_Famille EmissionTv]
-# LIST_PICTURES = %w[college_jiemug cours_maths_jtebnf cours_francais_fdeyk0 récréation_uhj8un cours_histoire_tlsvxi cantine_eek480 classe_géographie_wdumh3 gymnase_kvsgdc pingpong_mpwidx gaming_xxtqo7 lewagonbordeaux_m1xrrx_taille_copilot_gl1vwn maison_j3nvou  sdb_adclbw repas_dm1z4l salontv_yjuodu]
-# LIST_ACTIV_TYPES = %w[journey activity activity breaktime activity breaktime activity activity activity activity activity journey   activity activity breaktime]
-# LIST_DURATION = %w[1800 3600 3600 1800 5400 3600 5400 5400 3600 3600 1800 1800 1800 1800 5400]
-
-# DAY_STARTS_AT = DateTime.tomorrow.to_time + 8 * 3600
-
-# LIST_ACTIVITIES.each_with_index do |activite, index|
-#   activite = Activity.new(
-#     name: LIST_ACTIVITIES[index],
-#     starting_date: DAY_STARTS_AT + (index * 3600),
-#     ending_date: DAY_STARTS_AT + (index * 3600) + (LIST_DURATION[index].to_i),
-#     like: true,
-#     description: LIST_DESCRIPTIONS[index],
-#     child_id: Child.last.id,
-#     educator_id: Educator.all.sample.id,
-#     relative_id: Relative.all.sample.id,
-#     activity_type: LIST_ACTIV_TYPES[index]
-#   )
-#   file = URI.parse(Cloudinary::Utils.cloudinary_url(LIST_PICTURES[index])).open
-#   activite.photo.attach(io: file, filename: "#{LIST_ACTIVITIES[index]}.jpeg", content_type:"image/jpeg")
-#   activite.save
-#   puts "#{activite.name} créé"
-# end
-
 filetoday = Rails.root.join('db', 'data', 'today_seeds.csv')
 filecollege = Rails.root.join('db', 'data', 'college_seeds.csv')
 
 # Initialisation de la date du jour (démarrant à 00:00:00)
 TODAY = Date.today.to_time + 3600 # on considère qu'aujourd'hui c'est vendredi :-)
-MONDAY = TODAY + 86400*2    # donc dans deux jours c'est lundi :-)
+NEXTDAY = Date.tomorrow.to_time + 3600    # donc dans deux jours c'est lundi :-)
 # puts TODAY
 # puts filetoday
 
@@ -230,14 +204,11 @@ CSV.foreach(filetoday, headers: :first_row, col_sep: ';') do |row|
 
   # Création des checklist items associés à l'activité
   case today_activity[:name]
-  # when "Mathematiques"
-  #   ChecklistItem.create!(activity: today_activity, content: "Prends le livre de #{today_activity.name}")
-  #   puts "Checklist pour #{today_activity.name} créée"
-  when "Demo Day"
+  when "Demo Day: lancement"
     ChecklistItem.create!(activity: today_activity, content: "Prends ton casque anti-bruit")
     puts "Checklist pour #{today_activity.name} créée"
-  # when "Anglais"
-  #   ChecklistItem.create!(activity: today_activity, content: "Prends le livre d'#{today_activity.name}")
+  # when "Présentation projet"
+  #   ChecklistItem.create!(activity: today_activity, content: "Prends ton casque anti-bruit")
   #   puts "Checklist pour #{today_activity.name} créée"
   else
     puts "Activité ignorée : #{today_activity[:name]}"
@@ -245,7 +216,7 @@ CSV.foreach(filetoday, headers: :first_row, col_sep: ';') do |row|
 end
 
 # Creation des activités d'une semaine au collège
-day = MONDAY
+day = NEXTDAY
 1.times do
   CSV.foreach(filecollege, headers: :first_row, col_sep: ';') do |row|
     college_activity = Activity.new(
@@ -262,18 +233,19 @@ day = MONDAY
     file = URI.parse(Cloudinary::Utils.cloudinary_url(row['picture'])).open
     college_activity.photo.attach(io: file, filename: "#{college_activity.name}.jpeg", content_type: "image/jpeg")
     college_activity.save
+    # debugger
     puts "#{college_activity.name} créé"
 
     case college_activity[:name]
     when "Mathematiques"
       ChecklistItem.create!(activity: college_activity, content: "Prends le livre de #{college_activity.name}", completed: true )
       puts "Checklist pour #{college_activity.name} créée"
-    # when "Francais"
-    #   ChecklistItem.create!(activity: college_activity, content: "Prends le livre de #{college_activity.name}")
-    #   puts "Checklist pour #{college_activity.name} créée"
-    # when "Anglais"
-    #   ChecklistItem.create!(activity: college_activity, content: "Prends le livre d'#{college_activity.name}")
-    #   puts "Checklist pour #{college_activity.name} créée"
+    when "Francais"
+      ChecklistItem.create!(activity: college_activity, content: "Prends le livre de #{college_activity.name}")
+      puts "Checklist pour #{college_activity.name} créée"
+    when "Anglais"
+      ChecklistItem.create!(activity: college_activity, content: "Prends le livre d'#{college_activity.name}")
+      puts "Checklist pour #{college_activity.name} créée"
     else
       puts "Activité ignorée : #{college_activity[:name]}"
     end

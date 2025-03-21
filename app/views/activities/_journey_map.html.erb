@@ -1,11 +1,16 @@
 
 <% if activity.activity_type == "journey" && next_activity && next_activity.address.present? && mapbox_api_key.present? %>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#activity-<%=activity.id %>">
-    Voir le trajet
-  </button>
+  <div style="display: flex; justify-content: center; margin-top: 20px;">
+    <button type="button" class="btn btn-gradient d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#activity-<%=activity.id %>" aria-label="Voir le trajet">
+    <i class="fas fa-map-marker-alt" style="color: #FFC107; font-size: 16px; margin-right: 8px;"></i>
+    <span style="btn btn-gradient">Voir le trajet</span>
+    </button>
+  </div>
+
   <div class="modal fade" id="activity-<%=activity.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <button data-action="click->location-map#closeMap" class="close-button">&times;</button>
+      <i class="fa-solid fa-xmark"></i>
       <h1 class="modal-title fs-5" id="exampleModalLabel">Trajet</h1>
       <div data-controller="map"
            data-map-destination-value="<%= next_activity.address %>"
