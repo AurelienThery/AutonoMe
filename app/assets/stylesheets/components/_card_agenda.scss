@@ -1,6 +1,59 @@
+// class to display right under the navbar
 .margin-from-navbar {
-  height: 60px;
+  height: 92px;
 }
+
+.selected-date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 57px;
+  height: 35px;
+  width: 100%;
+  background-color: $grey-autonome;
+  z-index: 20;
+  padding-left: 4px;
+  padding-right: 4px;
+
+  .arrow {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  .arrow a {
+    text-decoration: none;
+    margin: 0;
+    font-size: x-large;
+    color: $yellow-autonome;
+    padding-left: 4px;
+    padding-right: 4px;
+    line-height: 1;
+  }
+
+  .date-display {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    background-color: white;
+    height: $time-height;
+    border-radius: 5px;
+    text-align: center;
+    justify-content: center;
+    font-size: large;
+    font-weight: bold;
+    border: 1px solid $dark-blue;
+
+    p {
+      margin: 0;
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+  }
+}
+
+
 //  class of the div for JS controller
 .a-dallas {
   // margin-left: 15px;
@@ -117,7 +170,7 @@
 /// class to set the style of the card in progress ///
 .in-progress {
   position: fixed;
-  top:60px;
+  top:92px;
   z-index: 10;
 }
 
