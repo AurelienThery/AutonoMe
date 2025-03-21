@@ -1,27 +1,26 @@
 <div class="margin-from-navbar"></div>
-<div class="container" data-controller="location-map" >
+<div class="container" data-controller="location-map" data-location-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
   <div class="current-activity">
   <p>Pas d'activité démarrée pour le moment</p>
   <%# espace d'affichage de l'activité en cours s'il y en a une  %>
   </div>
-  <div class="block-logo" data-bs-toggle="modal" data-bs-target="#location" data-location-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
+  <div class="block-logo" data-bs-toggle="modal" data-bs-target="#location">
     <%= link_to "#", class: "d-flex justify-content-center", data: { action: "click->location-map#showMap" } do %>
       <div class="symbol"><%= image_tag "logo/pinmap_yellow.png", alt: "pin map" %>
     <% end %>
-
+    </div>
   </div>
+  <div class="modal fade" id="location" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <button data-action="click->location-map#closeMap" class="close-button"> <i class="fa-solid fa-xmark"></i></button>
+
+      <h1 class="modal-title fs-5" id="exampleModalLabel">Trajet</h1>
+
+      <div data-location-map-target="mapContainer" >
+        <i class="fa-solid fa-xmark" style="display: none;"></i>
+      </div>
+    </div>
   </div>
-        <div class="modal fade" id="location" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <button data-action="click->location-map#closeMap" class="close-button"> <i class="fa-solid fa-xmark"></i></button>
-
-                      <h1 class="modal-title fs-5" id="exampleModalLabel">Trajet</h1>
-
-                      <div data-location-map-target="mapContainer" >
-                        <i class="fa-solid fa-xmark" style="display: none;"></i>
-                      </div>
-                    </div>
-                </div>
   <div class="block-logo"> <%# Link to agenda view  %>
     <%= link_to activites_path do %>
     <div class="symbol"><i class="fa-solid fa-calendar"></i></div>

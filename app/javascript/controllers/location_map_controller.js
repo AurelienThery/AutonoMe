@@ -7,10 +7,9 @@ export default class extends Controller {
     apiKey: String,
   }
 
-   connect() {
-      mapboxgl.accessToken = this.apiKeyValue
-      console.log(this.apiKeyValue)
-    }
+  connect() {
+    mapboxgl.accessToken = this.apiKeyValue
+  }
 
   async showMap(event) {
     event.preventDefault()
@@ -19,8 +18,9 @@ export default class extends Controller {
       const position = await this.getCurrentPosition()
       this.initializeMap(position)
       this.mapContainerTarget.style.display = "block"
+
     } catch (error) {
-      console.error("Erreur :", error)
+      console.error("Erreur détaillée :", { message: error.message })
       alert("Impossible d'obtenir votre position géographique.")
     }
   }
@@ -46,13 +46,14 @@ export default class extends Controller {
     if (this.map) {
       this.map.remove()
     }
-
     this.map = new mapboxgl.Map({
       container: this.mapContainerTarget,
       style: 'mapbox://styles/mapbox/streets-v11',
       center: position,
       zoom: 14
     })
+
+
 
     new mapboxgl.Marker()
       .setLngLat(position)
