@@ -8,18 +8,20 @@
       </div>
   <%# <p><%= activity.description </p> %>
   <div style="background-color: <%=activity.activity_type%>" class="pb-3">
-      <div class="container pb-1" >
+      <div class="container pb-1 flex-column align-items-center" >
       <% if activity == @next_activity && @current_activity.nil? %>
-        <button class="btn btn-update btn-sm"
+        <button class="btn-gradient-secondary "
         data-action="click->update-activity-button#start"
         data-activity-id="<%= activity.id %>">
+          <i class="fa-solid fa-circle-play"></i>
         Commencer
         </button>
       <% end %>
       <% if activity.activity_status == "inprogress" %>
-        <button class="btn btn-update btn-sm"
+        <button class="btn-gradient-secondary "
           data-action="click->update-activity-button#finish"
           data-activity-id="<%= activity.id %>">
+            <i class="fa-solid fa-circle-stop"></i>
           Fini !
         </button>
       <% end %>
