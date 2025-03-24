@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   get "activites", to: "activities#mes_activites"
   get "activities/:id", to: "activities#show", as: :activity
+  get "relative_dashboard", to: "users#relative_dashboard", as: :relative_dashboard
+
   # Defines the root path route ("/")
   # homepage correspondant au profil de l'utilisateur etant log-in
   get 'myprofil', to: 'users#show', as: "myprofil"

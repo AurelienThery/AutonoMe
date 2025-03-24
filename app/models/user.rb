@@ -12,4 +12,8 @@ class User < ApplicationRecord
 
   # on indique en validation du user_type la liste des clés de user_typeS
   # validates :user_type, presence: true, inclusion: { in: User.user_types.keys }
+
+  def relative?
+    userable_type == "Relative"
+  end
 end

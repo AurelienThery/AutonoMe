@@ -1,0 +1,17 @@
+<h1>Tableau de bord des Relatives</h1>
+
+<% if @activities.present? && @activities.any? %>
+  <h2>Vos activités</h2>
+  <ul>
+    <% @activities.each do |activity| %>
+      <li>
+        <strong><%= activity.name %></strong> -
+        <%= activity.starting_date.strftime("%d/%m/%Y %H:%M") %> à
+        <%= activity.ending_date.strftime("%d/%m/%Y %H:%M") %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Aucune activité assignée pour le moment.</p>
+<% end %>
+

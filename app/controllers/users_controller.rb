@@ -12,11 +12,21 @@ class UsersController < ApplicationController
   end
 end
 
+def relative_dashboard
+  # Vérifiez que l'utilisateur est un relative
+  if current_user.relative?
+    @activities = Activity.where(relative_id: current_user.userable_id)
+  else
+    redirect_to root_path, alert: "Vous n'avez pas accès à cette page."
+  end
+end
+
 private
 
 def set_user
   @user = current_user
 end
+
 
 def set_simon
   current_user_id = User.find_by(first_name: "Simon")

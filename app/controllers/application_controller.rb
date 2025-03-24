@@ -12,5 +12,10 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     home_path
+    if resource.relative?
+      relative_dashboard_path
+    else
+      super
+    end
   end
 end
