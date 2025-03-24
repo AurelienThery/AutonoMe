@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  require 'roo'
   before_action :set_user, only: [:show]
   before_action :set_simon, only: [:show]
+
 
   def index
   end
@@ -19,6 +21,49 @@ def relative_dashboard
   else
     redirect_to root_path, alert: "Vous n'avez pas accès à cette page."
   end
+end
+
+def import_schedule
+  if params[:file].present?
+    file = params[:file]
+    spreadsheet = Roo::Spreadsheet.open(file.path)
+
+    # Supposons que les données sont dans la première feuille
+    header = spreadsheet.row(1) # La première ligne contient les en-têtes
+    (2..spreadsheet.last_row).each do |i|
+      row = Hash[[header, spreadsheet.row(i)].transpose]
+
+      # Exemple : Créer une activité pour un enfant à partir des données
+      Activity.create!(
+        name: row["Nom de l'activité"],
+        starting_date: row["Date de début"],
+        ending_date: row["Date de fin"],
+        relative_id: current_user.userable_id,
+        child_id: row["ID de l'enfant"] # Assurez-vous que cette colonne existe dans le fichier Excel
+      )
+    end
+
+    redirect_to relative_dashboard_path, notice: "Emploi du temps importé avec succès."
+  else
+    redirect_to relative_dashboard_path, alert: "Veuillez sélectionner un fichier."
+  end
+end
+
+def export_schedule
+  # Récupérer les activités pour un enfant spécifique
+  @activities = Activity.where(child_id: params[:child_id])
+
+  # Générer le fichier CSV
+  csv_data = CSV.generate(headers: true) do |csv|
+    csv << ["Nom de l'activité", "Date de début", "Date de fin"]
+
+    @activities.each do |activity|
+      csv << [activity.name, activity.starting_date, activity.ending_date]
+    end
+  end
+
+  # Envoyer le fichier CSV au navigateur
+  send_data csv_data, filename: "emploi_du_temps.csv"
 end
 
 private

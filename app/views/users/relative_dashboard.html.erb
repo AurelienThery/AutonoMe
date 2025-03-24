@@ -15,3 +15,23 @@
   <p>Aucune activité assignée pour le moment.</p>
 <% end %>
 
+<h2>Importer un emploi du temps</h2>
+<%= form_with url: import_schedule_path, method: :post, local: true, multipart: true do |form| %>
+  <div>
+    <%= form.label :file, "Choisissez un fichier Excel" %>
+    <%= form.file_field :file %>
+  </div>
+  <div>
+    <%= form.submit "Importer" %>
+  </div>
+<% end %>
+<h2>Exporter l'emploi du temps</h2>
+<%= form_with url: export_schedule_path, method: :get, local: true do |form| %>
+  <div>
+    <%= form.label :child_id, "Sélectionnez un enfant" %>
+    <%= form.select :child_id, Child.all.map { |child| [child.user.first_name, child.id] }, prompt: "Choisissez un enfant" %>
+  </div>
+  <div>
+    <%= form.submit "Exporter", class: "btn btn-primary" %>
+  </div>
+<% end %>

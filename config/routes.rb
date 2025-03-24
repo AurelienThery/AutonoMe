@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get "activites", to: "activities#mes_activites"
   get "activities/:id", to: "activities#show", as: :activity
   get "relative_dashboard", to: "users#relative_dashboard", as: :relative_dashboard
-
+  post 'import_schedule', to: 'users#import_schedule', as: :import_schedule
+  get 'export_schedule', to: 'users#export_schedule', as: :export_schedule
   # Defines the root path route ("/")
   # homepage correspondant au profil de l'utilisateur etant log-in
   get 'myprofil', to: 'users#show', as: "myprofil"
