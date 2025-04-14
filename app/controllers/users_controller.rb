@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   require 'roo'
+  require 'csv'
   before_action :set_user, only: [:show]
   before_action :set_simon, only: [:show]
 
@@ -50,20 +51,21 @@ def import_schedule
 end
 
 def export_schedule
-  # Récupérer les activités pour un enfant spécifique
   @activities = Activity.where(child_id: params[:child_id])
 
-  # Générer le fichier CSV
-  csv_data = CSV.generate(headers: true) do |csv|
-    csv << ["Nom de l'activité", "Date de début", "Date de fin"]
+  if @activities.any?
+    csv_data = CSV.generate(headers: true) do |csv|
+      csv << ["Nom de l'activité", "Date de début", "Date de fin"]
 
-    @activities.each do |activity|
-      csv << [activity.name, activity.starting_date, activity.ending_date]
+      @activities.each do |activity|
+        csv << [activity.name, activity.starting_date.strftime("%d/%m/%Y %H:%M"), activity.ending_date.strftime("%d/%m/%Y %H:%M")]
+      end
     end
-  end
 
-  # Envoyer le fichier CSV au navigateur
-  send_data csv_data, filename: "emploi_du_temps.csv"
+    send_data csv_data, filename: "emploi_du_temps.csv"
+  else
+    redirect_to relative_dashboard_path, alert: "Aucune activité trouvée pour cet enfant."
+  end
 end
 
 private
