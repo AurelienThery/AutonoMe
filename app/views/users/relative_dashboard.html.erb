@@ -1,37 +1,114 @@
-<h1>Tableau de bord des Relatives</h1>
+<%= render 'layouts/navbar' %> <!-- Barre de navigation supérieure -->
 
-<% if @activities.present? && @activities.any? %>
-  <h2>Vos activités</h2>
-  <ul>
-    <% @activities.each do |activity| %>
-      <li>
-        <strong><%= activity.name %></strong> -
-        <%= activity.starting_date.strftime("%d/%m/%Y %H:%M") %> à
-        <%= activity.ending_date.strftime("%d/%m/%Y %H:%M") %>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>Aucune activité assignée pour le moment.</p>
-<% end %>
+<div class="relative-dashboard-container">
+  <header class="dashboard-header">
+    <h1 class="dashboard-title">Tableau de bord des Relatives</h1>
+  </header>
 
-<h2>Importer un emploi du temps</h2>
-<%= form_with url: import_schedule_path, method: :post, local: true, multipart: true do |form| %>
-  <div>
-    <%= form.label :file, "Choisissez un fichier Excel" %>
-    <%= form.file_field :file %>
+  <section class="activities-section">
+    <h2 class="section-title">Créer une activité</h2>
+    <div class="form-container">
+      <%= form_with url: activities_path, method: :post, local: true, multipart: true, class: "activity-form" do |form| %>
+        <div class="form-group">
+          <%= form.label :child_id, "Sélectionnez un enfant", class: "form-label" %>
+          <%= form.select :child_id, Child.all.map { |child| [child.user.first_name, child.id] }, prompt: "Choisissez un enfant", class: "form-select" %>
+        </div>
+        <div class="form-group">
+          <%= form.label :name, "Nom de l'activité", class: "form-label" %>
+          <%= form.text_field :name, name: "activity[name]", class: "form-input" %>
+        </div>
+        <div class="form-group">
+          <%= form.label :starting_date, "Date de début", class: "form-label" %>
+          <%= form.datetime_local_field :starting_date, name: "activity[starting_date]", class: "form-input" %>
+        </div>
+        <div class="form-group">
+          <%= form.label :ending_date, "Date de fin", class: "form-label" %>
+          <%= form.datetime_local_field :ending_date, name: "activity[ending_date]", class: "form-input" %>
+        </div>
+        <div class="form-group">
+          <%= form.label :photo, "Ajouter une photo", class: "form-label" %>
+          <%= form.file_field :photo, name: "activity[photo]", class: "form-input" %>
+        </div>
+        <div class="form-actions">
+          <%= form.submit "Créer l'activité", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <section class="schedule-section">
+    <h2 class="section-title">Consulter l'emploi du temps</h2>
+    <div class="form-group">
+      <label for="child-schedule-select" class="form-label">Sélectionnez un enfant</label>
+      <select id="child-schedule-select" class="form-select">
+        <option value="">Choisissez un enfant</option>
+        <% Child.all.each do |child| %>
+          <option value="<%= child.id %>"><%= child.user.first_name %> <%= child.user.last_name %></option>
+        <% end %>
+      </select>
+    </div>
+    <button id="view-schedule-btn" class="btn btn-secondary">Voir l'emploi du temps</button>
+  </section>
+
+  <!-- Modal pour afficher l'emploi du temps -->
+  <div id="schedule-modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="close-modal" class="close">&times;</span>
+      <h2>Emploi du temps</h2>
+      <ul id="schedule-list"></ul>
+    </div>
   </div>
-  <div>
-    <%= form.submit "Importer" %>
-  </div>
-<% end %>
-<h2>Exporter l'emploi du temps</h2>
-<%= form_with url: export_schedule_path, method: :get, local: true do |form| %>
-  <div>
-    <%= form.label :child_id, "Sélectionnez un enfant" %>
-    <%= form.select :child_id, Child.all.map { |child| [child.user.first_name, child.id] }, prompt: "Choisissez un enfant" %>
-  </div>
-  <div>
-    <%= form.submit "Exporter", class: "btn btn-primary" %>
-  </div>
-<% end %>
+
+  <section class="map-section">
+    <h2 class="section-title">Lieu de l'activité</h2>
+    <div id="map" class="map-container"></div>
+  </section>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    mapboxgl.accessToken = 'your-mapbox-access-token';
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [2.3522, 48.8566], // Default to Paris
+      zoom: 12
+    });
+
+    const viewScheduleBtn = document.getElementById("view-schedule-btn");
+    const childSelect = document.getElementById("child-schedule-select");
+    const modal = document.getElementById("schedule-modal");
+    const closeModal = document.getElementById("close-modal");
+    const scheduleList = document.getElementById("schedule-list");
+
+    viewScheduleBtn.addEventListener("click", () => {
+      const childId = childSelect.value;
+      if (!childId) {
+        alert("Veuillez sélectionner un enfant.");
+        return;
+      }
+
+      // Requête AJAX pour récupérer les activités
+      fetch(`/activities?schedule_child_id=${childId}`)
+        .then(response => response.json())
+        .then(data => {
+          scheduleList.innerHTML = ""; // Réinitialiser la liste
+          if (data.activities.length > 0) {
+            data.activities.forEach(activity => {
+              const listItem = document.createElement("li");
+              listItem.textContent = `${activity.name} - ${activity.starting_date} à ${activity.ending_date}`;
+              scheduleList.appendChild(listItem);
+            });
+          } else {
+            scheduleList.innerHTML = "<li>Aucune activité trouvée.</li>";
+          }
+          modal.classList.remove("hidden");
+        })
+        .catch(error => console.error("Erreur lors de la récupération des activités :", error));
+    });
+
+    closeModal.addEventListener("click", () => {
+      modal.classList.add("hidden");
+    });
+  });
+</script>

@@ -1,0 +1,10 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <a href="<%= root_path %>" class="navbar-brand">AutonoMe</a>
+    <ul class="navbar-menu">
+      <li><a href="<%= relative_dashboard_path %>">Tableau de bord</a></li>
+      <li><a href="<%= myprofil_path %>">Mon profil</a></li>
+      <li><%= link_to "Déconnexion", destroy_user_session_path, method: :delete, data: { confirm: "Êtes-vous sûr de vouloir vous déconnecter ?" } %></li>
+    </ul>
+  </div>
+</nav>

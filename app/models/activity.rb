@@ -7,8 +7,9 @@ class Activity < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
   has_many :checklist_items
 
+  validates :name, :starting_date, :ending_date, presence: true
 
-   # enumerable pour stocker les types d'activités
+  # enumerable pour stocker les types d'activités
   # /!\ stocké en integer dans bdd donc ds table activity: t.integer "activity_type"
   enum activity_type: %i[journey activity breaktime]
 

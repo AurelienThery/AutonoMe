@@ -1,23 +1,22 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'users/sessions' }
   root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
   get "activites", to: "activities#mes_activites"
   get "activities/:id", to: "activities#show", as: :activity
   get "relative_dashboard", to: "users#relative_dashboard", as: :relative_dashboard
-  post 'import_schedule', to: 'users#import_schedule', as: :import_schedule
-  get 'export_schedule', to: 'users#export_schedule', as: :export_schedule
-  # Defines the root path route ("/")
-  # homepage correspondant au profil de l'utilisateur etant log-in
   get 'myprofil', to: 'users#show', as: "myprofil"
-  get 'myprofil' => 'users#show', as: :myprofil_root # creates user_root_path after log in
+  get 'myprofil' => 'users#show', as: :myprofil_root
   get 'help_needed', to: 'helpcalls#index'
-  # routes for stimulus controller (start/finish)
   patch 'activities/:activity_id/start', to: 'activities#start'
   patch 'activities/:activity_id/finish', to: 'activities#finish'
   get 'home', to: 'users#index', as: 'home'
+
+  # Route pour créer un emploi du temps
+  post 'schedules', to: 'schedules#create', as: 'schedules'
+
+  # Route pour les activités
+  resources :activities, only: [:create, :index]
 end
